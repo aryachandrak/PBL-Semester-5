@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plugin_camera/history_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -77,7 +78,10 @@ class ProfilePage extends StatelessWidget {
                   title: const Text('Scan History'),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    // Tindakan untuk Devices
+                    Navigator.push(
+                              context, 
+                              MaterialPageRoute(builder: (context) => ScanHistoryPage())
+                            );
                   },
                 ),
                 const Divider(),

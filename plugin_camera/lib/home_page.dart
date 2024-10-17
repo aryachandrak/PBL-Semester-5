@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/history_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,9 +49,10 @@ class _HomePageState extends State<HomePage> {
                               width: 45,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage('assets/contoh_profile.jpg'),
+                                    image:
+                                        AssetImage('assets/contoh_profile.jpg'),
                                     fit: BoxFit.cover,
-                                    ),
+                                  ),
                                   borderRadius: BorderRadius.circular(25),
                                   border: Border.all(
                                       color: Colors.white,
@@ -135,9 +137,28 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Fitur(
-                          imagePath: "assets/history.png",
-                          title: "Scan History",
-                        ),
+                            imagePath: "assets/history.png",
+                            title: "Scan History",
+                            onTap: () {
+                              Navigator.of(context).push(
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation, secondaryAnimation) => ScanHistoryPage(),
+                                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                    const begin = Offset(1.0, 0.0); // Mulai dari kanan layar
+                                    const end = Offset.zero;
+                                    var curve = Curves.easeInOut;
+
+                                    var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                                    var slideAnimation = animation.drive(tween);
+
+                                    return SlideTransition(
+                                      position: slideAnimation,
+                                      child: child,
+                                    );
+                                  },
+                                ),
+                              );
+                            }),
                       ),
                       Fitur(
                         imagePath: "assets/tips.png",
@@ -203,37 +224,42 @@ class _HomePageState extends State<HomePage> {
 class Fitur extends StatelessWidget {
   final String imagePath;
   final String title;
+  final VoidCallback? onTap;
 
-  const Fitur({super.key, required this.imagePath, required this.title});
+  const Fitur(
+      {super.key, required this.imagePath, required this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 8,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Container(
-          width: 80,
-          height: 70,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                imagePath,
-                width: 30,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                title,
-                style: GoogleFonts.montserrat(),
-              )
-            ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 8,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            width: 80,
+            height: 70,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  imagePath,
+                  width: 30,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  title,
+                  style: GoogleFonts.montserrat(),
+                )
+              ],
+            ),
           ),
         ),
       ),
