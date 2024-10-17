@@ -66,7 +66,7 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.camera_rounded), label: "Camera"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_2_outlined), label: "Profile")
+              icon: Icon(Icons.person_2_rounded), label: "Profile")
         ],
       ),
     );
