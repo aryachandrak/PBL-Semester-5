@@ -11,38 +11,37 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage('https://example.com/profile.jpg'), // Ganti dengan URL foto profil
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Nama Pengguna',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'email@contoh.com',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // Tindakan untuk mengedit profil
-              },
-              child: Text('Edit Profil'),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Tindakan untuk logout
-              },
-              child: Text('Logout'),
-            ),
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage("assets/profile.jpg"),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Ayra',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'ayra@gmail.com',
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+              SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Edit Profil'),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Logout'),
+              ),
+            ],
+          ),
         ),
       ),
     );
