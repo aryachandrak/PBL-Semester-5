@@ -48,11 +48,7 @@ class _HomePageState extends State<HomePage> {
                               height: 45,
                               width: 45,
                               decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/contoh_profile.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
+                                  image: DecorationImag
                                   borderRadius: BorderRadius.circular(25),
                                   border: Border.all(
                                       color: Colors.white,

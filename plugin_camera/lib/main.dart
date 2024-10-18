@@ -36,8 +36,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
-
-  // List of pages for the navigation
   late List<Widget> _pages;
 
   @override
@@ -45,7 +43,7 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     _pages = [
       HomePage(),
-      CameraPage(cameras: widget.cameras), // Access cameras via widget.cameras
+      CameraPage(cameras: widget.cameras),
       ProfilePage(),
     ];
   }
@@ -53,12 +51,12 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex], // Display the current selected page
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index; // Update the current index
+            _currentIndex = index;
           });
         },
         items: [

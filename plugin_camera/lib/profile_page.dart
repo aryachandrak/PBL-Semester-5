@@ -38,7 +38,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 16),
           CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage('assets/contoh_profile.jpg'), // Ganti dengan jalur gambar avatar
+            backgroundImage: AssetImage('assets/profile.jpg'), // Ganti dengan jalur gambar avatar
           ),
           const SizedBox(height: 16),
           const Text(
