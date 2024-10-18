@@ -48,7 +48,11 @@ class _HomePageState extends State<HomePage> {
                               height: 45,
                               width: 45,
                               decoration: BoxDecoration(
-                                  image: DecorationImag
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        "assets/profile.jpg",
+                                      ),
+                                      fit: BoxFit.cover),
                                   borderRadius: BorderRadius.circular(25),
                                   border: Border.all(
                                       color: Colors.white,
@@ -138,13 +142,18 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Navigator.of(context).push(
                                 PageRouteBuilder(
-                                  pageBuilder: (context, animation, secondaryAnimation) => ScanHistoryPage(),
-                                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                    const begin = Offset(1.0, 0.0); // Mulai dari kanan layar
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      ScanHistoryPage(),
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    const begin = Offset(
+                                        1.0, 0.0); // Mulai dari kanan layar
                                     const end = Offset.zero;
                                     var curve = Curves.easeInOut;
 
-                                    var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                                    var tween = Tween(begin: begin, end: end)
+                                        .chain(CurveTween(curve: curve));
                                     var slideAnimation = animation.drive(tween);
 
                                     return SlideTransition(

@@ -38,7 +38,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 16),
           CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage('assets/profile.jpg'), // Ganti dengan jalur gambar avatar
+            backgroundImage: AssetImage('assets/profile.jpg'),
           ),
           const SizedBox(height: 16),
           const Text(
@@ -79,9 +79,9 @@ class ProfilePage extends StatelessWidget {
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Navigator.push(
-                              context, 
-                              MaterialPageRoute(builder: (context) => ScanHistoryPage())
-                            );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScanHistoryPage()));
                   },
                 ),
                 const Divider(),
