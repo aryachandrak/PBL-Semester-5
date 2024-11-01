@@ -1,10 +1,9 @@
-// history_page.dart
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart'; // Add this import for date formatting
+import 'package:intl/intl.dart';
 
 class ScanHistoryPage extends StatelessWidget {
   const ScanHistoryPage({Key? key}) : super(key: key);
