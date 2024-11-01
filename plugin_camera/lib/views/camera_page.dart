@@ -1,10 +1,12 @@
+// camera_page.dart
 import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:media_scanner/media_scanner.dart';
+import 'package:provider/provider.dart'; // Add this import
+import 'package:plugin_camera/provider/history_provider.dart'; // Add this import
 
 class CameraPage extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -60,8 +62,21 @@ class _CameraPageState extends State<CameraPage> {
       imagesList.add(file);
     });
     MediaScanner.loadMedia(path: file.path);
+
+    // Add to history with static data
+    if (context.mounted) {
+      final historyProvider =
+          Provider.of<HistoryProvider>(context, listen: false);
+      historyProvider.addHistoryItem(
+        'Acne Papula', // Static acne type
+        'Gunakan produk dengan kandungan Benzoyl Peroxide atau Salicylic Acid', // Static description
+        'Tingkat keparahan: Sedang', // Static result
+        file.path, // Actual image path
+      );
+    }
   }
 
+  // Rest of the code remains the same...
   void startCamera(int camera) {
     cameraController = CameraController(
       widget.cameras[camera],

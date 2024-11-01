@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plugin_camera/history_page.dart';
+import 'package:plugin_camera/views/history_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
