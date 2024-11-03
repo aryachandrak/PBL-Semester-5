@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart'; // Add this import for date formatting
 
 class ScanHistoryPage extends StatelessWidget {
-  const ScanHistoryPage({Key? key}) : super(key: key);
+  const ScanHistoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {

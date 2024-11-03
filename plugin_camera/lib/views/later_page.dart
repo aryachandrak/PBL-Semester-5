@@ -18,9 +18,9 @@ class _LaterPageState extends State<LaterPage> {
             "Later Fitur",
             style: GoogleFonts.montserrat(fontSize: 20),
           ),
-          backgroundColor: Color.fromARGB(255, 0, 255, 238),
+          backgroundColor: const Color.fromARGB(255, 0, 255, 238),
         ),
-        body: Center(
+        body: const Center(
           child: Text("Untuk fitur selanjutnya"),
         ),
       ),

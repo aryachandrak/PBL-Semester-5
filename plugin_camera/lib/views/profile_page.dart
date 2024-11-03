@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/history_page.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 16),
-          CircleAvatar(
+          const CircleAvatar(
             radius: 50,
             backgroundImage: AssetImage('assets/profile.jpg'),
           ),
@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ScanHistoryPage()));
+                            builder: (context) => const ScanHistoryPage()));
                   },
                 ),
                 const Divider(),
