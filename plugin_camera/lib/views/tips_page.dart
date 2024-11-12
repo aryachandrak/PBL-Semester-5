@@ -17,9 +17,9 @@ class _TipsPageState extends State<TipsPage> {
           "Tips",
           style: GoogleFonts.montserrat(fontSize: 20),
         ),
-        backgroundColor: Color.fromARGB(255, 0, 255, 238),
+        backgroundColor: const Color.fromARGB(255, 0, 255, 238),
       ),
-      body: Center(
+      body: const Center(
         child: Text("Tempat tips"),
       ),
     );

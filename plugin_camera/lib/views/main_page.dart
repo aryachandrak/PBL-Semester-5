@@ -6,7 +6,7 @@ import 'package:plugin_camera/views/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   final List<CameraDescription> cameras;
-  const MainPage({Key? key, required this.cameras}) : super(key: key);
+  const MainPage({super.key, required this.cameras});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -37,7 +37,7 @@ class _MainPageState extends State<MainPage> {
             _currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.camera_rounded), label: "Camera"),

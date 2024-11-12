@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "309347257075",
+    "project_id": "fire-setup-8bbd3",
+    "storage_bucket": "fire-setup-8bbd3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309347257075:android:0ab062c8a4192c4f828586",
+        "android_client_info": {
+          "package_name": "com.example.plugin_camera"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMbpHC0bodMoxPomu5GzoiZLrLUWzGv78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

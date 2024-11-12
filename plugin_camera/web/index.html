@@ -17,6 +17,11 @@
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+
+  <title>GlowBies</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js"></script>
+
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
 
@@ -31,8 +36,24 @@
 
   <title>plugin_camera</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDDTW21Ks2TPxTu7O0t7igM79_WpTRGVJU",
+      authDomain: "fire-setup-8bbd3.firebaseapp.com",
+      projectId: "fire-setup-8bbd3",
+      storageBucket: "fire-setup-8bbd3.firebasestorage.app",
+      messagingSenderId: "309347257075",
+      appId: "1:309347257075:web:d737104ff5d3ccd2828586"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
+  <script src="main.dart.js"></script>
 </body>
 </html>
