@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:plugin_camera/models/history_item.dart';
+import 'package:plugin_camera/presentation/models/history_item.dart';
 
 class HistoryProvider with ChangeNotifier {
   final List<HistoryItem> _historyItems = [];
