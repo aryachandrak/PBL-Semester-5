@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/user_provider.dart';
 import 'package:plugin_camera/views/main_page.dart';
+import 'package:plugin_camera/views/welcome/sign_up.dart';
 import 'package:plugin_camera/views/welcome/splash_screen.dart';
 import 'package:plugin_camera/views/welcome/user_form_screen.dart';
+import 'package:plugin_camera/views/welcome/welcome_screen.dart';
 import 'package:plugin_camera/views/welcome/welcome_screen3.dart';
 import 'package:provider/provider.dart';
 
@@ -27,8 +29,6 @@ Future<void> main() async {
   // else{
   //   await Firebase.initializeApp();
   // }
-
-  
 
   final cameras = await availableCameras();
   runApp(MultiProvider(
@@ -51,8 +51,7 @@ class MainApp extends StatelessWidget {
       // home: MainPage(cameras: cameras),
       // home: SplashScreen(),
       // home: WelcomeScreen3(),
-      home: UserFormScreen(),
+      home: SignUp(),
     );
   }
 }
-

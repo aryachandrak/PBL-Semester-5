@@ -71,8 +71,26 @@ class WelcomeScreen extends StatelessWidget {
                     onPressed: () async {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen2()),
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                            return const WelcomeScreen2();
+                          },
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            const begin =
+                                Offset(1.0, 0.0); // Arahkan dari kanan
+                            const end = Offset.zero; // Ke posisi default
+                            const curve = Curves.easeInOut;
+
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            var offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                                position: offsetAnimation, child: child);
+                          },
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(

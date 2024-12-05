@@ -23,67 +23,63 @@ class WelcomeScreen4 extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ClipPath(
-              clipper: CurvedClipper(),
-              child: Container(
-                height:
-                    MediaQuery.of(context).size.height / 1.7, // Cover top half
-                color: const Color(0xFFFFE2EB), // Background color
-                child: Stack(
-                  alignment:
-                    Alignment.center, // Align text and image in the center
-                  children: [
-                    Positioned(
-                      top: 80, // Position the text at the bottom of the image
-                      child: Text(
-                        "Before     After", // Add your desired text
-                        style: GoogleFonts.gloriaHallelujah(
-                          fontSize: 30,
-                          fontWeight: FontWeight.normal ,
-                          color: const Color(0xFF5A3E36) , // Text color
+                clipper: CurvedClipper(),
+                child: Container(
+                    height: MediaQuery.of(context).size.height /
+                        1.7, // Cover top half
+                    color: const Color(0xFFFFE2EB), // Background color
+                    child: Stack(
+                      alignment: Alignment
+                          .center, // Align text and image in the center
+                      children: [
+                        Positioned(
+                          top:
+                              80, // Position the text at the bottom of the image
+                          child: Text(
+                            "Before     After", // Add your desired text
+                            style: GoogleFonts.gloriaHallelujah(
+                              fontSize: 30,
+                              fontWeight: FontWeight.normal,
+                              color: const Color(0xFF5A3E36), // Text color
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    // Image Widget
-                    Positioned(
-                      top: 76, // Adjust the position of the image
-                      child: Image.asset(
-                        'assets/images/startTrack.png', // Your image path here
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        // height: 150, // Adjust image height as needed
-                        // width: 200, // Adjust image width as needed
-                      ),
-                    ),   ],
-                )
-              )
-            ),
-          
+                        // Image Widget
+                        Positioned(
+                          top: 76, // Adjust the position of the image
+                          child: Image.asset(
+                            'assets/images/startTrack.png', // Your image path here
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            // height: 150, // Adjust image height as needed
+                            // width: 200, // Adjust image width as needed
+                          ),
+                        ),
+                      ],
+                    ))),
             Padding(
               padding: const EdgeInsets.all(60.0),
               child: Text(
                 "Melacak Perkembangan Kulit Anda",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.lexend(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w900,
-                    color: const Color(0xFF0F4C81),
-                    ),
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                  color: const Color(0xFF0F4C81),
+                ),
               ),
             ),
-        
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                _buildProgressSegment(),
+                const SizedBox(width: 10),
+                _buildProgressSegment(),
+                const SizedBox(width: 10),
+                _buildProgressSegment(),
+                const SizedBox(width: 10),
                 _buildProgressSegment(isActive: true),
-                const SizedBox(width: 10),
-                _buildProgressSegment(),
-                const SizedBox(width: 10),
-                _buildProgressSegment(),
-                const SizedBox(width: 10),
-                _buildProgressSegment(),
               ],
             ),
-
             const Spacer(),
             Align(
               alignment: Alignment.bottomCenter,

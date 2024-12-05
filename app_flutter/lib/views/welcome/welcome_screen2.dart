@@ -41,7 +41,7 @@ class WelcomeScreen2 extends StatelessWidget {
                         "Morning Routine", // Add your desired text
                         style: GoogleFonts.gloriaHallelujah(
                           fontSize: 35,
-                          fontWeight: FontWeight.normal ,
+                          fontWeight: FontWeight.normal,
                           color: const Color(0xFFa82810), // Text color
                         ),
                       ),
@@ -58,7 +58,8 @@ class WelcomeScreen2 extends StatelessWidget {
                     ),
                     // Text Widget
                     Positioned(
-                      bottom: 50, // Position the text at the bottom of the image
+                      bottom:
+                          50, // Position the text at the bottom of the image
                       child: Text(
                         "Night Routine", // Add your desired text
                         style: GoogleFonts.gloriaHallelujah(
@@ -108,8 +109,26 @@ class WelcomeScreen2 extends StatelessWidget {
                     onPressed: () async {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen3()),
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                            return const WelcomeScreen3();
+                          },
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            const begin =
+                                Offset(1.0, 0.0); // Arahkan dari kanan
+                            const end = Offset.zero; // Ke posisi default
+                            const curve = Curves.easeInOut;
+
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            var offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                                position: offsetAnimation, child: child);
+                          },
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -163,4 +182,3 @@ class CurvedClipper2 extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
-

@@ -48,8 +48,8 @@ class WelcomeScreen3 extends StatelessWidget {
                         "Types of Acne", // Add your desired text
                         style: GoogleFonts.gloriaHallelujah(
                           fontSize: 40,
-                          fontWeight: FontWeight.normal ,
-                          color: Colors.white , // Text color
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white, // Text color
                         ),
                       ),
                     ),
@@ -115,8 +115,26 @@ class WelcomeScreen3 extends StatelessWidget {
                     onPressed: () async {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen4()),
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                            return const WelcomeScreen4();
+                          },
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            const begin =
+                                Offset(1.0, 0.0); // Arahkan dari kanan
+                            const end = Offset.zero; // Ke posisi default
+                            const curve = Curves.easeInOut;
+
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            var offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                                position: offsetAnimation, child: child);
+                          },
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(

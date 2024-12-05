@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/user_provider.dart';
 import 'package:plugin_camera/views/welcome/sign_up.dart';
+import 'package:plugin_camera/views/welcome/welcome_screen.dart';
 import 'package:provider/provider.dart';
 
 class UserFormScreen extends StatelessWidget {
@@ -182,7 +183,7 @@ class UserFormScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignUp()),
+                              builder: (context) => const WelcomeScreen()),
                         );
                       },
                       child: Text(
