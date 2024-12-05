@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
   final IconData? icon;
   final BoxShadow? boxShadow;
   final List<Color>? gradientColors;
+  final bool isFloating; // Tambahkan parameter untuk tombol mengambang
 
   const CustomButton({
     super.key,
@@ -31,6 +32,7 @@ class CustomButton extends StatelessWidget {
       Color.fromARGB(255, 152, 241, 235),
       Color.fromARGB(255, 105, 205, 210),
     ],
+    this.isFloating = false, // Default: tidak mengapung
   });
 
   @override
@@ -57,7 +59,7 @@ class CustomButton extends StatelessWidget {
               )
             : null,
         borderRadius: BorderRadius.circular(borderRadius!),
-        boxShadow: [shadow],
+        boxShadow: isFloating ? [shadow] : [], // Aktifkan bayangan jika floating
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(

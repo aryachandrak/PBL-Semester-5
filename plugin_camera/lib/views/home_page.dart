@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: 0),
                             Center(
                               child: Text(
                                 "Acne Detection",
@@ -171,12 +171,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20), // Ruang tambahan di bawah konten
+                  SizedBox(height: 300), // Ruang tambahan di bawah konten
                 ],
               ),
             ),
             Positioned(
-              bottom: 20,
+              bottom: 15,
               left: screenSize.width * 0.1,
               right: screenSize.width * 0.1,
               child: CustomButton(
@@ -190,7 +190,8 @@ class _HomePageState extends State<HomePage> {
                   Color.fromARGB(255, 152, 241, 235),
                   Color.fromARGB(255, 105, 205, 210),
                 ],
-                borderRadius: 20.0,
+                borderRadius: 30.0,
+                isFloating: true,
                 boxShadow: BoxShadow(
                   color: Colors.black.withOpacity(0.2),
                   offset: Offset(0, 4),
