@@ -12,9 +12,14 @@ import 'package:plugin_camera/views/welcome/user_form_screen.dart';
 import 'package:plugin_camera/views/welcome/welcome_screen.dart';
 import 'package:plugin_camera/views/welcome/welcome_screen3.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // if(kIsWeb) {
   //   await Firebase.initializeApp(options: const FirebaseOptions(
