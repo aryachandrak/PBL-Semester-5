@@ -1,13 +1,16 @@
 import 'dart:io';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/views/camera_page.dart';
+import 'package:plugin_camera/views/scanDetail_page.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 class ScanHistoryPage extends StatelessWidget {
-  const ScanHistoryPage({Key? key}) : super(key: key);
-
+  const ScanHistoryPage({super.key, required this.cameras});
+  final List<CameraDescription> cameras;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +23,24 @@ class ScanHistoryPage extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 0, 255, 238),
+        backgroundColor: Colors.white, // Background AppBar putih
+        foregroundColor: Colors.black, // Teks dan ikon berwarna hitam
         elevation: 0,
+        centerTitle: true,
+        actions: [
+          IconButton(
+      icon: const Icon(Icons.face_retouching_natural_rounded),
+      onPressed: () {
+        // Aksi saat ikon scan wajah ditekan
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CameraPage(cameras: cameras), // Navigasi ke halaman Face Scan
+          ),
+        );
+      },
+    ),
+        ],
       ),
       body: Consumer<HistoryProvider>(
         builder: (context, historyProvider, child) {
@@ -110,72 +129,90 @@ class ScanHistoryPage extends StatelessWidget {
                     ),
 
                     // Info Container
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Date and Time
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.access_time_rounded,
-                                size: 16,
-                                color: Colors.grey,
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to the detail page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ScanDetailPage(
+                              acneType: scan.acneType,
+                              deskripsi: scan.deskripsi,
+                              result: scan.result,
+                              imagePath: scan.imagePath,
+                              scanTime:
+                                  formattedDate, // Pass the scan object to detail page
+                            ),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Date and Time
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.access_time_rounded,
+                                  size: 16,
+                                  color: Colors.grey,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  formattedDate,
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 12,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+
+                            // Acne Type
+                            Text(
+                              scan.acneType,
+                              style: GoogleFonts.montserrat(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
-                              const SizedBox(width: 4),
-                              Text(
-                                formattedDate,
+                            ),
+                            const SizedBox(height: 4),
+
+                            // Result
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.blue[50],
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                scan.result,
                                 style: GoogleFonts.montserrat(
                                   fontSize: 12,
-                                  color: Colors.grey[600],
+                                  color: Colors.blue[700],
                                 ),
                               ),
-                            ],
-                          ),
-                          const SizedBox(height: 8),
+                            ),
+                            const SizedBox(height: 8),
 
-                          // Acne Type
-                          Text(
-                            scan.acneType,
-                            style: GoogleFonts.montserrat(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-
-                          // Result
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.blue[50],
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Text(
-                              scan.result,
+                            // Description
+                            Text(
+                              scan.deskripsi,
                               style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                color: Colors.blue[700],
+                                fontSize: 14,
+                                color: Colors.grey[700],
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-
-                          // Description
-                          Text(
-                            scan.deskripsi,
-                            style: GoogleFonts.montserrat(
-                              fontSize: 14,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               );

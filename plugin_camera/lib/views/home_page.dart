@@ -6,6 +6,7 @@ import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/later_page.dart';
 import 'package:plugin_camera/views/tips_page.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
+import 'package:plugin_camera/widgets/custom_card.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -86,7 +87,8 @@ class _HomePageState extends State<HomePage> {
                                   onTap: () {
                                     context
                                         .read<NavigationProvider>()
-                                        .navigateToPage(context, 'Notification');
+                                        .navigateToPage(
+                                            context, 'Notification');
                                   },
                                   child: Icon(
                                     Icons.notifications_active_outlined,
@@ -148,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Fitur(
                                     imagePath: "assets/history.png",
                                     title: "Scan History",
-                                    targetPage: ScanHistoryPage(),
+                                    targetPage: ScanHistoryPage(cameras: widget.cameras),
                                   ),
                                 ),
                                 Fitur(
@@ -166,12 +168,115 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ],
                             ),
+                            // Section "Recent Scan"
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.symmetric(horizontal: 16.0),
+                            //   child: Column(
+                            //     crossAxisAlignment: CrossAxisAlignment.start,
+                            //     children: [
+                            //       Text(
+                            //         'Recent Scan',
+                            //         style: TextStyle(
+                            //           fontSize: 18,
+                            //           fontWeight: FontWeight.bold,
+                            //           color: Colors.black,
+                            //         ),
+                            //       ),
+                            //       SizedBox(height: 10),
+                            //       CustomCard(
+                            //         widthFactor: 1.0, // Full width
+                            //         heightFactor:
+                            //             0.2, // Tinggi card 20% dari tinggi layar
+                            //         backgroundColor: Colors.white,
+                            //         borderRadius: 16.0,
+                            //         boxShadow: BoxShadow(
+                            //           color: Colors.black.withOpacity(0.2),
+                            //           blurRadius: 10,
+                            //           offset: Offset(0, 5),
+                            //         ),
+                            //         child: Center(
+                            //           child: Text(
+                            //             'Recent Scan Content',
+                            //             style: TextStyle(
+                            //               fontSize: 16,
+                            //               color: Colors.grey[800],
+                            //             ),
+                            //           ),
+                            //         ),
+                            //         onTap: () {
+                            //           print('berhasil ditekan recent');
+                            //         },
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            // SizedBox(height: 20),
+                            // Section "Know more"
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.symmetric(horizontal: 16.0),
+                            //   child: Column(
+                            //     crossAxisAlignment: CrossAxisAlignment.start,
+                            //     children: [
+                            //       Text(
+                            //         'Know more',
+                            //         style: TextStyle(
+                            //           fontSize: 18,
+                            //           fontWeight: FontWeight.bold,
+                            //           color: Colors.black,
+                            //         ),
+                            //       ),
+                            //       SizedBox(height: 10),
+                            //       GridView.builder(
+                            //         shrinkWrap: true,
+                            //         physics: NeverScrollableScrollPhysics(),
+                            //         gridDelegate:
+                            //             SliverGridDelegateWithFixedCrossAxisCount(
+                            //           crossAxisCount: 2,
+                            //           crossAxisSpacing: 10,
+                            //           mainAxisSpacing: 10,
+                            //           childAspectRatio: 1.0,
+                            //         ),
+                            //         itemCount: 6,
+                            //         itemBuilder: (context, index) {
+                            //           return CustomCard(
+                            //             widthFactor:
+                            //                 0.45, // Lebar card responsif
+                            //             heightFactor:
+                            //                 0.05, // Tinggi card 20% dari tinggi layar
+                            //             backgroundColor: Colors.white,
+                            //             borderRadius: 16.0,
+                            //             boxShadow: BoxShadow(
+                            //               color: Colors.black.withOpacity(0.2),
+                            //               blurRadius: 10,
+                            //               offset: Offset(0, 5),
+                            //             ),
+                            //             child: Center(
+                            //               child: Text(
+                            //                 'Item ${index + 1}',
+                            //                 style: TextStyle(
+                            //                   fontSize: 16,
+                            //                   color: Colors.grey[800],
+                            //                 ),
+                            //               ),
+                            //             ),
+                            //             onTap: () {
+                            //               print('berhasil ditekan');
+                            //             },
+                            //           );
+                            //         },
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                          
                           ],
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 300), // Ruang tambahan di bawah konten
+                  SizedBox(height: 250), // Ruang tambahan di bawah konten
                 ],
               ),
             ),

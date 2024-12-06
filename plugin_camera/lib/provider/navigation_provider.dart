@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/editAccount_page.dart';
 import 'package:plugin_camera/views/history_page.dart';
+import 'package:plugin_camera/views/home_page.dart';
+import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/views/managePass_page.dart';
 import 'package:plugin_camera/views/notification_page.dart';
 
@@ -26,10 +28,16 @@ class NavigationProvider with ChangeNotifier {
         );
         break;
       case 'ScanHistory':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ScanHistoryPage()),
-        );
+        if (arguments is List<CameraDescription>) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ScanHistoryPage(cameras: arguments),
+            ),
+          );
+        } else {
+          print("Error: Invalid arguments for CameraPage!");
+        }
         break;
       case 'MyPost':
         // Navigator.push(
@@ -61,6 +69,18 @@ class NavigationProvider with ChangeNotifier {
             context,
             MaterialPageRoute(
               builder: (context) => CameraPage(cameras: arguments),
+            ),
+          );
+        } else {
+          print("Error: Invalid arguments for CameraPage!");
+        }
+        break;
+      case 'Home':
+        if (arguments is List<CameraDescription>) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MainPage(cameras: arguments),
             ),
           );
         } else {

@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
+import 'package:plugin_camera/views/auth/signUp_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,8 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GLOWBIES',
-      home: MainPage(cameras: cameras),
+      // home: MainPage(cameras: cameras),
+      home: SignUpPage(cameras: cameras),
     );
   }
 }

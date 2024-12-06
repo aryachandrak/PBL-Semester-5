@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/widgets/profileOption_widget.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -8,11 +9,12 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Profile',
-          style: TextStyle(
-            fontWeight: FontWeight.bold, // Membuat teks tebal
-            fontSize: 24, // Ukuran font
+          style: GoogleFonts.montserrat(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
           ),
         ),
         backgroundColor: Colors.white, // Background AppBar putih

@@ -20,7 +20,7 @@ class MainPage extends StatelessWidget {
     final pages = [
       HomePage(cameras: cameras),
       // CameraPage(cameras: cameras),
-      const ScanHistoryPage(),
+      ScanHistoryPage(cameras: cameras,),
       const ProfilePage(),
     ];
 
