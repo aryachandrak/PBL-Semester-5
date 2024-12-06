@@ -1,12 +1,13 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/home_page.dart';
 import 'package:plugin_camera/views/profile_page.dart';
 
 class MainPage extends StatefulWidget {
-  final List<CameraDescription> cameras;
-  const MainPage({super.key, required this.cameras});
+  const MainPage({super.key});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -19,9 +20,10 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;
     _pages = [
       const HomePage(),
-      CameraPage(cameras: widget.cameras),
+      CameraPage(cameras: cameras),
       const ProfilePage(),
     ];
   }

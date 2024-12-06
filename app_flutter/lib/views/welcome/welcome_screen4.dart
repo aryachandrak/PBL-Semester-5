@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/views/welcome/user_form_screen.dart';
 
 class WelcomeScreen4 extends StatelessWidget {
@@ -90,7 +91,7 @@ class WelcomeScreen4 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const UserFormScreen()),
+                            builder: (context) => const MainPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
