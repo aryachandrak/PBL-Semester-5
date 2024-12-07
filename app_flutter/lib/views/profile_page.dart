@@ -1,110 +1,181 @@
 import 'package:flutter/material.dart';
-import 'package:plugin_camera/views/history_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/widgets/profileOption_widget.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Profile', style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Tindakan kembali
-          },
+        title: Text(
+          'Profile',
+          style: GoogleFonts.montserrat(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout, color: Colors.black),
-            onPressed: () {
-              // Tindakan log out
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.black),
-            onPressed: () {
-              // Tindakan pengaturan
-            },
-          ),
-        ],
+        backgroundColor: Colors.white, // Background AppBar putih
+        foregroundColor: Colors.black, // Teks dan ikon berwarna hitam
+        elevation: 0, // Menghilangkan bayangan AppBar
+        centerTitle: true, // Memastikan judul berada di tengah
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.exit_to_app, color: Colors.red), // Ikon logout
+        //     onPressed: () {
+        //       // Tindakan ketika tombol logout ditekan
+        //       print('Logout clicked');
+        //     },
+        //   ),
+        // ],
       ),
-      body: Column(
+      body: ListView(
         children: [
-          const SizedBox(height: 16),
-          const CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage('assets/profile.jpg'),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: 16.0), // Jarak kanan dan kiri
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blue.shade700,
+                borderRadius: BorderRadius.circular(16.0), // Sudut melengkung
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2), // Warna bayangan
+                    blurRadius: 10, // Besar blur
+                    offset: Offset(0, 4), // Posisi bayangan (x, y)
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  const CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 35,
+                    child: CircleAvatar(
+                      radius: 32,
+                      backgroundImage: AssetImage('assets/profile.jpg'), // Ganti dengan URL avatar Anda
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Nama User',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '@username',
+                        style: TextStyle(
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Nama Pengguna',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'email@contoh.com',
-            style: TextStyle(fontSize: 14, color: Colors.grey),
-          ),
-          const SizedBox(height: 24),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.person),
-                  title: const Text('Account'),
-                  trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    // Tindakan untuk Account
-                  },
-                ),
-                const Divider(),
-                ListTile(
-                  leading: const Icon(Icons.notifications),
-                  title: const Text('Notifications'),
-                  trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    // Tindakan untuk Notifications
-                  },
-                ),
-                const Divider(),
-                ListTile(
-                  leading: const Icon(Icons.history),
-                  title: const Text('Scan History'),
-                  trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ScanHistoryPage()));
-                  },
-                ),
-                const Divider(),
-                ListTile(
-                  leading: const Icon(Icons.lock),
-                  title: const Text('Passwords'),
-                  trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    // Tindakan untuk Passwords
-                  },
-                ),
-                const Divider(),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: const Text('Language'),
-                  trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    // Tindakan untuk Language
-                  },
+          Container(
+            margin: const EdgeInsets.all(16.0),
+            // padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: Offset(0, 4),
                 ),
               ],
             ),
+            child: Column(
+              children: [
+                ProfileOption(
+                  icon: Icons.person,
+                  title: 'My Account',
+                  subtitle: 'Make changes to your account',
+                  page: 'EditAccount',
+                ),
+                ProfileOption(
+                  icon: Icons.history,
+                  title: 'Scan History',
+                  subtitle: 'Your scan history',
+                  page: 'ScanHistory',
+                ),
+                // ProfileOption(
+                //     icon: Icons.upload,
+                //     title: 'Your Post',
+                //     subtitle: 'Your post',
+                //     page: 'MyPost'),
+                ProfileOption(
+                    icon: Icons.notifications,
+                    title: 'Notification',
+                    subtitle: 'Your notification',
+                    page: 'Notification'),
+                ProfileOption(
+                    icon: Icons.key,
+                    title: 'Manage Password',
+                    subtitle: 'Further secure your account for safety',
+                    page: 'ManagePassword'),
+                ProfileOption(
+                    icon: Icons.logout,
+                    title: 'Log out',
+                    subtitle: 'Further secure your account for safety',
+                    page: ''),
+              ],
+            ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(
+                16.0), // Menambahkan padding di sekitar teks
+            child: Text(
+              'More',
+              style: TextStyle(
+                color: Colors.grey, // Ganti dengan warna yang lebih mencolok
+                fontSize: 18, // Ukuran font yang lebih besar
+                fontWeight: FontWeight.bold, // Menebalkan teks untuk penekanan
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(16.00), // Jarak vertikal
+            // padding: const EdgeInsets.all(8.0), // Jarak dalam
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                ProfileOption(
+                    icon: Icons.info,
+                    title: 'About App',
+                    subtitle: 'Everything about our App',
+                    page: 'AboutApp'),
+                ProfileOption(
+                    icon: Icons.question_answer,
+                    title: 'How To Use',
+                    subtitle: 'Everything about our App',
+                    page: 'AboutApp'),
+              ],
+            ),
+          )
         ],
       ),
     );

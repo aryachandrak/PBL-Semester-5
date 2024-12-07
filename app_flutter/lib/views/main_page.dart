@@ -1,52 +1,32 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/views/camera_page.dart';
+import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/home_page.dart';
 import 'package:plugin_camera/views/profile_page.dart';
+import 'package:provider/provider.dart';
+import '../provider/navigation_provider.dart';
+import '../widgets/bottom_nav_widget.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class MainPage extends StatelessWidget {
+  final List<CameraDescription> cameras;
 
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
-  late List<Widget> _pages;
-
-  @override
-  void initState() {
-    super.initState();
-    final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;
-    _pages = [
-      const HomePage(),
-      CameraPage(cameras: cameras),
-      const ProfilePage(),
-    ];
-  }
+  const MainPage({Key? key, required this.cameras}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = Provider.of<NavigationProvider>(context);
+
+    final pages = [
+      HomePage(cameras: cameras),
+      // CameraPage(cameras: cameras),
+      ScanHistoryPage(cameras: cameras,),
+      const ProfilePage(),
+    ];
+
     return Scaffold(
-      body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.camera_rounded), label: "Camera"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_2_rounded), label: "Profile")
-        ],
-      ),
+      body: pages[navigationProvider.currentIndex],
+      bottomNavigationBar: BottomNavWidget(),
     );
   }
 }
