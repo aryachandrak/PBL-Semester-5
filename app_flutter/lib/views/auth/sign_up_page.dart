@@ -1,4 +1,4 @@
-import 'package:camera/camera.dart';
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +21,7 @@ class SignUpPage extends StatelessWidget {
                   Container(
                     height: 120,
                     width: 120,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape
                           .circle, // Opsional: Membuat gambar berbentuk lingkaran
                     ),
@@ -30,7 +30,7 @@ class SignUpPage extends StatelessWidget {
                       fit: BoxFit.cover, // Atur sesuai kebutuhan
                       errorBuilder: (BuildContext context, Object error,
                           StackTrace? stackTrace) {
-                        return Icon(
+                        return const Icon(
                           Icons.error, // Ikon fallback jika gambar gagal dimuat
                           size: 40,
                           color: Colors.red,
@@ -38,8 +38,8 @@ class SignUpPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Text(
+                  const SizedBox(height: 16),
+                  const Text(
                     'Hello There!',
                     style: TextStyle(
                       fontSize: 22,
@@ -47,7 +47,7 @@ class SignUpPage extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     "Let's glow together with us",
                     style: TextStyle(
@@ -58,25 +58,25 @@ class SignUpPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             // Nama Field
             // Nama Field
             TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person_outline),
+                prefixIcon: const Icon(Icons.person_outline),
                 labelText: 'Nama',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.grey, // Warna border abu-abu saat tidak fokus
                     width: 2.0, // Ketebalan border
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.grey, // Warna border abu-abu saat fokus
                     width: 3.0, // Ketebalan border lebih tebal saat fokus
                   ),
@@ -85,24 +85,24 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 // Email Field
             TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email_outlined),
+                prefixIcon: const Icon(Icons.email_outlined),
                 labelText: 'Email',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.grey, // Warna border abu-abu saat tidak fokus
                     width: 2.0, // Ketebalan border
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.grey, // Warna border abu-abu saat fokus
                     width: 3.0, // Ketebalan border lebih tebal saat fokus
                   ),
@@ -111,25 +111,25 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 // Password Field
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock_outline),
+                prefixIcon: const Icon(Icons.lock_outline),
                 labelText: 'Password',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.grey, // Warna border abu-abu saat tidak fokus
                     width: 2.0, // Ketebalan border
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.grey, // Warna border abu-abu saat fokus
                     width: 3.0, // Ketebalan border lebih tebal saat fokus
                   ),
@@ -138,7 +138,7 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             // Tombol Lanjutkan
             GestureDetector(
               onTap: () {
@@ -149,12 +149,12 @@ class SignUpPage extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF6DA06F), // Warna hijau pada tombol
+                  color: const Color(0xFF6DA06F), // Warna hijau pada tombol
                   borderRadius: BorderRadius.circular(16), // Sudut membulat
                 ),
-                padding:
-                    EdgeInsets.symmetric(vertical: 14), // Padding dalam tombol
-                child: Center(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 14), // Padding dalam tombol
+                child: const Center(
                   child: Text(
                     'Lanjutkan',
                     style: TextStyle(
@@ -166,7 +166,7 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             // Divider atau pemisah
             Row(
               children: [
@@ -176,8 +176,8 @@ class SignUpPage extends StatelessWidget {
                     thickness: 1,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     'Atau',
                     style: TextStyle(color: Colors.grey),
@@ -191,11 +191,11 @@ class SignUpPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             // Tombol Google Login
             GestureDetector(
               onTap: () {
-                print("Google login pressed");
+                developer.log("Google login pressed", name: "GestureDetector");
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -205,7 +205,7 @@ class SignUpPage extends StatelessWidget {
                     width: 24,
                     height: 24,
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Text(
                     'Login dengan Google',
                     style: TextStyle(
@@ -216,7 +216,7 @@ class SignUpPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             // Footer
             Center(
               child: Row(
@@ -234,7 +234,7 @@ class SignUpPage extends StatelessWidget {
                           .read<NavigationProvider>()
                           .navigateToPage(context, 'Home');
                     },
-                    child: Text(
+                    child: const Text(
                       'Masuk',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

@@ -1,11 +1,10 @@
 import 'dart:io';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/views/camera_page.dart';
-import 'package:plugin_camera/views/scanDetail_page.dart';
+import 'package:plugin_camera/views/scan_detail_page.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -30,17 +29,18 @@ class ScanHistoryPage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-      icon: const Icon(Icons.face_retouching_natural_rounded),
-      onPressed: () {
-        // Aksi saat ikon scan wajah ditekan
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CameraPage(cameras: cameras), // Navigasi ke halaman Face Scan
+            icon: const Icon(Icons.face_retouching_natural_rounded),
+            onPressed: () {
+              // Aksi saat ikon scan wajah ditekan
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CameraPage(
+                      cameras: cameras), // Navigasi ke halaman Face Scan
+                ),
+              );
+            },
           ),
-        );
-      },
-    ),
         ],
       ),
       body: Consumer<HistoryProvider>(

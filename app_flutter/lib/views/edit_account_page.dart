@@ -23,7 +23,7 @@ class EditAccountPage extends StatelessWidget {
                 child: CircleAvatar(
                   radius: size.width * 0.15, // Ukuran lingkaran sesuai layar
                   backgroundColor: Colors.pink,
-                  backgroundImage: AssetImage('assets/profile.jpg'),
+                  backgroundImage: const AssetImage('assets/profile.jpg'),
                 ),
               ),
               SizedBox(height: size.height * 0.02),
@@ -59,7 +59,7 @@ class EditAccountPage extends StatelessWidget {
               _buildInputField(
                 labelText: 'Phone number',
                 size: size,
-                prefixIcon: Icon(Icons.phone),
+                prefixIcon: const Icon(Icons.phone),
               ),
               SizedBox(height: size.height * 0.02),
               _buildDropdownField(
@@ -71,7 +71,7 @@ class EditAccountPage extends StatelessWidget {
               _buildInputField(
                 labelText: 'What is your date of birth?',
                 size: size,
-                suffixIcon: Icon(Icons.calendar_today),
+                suffixIcon: const Icon(Icons.calendar_today),
               ),
               SizedBox(height: size.height * 0.04),
               // ElevatedButton(
@@ -148,7 +148,7 @@ class EditAccountPage extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 6,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
         borderRadius: BorderRadius.circular(8),

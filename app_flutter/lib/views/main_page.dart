@@ -7,7 +7,7 @@ import '../provider/navigation_provider.dart';
 import '../widgets/bottom_nav_widget.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {

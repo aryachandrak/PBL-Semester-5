@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/widgets/profileOption_widget.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +44,14 @@ class ProfilePage extends StatelessWidget {
                   BoxShadow(
                     color: Colors.black.withOpacity(0.2), // Warna bayangan
                     blurRadius: 10, // Besar blur
-                    offset: Offset(0, 4), // Posisi bayangan (x, y)
+                    offset: const Offset(0, 4), // Posisi bayangan (x, y)
                   ),
                 ],
               ),
               padding: const EdgeInsets.all(16.0),
-              child: Row(
+              child: const Row(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 35,
                     child: CircleAvatar(
@@ -59,10 +59,10 @@ class ProfilePage extends StatelessWidget {
                       backgroundImage: AssetImage('assets/profile.jpg'), // Ganti dengan URL avatar Anda
                     ),
                   ),
-                  const SizedBox(width: 16),
+                  SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Nama User',
                         style: TextStyle(
@@ -94,7 +94,7 @@ class ProfilePage extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   blurRadius: 10,
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),
@@ -135,8 +135,8 @@ class ProfilePage extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(
+          const Padding(
+            padding: EdgeInsets.all(
                 16.0), // Menambahkan padding di sekitar teks
             child: Text(
               'More',
@@ -157,7 +157,7 @@ class ProfilePage extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   blurRadius: 10,
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),

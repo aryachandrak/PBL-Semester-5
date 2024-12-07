@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plugin_camera/views/auth/signUp_page.dart';
+import 'package:plugin_camera/views/auth/sign_up_page.dart';
 
 class WelcomeScreen4 extends StatelessWidget {
   const WelcomeScreen4({super.key});

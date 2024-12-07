@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
 
 class ManagePassPage extends StatefulWidget {
-  const ManagePassPage({Key? key}) : super(key: key);
+  const ManagePassPage({super.key});
 
   @override
   State<ManagePassPage> createState() => _ManagePassPageState();
@@ -100,9 +100,7 @@ class _ManagePassPageState extends State<ManagePassPage> {
                   labelText: "New Password",
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _isObscuredNew
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+                      _isObscuredNew ? Icons.visibility : Icons.visibility_off,
                     ),
                     onPressed: () {
                       setState(() {
@@ -171,11 +169,10 @@ class _ManagePassPageState extends State<ManagePassPage> {
               //   ),
               // ),
               CustomButton(
-                text: 'Change Password', 
-                onPressed: (){
+                text: 'Change Password',
+                onPressed: () {
                   _submit();
-                } ,
-                
+                },
               )
             ],
           ),

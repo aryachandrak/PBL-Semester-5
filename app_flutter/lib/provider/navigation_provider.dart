@@ -1,10 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/camera_page.dart';
-import 'package:plugin_camera/views/editAccount_page.dart';
+import 'package:plugin_camera/views/edit_account_page.dart';
 import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
-import 'package:plugin_camera/views/managePass_page.dart';
+import 'package:plugin_camera/views/manage_pass_page.dart';
 import 'package:plugin_camera/views/notification_page.dart';
 
 class NavigationProvider with ChangeNotifier {

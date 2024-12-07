@@ -10,13 +10,13 @@ class ScanDetailPage extends StatelessWidget {
   final String scanTime;
 
   const ScanDetailPage({
-    Key? key,
+    super.key,
     required this.acneType,
     required this.deskripsi,
     required this.result,
     required this.imagePath,
     required this.scanTime,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
