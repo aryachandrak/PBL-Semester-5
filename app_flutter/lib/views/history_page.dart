@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/views/camera_page.dart';
@@ -9,10 +10,10 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 class ScanHistoryPage extends StatelessWidget {
-  const ScanHistoryPage({super.key, required this.cameras});
-  final List<CameraDescription> cameras;
+  const ScanHistoryPage({super.key});
   @override
   Widget build(BuildContext context) {
+    final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;
     return Scaffold(
       appBar: AppBar(
         title: Text(

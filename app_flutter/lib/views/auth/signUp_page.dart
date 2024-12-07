@@ -4,9 +4,7 @@ import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
-  final List<CameraDescription> cameras;
-
-  const SignUpPage({super.key, required this.cameras});
+  const SignUpPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,9 +142,10 @@ class SignUpPage extends StatelessWidget {
             // Tombol Lanjutkan
             GestureDetector(
               onTap: () {
-                context
-                    .read<NavigationProvider>()
-                    .navigateToPage(context, 'Home', arguments: cameras);
+                context.read<NavigationProvider>().navigateToPage(
+                      context,
+                      'Home',
+                    );
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -233,7 +232,7 @@ class SignUpPage extends StatelessWidget {
                     onTap: () {
                       context
                           .read<NavigationProvider>()
-                          .navigateToPage(context, 'Home', arguments: cameras);
+                          .navigateToPage(context, 'Home');
                     },
                     child: Text(
                       'Masuk',

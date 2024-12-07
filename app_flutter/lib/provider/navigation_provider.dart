@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/editAccount_page.dart';
 import 'package:plugin_camera/views/history_page.dart';
-import 'package:plugin_camera/views/home_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/views/managePass_page.dart';
 import 'package:plugin_camera/views/notification_page.dart';
@@ -32,7 +31,7 @@ class NavigationProvider with ChangeNotifier {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ScanHistoryPage(cameras: arguments),
+              builder: (context) => ScanHistoryPage(),
             ),
           );
         } else {
@@ -76,16 +75,12 @@ class NavigationProvider with ChangeNotifier {
         }
         break;
       case 'Home':
-        if (arguments is List<CameraDescription>) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MainPage(cameras: arguments),
-            ),
-          );
-        } else {
-          print("Error: Invalid arguments for CameraPage!");
-        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MainPage(),
+          ),
+        );
         break;
       // Tambahkan case lain sesuai dengan halaman yang ingin dituju
       default:

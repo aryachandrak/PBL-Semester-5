@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,6 +21,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => HistoryProvider()),
+        ChangeNotifierProvider(create: (_) => NavigationProvider()),
         ChangeNotifierProvider(
           create: (_) => CameraProvider()..setCameras(cameras),
         ),

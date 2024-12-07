@@ -1,17 +1,15 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/later_page.dart';
 import 'package:plugin_camera/views/tips_page.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
-import 'package:plugin_camera/widgets/custom_card.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
-  final List<CameraDescription> cameras;
-  const HomePage({super.key, required this.cameras});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -21,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-
+    final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -35,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         height: screenSize.height / 2.5,
                         width: double.infinity,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -61,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                                       height: 45,
                                       width: 45,
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/profile.jpg",
                                           ),
@@ -75,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Text(
                                       "Halo Ayra, Selamat Datang!",
                                       style: GoogleFonts.montserrat(
@@ -90,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                                         .navigateToPage(
                                             context, 'Notification');
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.notifications_active_outlined,
                                     color: Colors.white,
                                     size: 30,
@@ -98,13 +96,13 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                             Center(
                               child: Container(
                                 height: screenSize.width * 0.5,
                                 width: screenSize.width * 0.5,
                                 decoration: BoxDecoration(
-                                  gradient: RadialGradient(
+                                  gradient: const RadialGradient(
                                     colors: [
                                       Color.fromARGB(255, 255, 255, 255),
                                       Color.fromARGB(255, 0, 255, 238),
@@ -115,7 +113,8 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(
                                       screenSize.width * 0.25),
                                   border: Border.all(
-                                    color: Color.fromARGB(100, 138, 253, 244),
+                                    color: const Color.fromARGB(
+                                        100, 138, 253, 244),
                                     style: BorderStyle.solid,
                                     width: 10,
                                   ),
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 0),
+                            const SizedBox(height: 0),
                             Center(
                               child: Text(
                                 "Acne Detection",
@@ -141,16 +140,16 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 40),
-                            Row(
+                            const SizedBox(height: 40),
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
+                                  padding: EdgeInsets.only(left: 10.0),
                                   child: Fitur(
                                     imagePath: "assets/history.png",
                                     title: "Scan History",
-                                    targetPage: ScanHistoryPage(cameras: widget.cameras),
+                                    targetPage: ScanHistoryPage(),
                                   ),
                                 ),
                                 Fitur(
@@ -159,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                                   targetPage: TipsPage(),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 10.0),
+                                  padding: EdgeInsets.only(right: 10.0),
                                   child: Fitur(
                                     imagePath: "assets/history.png",
                                     title: "Later",
@@ -270,13 +269,12 @@ class _HomePageState extends State<HomePage> {
                             //     ],
                             //   ),
                             // ),
-                          
                           ],
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 250), // Ruang tambahan di bawah konten
+                  const SizedBox(height: 250), // Ruang tambahan di bawah konten
                 ],
               ),
             ),
@@ -287,11 +285,11 @@ class _HomePageState extends State<HomePage> {
               child: CustomButton(
                 text: "Start Acne Detection",
                 onPressed: () {
-                  context.read<NavigationProvider>().navigateToPage(
-                      context, 'Camera',
-                      arguments: widget.cameras);
+                  context
+                      .read<NavigationProvider>()
+                      .navigateToPage(context, 'Camera', arguments: cameras);
                 },
-                gradientColors: [
+                gradientColors: const [
                   Color.fromARGB(255, 152, 241, 235),
                   Color.fromARGB(255, 105, 205, 210),
                 ],
@@ -299,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                 isFloating: true,
                 boxShadow: BoxShadow(
                   color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                   blurRadius: 10,
                   spreadRadius: 0,
                 ),
@@ -364,7 +362,7 @@ class Fitur extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Container(
+          child: SizedBox(
             width: 80,
             height: 70,
             child: Column(
@@ -374,7 +372,7 @@ class Fitur extends StatelessWidget {
                   imagePath,
                   width: 30,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   title,
                   style: GoogleFonts.montserrat(fontSize: 12),
