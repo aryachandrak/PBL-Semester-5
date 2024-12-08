@@ -80,7 +80,7 @@ class NavigationProvider with ChangeNotifier {
         );
         break;
       case 'login':
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const LoginPage(),

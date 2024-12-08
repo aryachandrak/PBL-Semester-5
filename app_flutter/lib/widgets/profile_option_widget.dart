@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plugin_camera/provider/navigation_provider.dart';
-import 'package:provider/provider.dart';
 
 Widget ProfileOption({
   required IconData icon,
