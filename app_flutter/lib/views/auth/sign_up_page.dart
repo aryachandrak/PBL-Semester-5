@@ -2,24 +2,64 @@ import 'dart:developer' as developer;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
-import 'package:plugin_camera/views/auth/sign_up_page.dart';
+import 'package:plugin_camera/views/home_page.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<SignUpPage> {
+  TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   bool isLoading = false;
 
-  signIn() async {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email.text, password: password.text);
+  Future<void> signUp() async {
+    if (name.text.isEmpty || email.text.isEmpty || password.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Semua bidang harus diisi')),
+      );
+      return;
+    }
+
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text.trim(),
+        password: password.text.trim(),
+      );
+
+      // Tambahkan nama pengguna ke profil Firebase
+      await userCredential.user?.updateDisplayName(name.text);
+
+      // Navigasi ke halaman berikutnya setelah berhasil registrasi
+      context.read<NavigationProvider>().navigateToPage(context, 'Home');
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = 'Gagal mendaftar. Silakan coba lagi.';
+      if (e.code == 'email-already-in-use') {
+        errorMessage = 'Email sudah terdaftar.';
+      } else if (e.code == 'weak-password') {
+        errorMessage = 'Kata sandi terlalu lemah.';
+      } else if (e.code == 'invalid-email') {
+        errorMessage = 'Email tidak valid.';
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(errorMessage)),
+      );
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -76,7 +116,33 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 32),
-            // Nama Field
+// User Field
+            TextField(
+              controller: name,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.person_2_outlined),
+                labelText: 'Nama',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.grey, // Warna border abu-abu saat tidak fokus
+                    width: 2.0, // Ketebalan border
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.grey, // Warna border abu-abu saat fokus
+                    width: 3.0, // Ketebalan border lebih tebal saat fokus
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 16),
 // Email Field
             TextField(
               controller: email,
@@ -138,116 +204,34 @@ class _LoginPageState extends State<LoginPage> {
                 setState(() {
                   isLoading = true;
                 });
-                try {
-                  await signIn();
-                  context.read<NavigationProvider>().navigateToPage(
-                        context,
-                        'Home',
-                      );
-                } on FirebaseAuthException catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Email atau password salah')),
-                  );
-                }
+                await signUp();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF6DA06F), // Warna hijau pada tombol
-                  borderRadius: BorderRadius.circular(16), // Sudut membulat
+                  color: isLoading
+                      ? Colors.grey
+                      : const Color(0xFF6DA06F), // Warna tombol
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                padding: const EdgeInsets.symmetric(
-                    vertical: 14), // Padding dalam tombol
-                child: const Center(
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white, // Warna teks putih
-                    ),
-                  ),
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: Center(
+                  child: isLoading
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : const Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            // Divider atau pemisah
-            Row(
-              children: [
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey[400],
-                    thickness: 1,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    'Atau',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey[400],
-                    thickness: 1,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            // Tombol Google Login
-            GestureDetector(
-              onTap: () {
-                developer.log("Google login pressed", name: "GestureDetector");
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.network(
-                    'https://bmw.astra.co.id/wp-content/uploads/2023/07/BMW.svg_-300x300.png', // Path logo Google
-                    width: 24,
-                    height: 24,
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Login dengan Google',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Footer
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Belum punya akun? ',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignUpPage()),
-                      );
-                    },
-                    child: const Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF6DA06F),
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

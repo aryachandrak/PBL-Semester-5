@@ -13,6 +13,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final userName = FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna';
+  final userEmail =
+      FirebaseAuth.instance.currentUser?.email ?? 'Email tidak tersedia';
   signOut() async {
     await FirebaseAuth.instance.signOut();
   }
@@ -61,9 +64,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               ),
               padding: const EdgeInsets.all(16.0),
-              child: const Row(
+              child: Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 35,
                     child: CircleAvatar(
@@ -72,20 +75,20 @@ class _ProfilePageState extends State<ProfilePage> {
                           'assets/profile.jpg'), // Ganti dengan URL avatar Anda
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Nama User',
-                        style: TextStyle(
+                        userName,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        '@username',
+                        userEmail,
                         style: TextStyle(
                           color: Colors.white70,
                         ),
