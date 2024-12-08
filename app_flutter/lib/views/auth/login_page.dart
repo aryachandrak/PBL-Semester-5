@@ -1,10 +1,26 @@
 import 'dart:developer' as developer;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  bool isLoading = false;
+
+  signIn() async {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email.text, password: password.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,34 +76,9 @@ class SignUpPage extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             // Nama Field
-            // Nama Field
-            TextField(
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.person_outline),
-                labelText: 'Nama',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat tidak fokus
-                    width: 2.0, // Ketebalan border
-                  ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat fokus
-                    width: 3.0, // Ketebalan border lebih tebal saat fokus
-                  ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 16),
 // Email Field
             TextField(
+              controller: email,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.email_outlined),
                 labelText: 'Email',
@@ -114,6 +105,7 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(height: 16),
 // Password Field
             TextField(
+              controller: password,
               obscureText: true,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock_outline),
@@ -141,11 +133,32 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(height: 24),
             // Tombol Lanjutkan
             GestureDetector(
-              onTap: () {
-                context.read<NavigationProvider>().navigateToPage(
-                      context,
-                      'Home',
-                    );
+              onTap: () async {
+                setState(() {
+                  isLoading = true;
+                });
+                try {
+                  await signIn();
+                  context.read<NavigationProvider>().navigateToPage(
+                        context,
+                        'Home',
+                      );
+                } catch (e) {
+                  print("Error saat login: $e");
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text("Login Gagal"),
+                      content: Text(e.toString()),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("OK"),
+                        ),
+                      ],
+                    ),
+                  );
+                }
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -156,7 +169,7 @@ class SignUpPage extends StatelessWidget {
                     vertical: 14), // Padding dalam tombol
                 child: const Center(
                   child: Text(
-                    'Lanjutkan',
+                    'Login',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -223,7 +236,7 @@ class SignUpPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Punya akun? ',
+                    'Belum punya akun? ',
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
@@ -235,7 +248,7 @@ class SignUpPage extends StatelessWidget {
                           .navigateToPage(context, 'Home');
                     },
                     child: const Text(
-                      'Masuk',
+                      'Sign Up',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF6DA06F),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plugin_camera/views/auth/sign_up_page.dart';
+import 'package:plugin_camera/views/auth/login_page.dart';
 
 class WelcomeScreen4 extends StatelessWidget {
   const WelcomeScreen4({super.key});
@@ -90,7 +90,7 @@ class WelcomeScreen4 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignUpPage()),
+                            builder: (context) => const LoginPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

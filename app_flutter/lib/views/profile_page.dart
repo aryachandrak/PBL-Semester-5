@@ -1,9 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plugin_camera/widgets/profileOption_widget.dart';
+import 'package:plugin_camera/provider/navigation_provider.dart';
+import 'package:plugin_camera/widgets/profile_option_widget.dart';
+import 'package:provider/provider.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +68,8 @@ class ProfilePage extends StatelessWidget {
                     radius: 35,
                     child: CircleAvatar(
                       radius: 32,
-                      backgroundImage: AssetImage('assets/profile.jpg'), // Ganti dengan URL avatar Anda
+                      backgroundImage: AssetImage(
+                          'assets/profile.jpg'), // Ganti dengan URL avatar Anda
                     ),
                   ),
                   SizedBox(width: 16),
@@ -104,13 +117,21 @@ class ProfilePage extends StatelessWidget {
                   icon: Icons.person,
                   title: 'My Account',
                   subtitle: 'Make changes to your account',
-                  page: 'EditAccount',
+                  onTap: () {
+                    // Memanggil navigateToPage dari Navig  ationProvider
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'EditAccount');
+                  },
                 ),
                 ProfileOption(
                   icon: Icons.history,
                   title: 'Scan History',
                   subtitle: 'Your scan history',
-                  page: 'ScanHistory',
+                  onTap: () {
+                    // Memanggil navigateToPage dari Navig  ationProvider
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'ScanHistory');
+                  },
                 ),
                 // ProfileOption(
                 //     icon: Icons.upload,
@@ -118,26 +139,43 @@ class ProfilePage extends StatelessWidget {
                 //     subtitle: 'Your post',
                 //     page: 'MyPost'),
                 ProfileOption(
-                    icon: Icons.notifications,
-                    title: 'Notification',
-                    subtitle: 'Your notification',
-                    page: 'Notification'),
+                  icon: Icons.notifications,
+                  title: 'Notification',
+                  subtitle: 'Your notification',
+                  onTap: () {
+                    // Memanggil navigateToPage dari Navig  ationProvider
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'Notification');
+                  },
+                ),
                 ProfileOption(
-                    icon: Icons.key,
-                    title: 'Manage Password',
-                    subtitle: 'Further secure your account for safety',
-                    page: 'ManagePassword'),
+                  icon: Icons.key,
+                  title: 'Manage Password',
+                  subtitle: 'Further secure your account for safety',
+                  onTap: () {
+                    // Memanggil navigateToPage dari Navig  ationProvider
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'ManagePassword');
+                  },
+                ),
                 ProfileOption(
-                    icon: Icons.logout,
-                    title: 'Log out',
-                    subtitle: 'Further secure your account for safety',
-                    page: ''),
+                  icon: Icons.logout,
+                  title: 'Log out',
+                  subtitle: 'Further secure your account for safety',
+                  onTap: () async {
+                    await signOut();
+                    context.read<NavigationProvider>().navigateToPage(
+                          context,
+                          'login',
+                        );
+                  },
+                ),
               ],
             ),
           ),
           const Padding(
-            padding: EdgeInsets.all(
-                16.0), // Menambahkan padding di sekitar teks
+            padding:
+                EdgeInsets.all(16.0), // Menambahkan padding di sekitar teks
             child: Text(
               'More',
               style: TextStyle(
@@ -164,15 +202,25 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 ProfileOption(
-                    icon: Icons.info,
-                    title: 'About App',
-                    subtitle: 'Everything about our App',
-                    page: 'AboutApp'),
+                  icon: Icons.info,
+                  title: 'About App',
+                  subtitle: 'Everything about our App',
+                  onTap: () {
+                    // Memanggil navigateToPage dari Navig  ationProvider
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'AboutApp');
+                  },
+                ),
                 ProfileOption(
-                    icon: Icons.question_answer,
-                    title: 'How To Use',
-                    subtitle: 'Everything about our App',
-                    page: 'AboutApp'),
+                  icon: Icons.question_answer,
+                  title: 'How To Use',
+                  subtitle: 'Everything about our App',
+                  onTap: () {
+                    // Memanggil navigateToPage dari Navig  ationProvider
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'AboutApp');
+                  },
+                ),
               ],
             ),
           )
