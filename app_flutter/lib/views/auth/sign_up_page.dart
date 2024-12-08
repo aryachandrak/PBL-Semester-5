@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/home_page.dart';
+import 'package:plugin_camera/views/main_page.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -198,17 +199,10 @@ class _LoginPageState extends State<SignUpPage> {
             ),
 
             const SizedBox(height: 24),
-            // Tombol Lanjutkan
+            // Tombol Sign Up
             GestureDetector(
               onTap: () async {
-                setState(() {
-                  isLoading = true;
-                });
                 await signUp();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -233,7 +227,7 @@ class _LoginPageState extends State<SignUpPage> {
                         ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
