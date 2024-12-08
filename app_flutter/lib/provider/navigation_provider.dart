@@ -72,6 +72,7 @@ class NavigationProvider with ChangeNotifier {
         }
         break;
       case 'Home':
+        setIndex(0);
         Navigator.push(
           context,
           MaterialPageRoute(
