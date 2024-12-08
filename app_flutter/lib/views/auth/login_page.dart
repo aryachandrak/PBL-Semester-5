@@ -143,20 +143,9 @@ class _LoginPageState extends State<LoginPage> {
                         context,
                         'Home',
                       );
-                } catch (e) {
-                  print("Error saat login: $e");
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text("Login Gagal"),
-                      content: Text(e.toString()),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Text("OK"),
-                        ),
-                      ],
-                    ),
+                } on FirebaseAuthException catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Email atau password salah')),
                   );
                 }
               },
