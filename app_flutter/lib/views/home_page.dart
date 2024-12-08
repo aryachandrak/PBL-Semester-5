@@ -145,24 +145,19 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(left: 10.0),
+                                  padding: EdgeInsets.only(left: 40.0),
                                   child: Fitur(
                                     imagePath: "assets/history.png",
                                     title: "Scan History",
                                     targetPage: ScanHistoryPage(),
                                   ),
                                 ),
-                                Fitur(
-                                  imagePath: "assets/tips.png",
-                                  title: "Tips",
-                                  targetPage: TipsPage(),
-                                ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 10.0),
+                                  padding: EdgeInsets.only(right: 40.0),
                                   child: Fitur(
-                                    imagePath: "assets/history.png",
-                                    title: "Later",
-                                    targetPage: LaterPage(),
+                                    imagePath: "assets/tips.png",
+                                    title: "Tips",
+                                    targetPage: TipsPage(),
                                   ),
                                 ),
                               ],

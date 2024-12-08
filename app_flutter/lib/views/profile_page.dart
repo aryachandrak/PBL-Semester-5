@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 horizontal: 16.0), // Jarak kanan dan kiri
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.blue.shade700,
+                color: Colors.cyan.shade700,
                 borderRadius: BorderRadius.circular(16.0), // Sudut melengkung
                 boxShadow: [
                   BoxShadow(
