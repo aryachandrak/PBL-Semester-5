@@ -46,6 +46,7 @@ dependencies:
   rename: ^3.0.2
   firebase_core: ^3.8.1
   firebase_auth: ^5.3.4
+  smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
   flutter_test:
