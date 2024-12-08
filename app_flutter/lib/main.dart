@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
+import 'package:plugin_camera/views/welcome/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/user_provider.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
-import 'package:plugin_camera/views/welcome/welcome_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -26,19 +26,19 @@ Future<void> main() async {
           create: (_) => CameraProvider()..setCameras(cameras),
         ),
       ],
-      child: MainApp(),
+      child: MainApp(cameras: [],),
     ),
   );
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({super.key, required List cameras});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+      home: SplashScreen(),
     );
   }
 }

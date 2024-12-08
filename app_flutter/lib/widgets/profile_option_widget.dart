@@ -8,10 +8,10 @@ Widget ProfileOption({
 }) {
   return ListTile(
     leading: CircleAvatar(
-      backgroundColor: Colors.blue.shade100,
+      backgroundColor: Colors.green.shade100,
       child: Icon(
         icon,
-        color: Colors.blue.shade700,
+        color: Colors.cyan.shade700,
       ),
     ),
     title: Text(
