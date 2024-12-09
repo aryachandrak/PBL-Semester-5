@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
-import 'package:plugin_camera/provider/user_provider.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'provider/tips_page_provider.dart';
 import 'firebase_options.dart';
@@ -22,10 +21,9 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => HistoryProvider()),
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
-        ChangeNotifierProvider(create: (_) => TipsPageProvider()),
+        // ChangeNotifierProvider(create: (_) => TipsPageProvider()),
         ChangeNotifierProvider(
           create: (_) => CameraProvider()..setCameras(cameras),
         ),
@@ -42,8 +40,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-      // home: MainPage(),
+      // home: SplashScreen(),
+      home: MainPage(),
     );
   }
 }

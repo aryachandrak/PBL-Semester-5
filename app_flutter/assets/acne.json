@@ -1,0 +1,32 @@
+{
+    "TipsList": [
+      {
+        "title": "Reducing Hormonal Acne Effectively",
+        "image": "assets/images/1.png",
+        "description": [
+          "Cleanse your face regularly.",
+          "Use products with salicylic acid.",
+          "Avoid squeezing or popping blackheads."
+        ]
+      },
+      {
+        "title": "How to Treat Cystic Acne Naturally",
+        "image": "assets/images/2.png",
+        "description": [
+          "Use gentle exfoliants.",
+          "Avoid harsh scrubs and cleansers.",
+          "Try using a benzoyl peroxide cream."
+        ]
+      },
+      {
+        "title": "The Importance of Exfoliation for Acne Skin",
+        "image": "assets/images/3.png",
+        "description": [
+          "Consult a dermatologist for treatment.",
+          "Consider oral antibiotics or retinoids.",
+          "Avoid touching your face and keep it clean."
+        ]
+      }
+    ]
+}
+  
