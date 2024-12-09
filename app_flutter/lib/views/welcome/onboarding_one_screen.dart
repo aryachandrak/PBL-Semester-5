@@ -47,17 +47,21 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(
-                        left: 10.0,
+                        left: 8.0,
                         top: 50.0,
-                        right: 10.0,
+                        right: 8.0,
+                        bottom: 5.0,
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
                         children: [
                           Image.asset(
-                            'assets/images/3.png',
-                            height: 600,
-                            width: 360,
+                            'assets/images/1.png',
+                            height: MediaQuery.of(context).size.height *
+                                0.8,
+                            width: MediaQuery.of(context).size.width *
+                                0.9,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),
@@ -136,7 +140,8 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const OnboardingThreeScreen(), // Ganti dengan halaman tujuan
+                            builder: (context) =>
+                                const OnboardingThreeScreen(), // Ganti dengan halaman tujuan
                           ),
                         );
                       },
@@ -161,7 +166,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF6DA06F),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 30.0, 
+                          horizontal: 30.0,
                           vertical: 14.0,
                         ),
                         shape: RoundedRectangleBorder(
@@ -183,4 +188,3 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
     );
   }
 }
-

@@ -44,17 +44,21 @@ class OnboardingOneScreenState extends State<OnboardingTwoScreen> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(
-                        left: 10.0,
+                        left: 8.0,
                         top: 50.0,
-                        right: 10.0,
+                        right: 8.0,
+                        bottom: 5.0,
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
                         children: [
                           Image.asset(
                             'assets/images/2.png',
-                            height: 600,
-                            width: 360,
+                            height: MediaQuery.of(context).size.height *
+                                0.8,
+                            width: MediaQuery.of(context).size.width *
+                                0.9,
+                            fit: BoxFit.contain,
                           )
                         ],
                       ),

@@ -141,27 +141,39 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             const SizedBox(height: 40),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 40.0),
-                                  child: Fitur(
-                                    imagePath: "assets/history.png",
-                                    title: "Scan History",
-                                    targetPage: ScanHistoryPage(),
-                                  ),
+                            Center(
+                              child: Text(
+                                "Akan diisi konten lain dibawah ini",
+                                style: GoogleFonts.montserrat(
+                                  color: Colors.black,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 40.0),
-                                  child: Fitur(
-                                    imagePath: "assets/tips.png",
-                                    title: "Tips",
-                                    targetPage: TipsPage(),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
+                            const SizedBox(height: 40),
+                            // const Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Padding(
+                            //       padding: EdgeInsets.only(left: 40.0),
+                            //       child: Fitur(
+                            //         imagePath: "assets/history.png",
+                            //         title: "Scan History",
+                            //         targetPage: ScanHistoryPage(),
+                            //       ),
+                            //     ),
+                            //     Padding(
+                            //       padding: EdgeInsets.only(right: 40.0),
+                            //       child: Fitur(
+                            //         imagePath: "assets/tips.png",
+                            //         title: "Tips",
+                            //         targetPage: TipsPage(),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // =====================
                             // Section "Recent Scan"
                             // Padding(
                             //   padding:
@@ -274,15 +286,19 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Positioned(
-              bottom: 15,
-              left: screenSize.width * 0.1,
-              right: screenSize.width * 0.1,
+              bottom: 1, // Tombol berada 20px dari bawah
+              left: screenSize.width *
+                  0.1, // Beri jarak kiri 10% dari lebar layar
+              right: screenSize.width *
+                  0.1, // Beri jarak kanan 10% dari lebar layar
               child: CustomButton(
                 text: "Start Acne Detection",
                 onPressed: () {
-                  context
-                      .read<NavigationProvider>()
-                      .navigateToPage(context, 'Camera', arguments: cameras);
+                  context.read<NavigationProvider>().navigateToPage(
+                        context,
+                        'Camera',
+                        arguments: cameras,
+                      );
                 },
                 gradientColors: const [
                   Color.fromARGB(255, 152, 241, 235),
@@ -297,12 +313,51 @@ class _HomePageState extends State<HomePage> {
                   spreadRadius: 0,
                 ),
                 widthFactor: 0.8,
-                heightFactor: 0.1,
+                heightFactor: 0.08,
                 fontSizeFactor: 0.025,
                 fontWeight: FontWeight.bold,
                 textColor: const Color.fromARGB(255, 5, 54, 72),
               ),
             ),
+
+            // Align(
+            //   alignment: Alignment
+            //       .bottomCenter, // Tempatkan di bagian bawah tengah layar
+            //   child: Container(
+            //     margin: const EdgeInsets.only(
+            //       bottom: 0),
+            //     width: 50, // Lebar tombol
+            //     height:
+            //         50, // Tinggi tombol, harus sama dengan lebar agar lingkaran
+            //     decoration: BoxDecoration(
+            //       color: const Color.fromARGB(
+            //           255, 105, 205, 210), // Warna latar belakang tombol
+            //       shape: BoxShape.circle, // Bentuk lingkaran
+            //       boxShadow: [
+            //         BoxShadow(
+            //           color: Colors.black.withOpacity(0.2),
+            //           offset: const Offset(0, 4), // Jarak bayangan
+            //           blurRadius: 10, // Ketajaman bayangan
+            //           spreadRadius: 0, // Tidak ada penyebaran bayangan
+            //         ),
+            //       ],
+            //     ),
+            //     child: IconButton(
+            //       onPressed: () {
+            //         context.read<NavigationProvider>().navigateToPage(
+            //               context,
+            //               'Camera',
+            //               arguments: cameras,
+            //             );
+            //       },
+            //       icon: const Icon(
+            //         Icons.camera_alt,
+            //         size: 30, // Ukuran ikon
+            //         color: Colors.white, // Warna ikon
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),
