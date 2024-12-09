@@ -121,7 +121,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                   height: 8.0,
                   child: AnimatedSmoothIndicator(
                     activeIndex: 0,
-                    count: 2,
+                    count: 3,
                     effect: ScrollingDotsEffect(
                       spacing: 4.0,
                       activeDotColor: Color(0xFF6DA06F),
