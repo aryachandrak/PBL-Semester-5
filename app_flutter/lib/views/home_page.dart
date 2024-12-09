@@ -1,9 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/history_page.dart';
-import 'package:plugin_camera/views/later_page.dart';
 import 'package:plugin_camera/views/tips_page.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     const SizedBox(width: 10),
                                     Text(
-                                      "Halo Ayra, Selamat Datang!",
+                                      "Halo ${FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna'}, Selamat Datang!",
                                       style: GoogleFonts.montserrat(
                                           color: Colors.black),
                                     ),

@@ -15,6 +15,7 @@ class ScanHistoryPage extends StatelessWidget {
     final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           'Riwayat Scan',
           style: GoogleFonts.montserrat(

@@ -81,6 +81,7 @@ class NavigationProvider with ChangeNotifier {
         }
         break;
       case 'Home':
+        setIndex(0);
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -89,7 +90,7 @@ class NavigationProvider with ChangeNotifier {
         );
         break;
       case 'login':
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const LoginPage(),

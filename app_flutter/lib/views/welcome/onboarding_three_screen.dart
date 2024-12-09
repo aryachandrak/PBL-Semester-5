@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plugin_camera/views/auth/sign_up_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../auth/login_page.dart';
 
@@ -132,7 +133,8 @@ class OnboardingThreeScreenState extends State<OnboardingThreeScreen> {
                 Column(
                   children: [
                     SizedBox(
-                      width: double.infinity, // Ensures the button width is same
+                      width:
+                          double.infinity, // Ensures the button width is same
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushReplacement(
@@ -162,15 +164,16 @@ class OnboardingThreeScreenState extends State<OnboardingThreeScreen> {
                     ),
                     const SizedBox(height: 16.0),
                     SizedBox(
-                      width: double.infinity, // Ensures the button width is same
+                      width:
+                          double.infinity, // Ensures the button width is same
                       child: OutlinedButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(
-                          // context,
-                          // MaterialPageRoute(
-                          // builder: (context) => const SignUpPage(),
-                          // ),
-                          // );
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpPage(),
+                            ),
+                          );
                         },
                         style: OutlinedButton.styleFrom(
                           side: const BorderSide(color: Color(0xFF6DA06F)),
