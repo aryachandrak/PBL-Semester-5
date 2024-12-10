@@ -31,9 +31,8 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
               begin: Alignment(0.5, 0),
               end: Alignment(0.5, 1),
               colors: [
-                // Color(0xFFB2EBF2), // Warna gradasi atas
                 Colors.white,
-                Color(0xFF6DA06F), // Warna gradasi bawah
+                Color(0xFF6DA06F),
               ],
             ),
           ),
@@ -54,10 +53,12 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
                         children: [
-                          Image.asset(
-                            'assets/images/3.png',
-                            height: 600,
-                            width: 360,
+                          Expanded(
+                            child: Image.asset(
+                              'assets/images/3.png',
+                              height: MediaQuery.of(context).size.height * 0.8,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                            ),
                           )
                         ],
                       ),
@@ -117,7 +118,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                   height: 8.0,
                   child: AnimatedSmoothIndicator(
                     activeIndex: 0,
-                    count: 2,
+                    count: 3,
                     effect: ScrollingDotsEffect(
                       spacing: 4.0,
                       activeDotColor: Color(0xFF6DA06F),
@@ -136,7 +137,8 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const OnboardingThreeScreen(), // Ganti dengan halaman tujuan
+                            builder: (context) =>
+                                const OnboardingThreeScreen(), // Ganti dengan halaman tujuan
                           ),
                         );
                       },
@@ -161,7 +163,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF6DA06F),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 30.0, 
+                          horizontal: 30.0,
                           vertical: 14.0,
                         ),
                         shape: RoundedRectangleBorder(
@@ -183,4 +185,3 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
     );
   }
 }
-

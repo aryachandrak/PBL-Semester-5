@@ -5,8 +5,9 @@ import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:media_scanner/media_scanner.dart';
-import 'package:provider/provider.dart'; // Add this import
-import 'package:plugin_camera/provider/history_provider.dart'; // Add this import
+import 'package:plugin_camera/views/scan_detail_page.dart';
+import 'package:provider/provider.dart';
+import 'package:plugin_camera/provider/history_provider.dart';
 
 class CameraPage extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -63,7 +64,17 @@ class _CameraPageState extends State<CameraPage> {
     });
     MediaScanner.loadMedia(path: file.path);
 
-    // Add to history with static data
+    // Simulasi proses model
+    await Future.delayed(
+        const Duration(seconds: 2)); // Gantikan dengan pemanggilan model
+
+    // Data hasil dari model (statik untuk contoh)
+    final acneType = 'Acne Papula';
+    final deskripsi =
+        'Gunakan produk dengan kandungan Benzoyl Peroxide atau Salicylic Acid';
+    final result = 'Tingkat keparahan: Sedang';
+    final scanTime = DateTime.now().toString();
+
     if (context.mounted) {
       final historyProvider =
           Provider.of<HistoryProvider>(context, listen: false);
@@ -72,6 +83,22 @@ class _CameraPageState extends State<CameraPage> {
         'Gunakan produk dengan kandungan Benzoyl Peroxide atau Salicylic Acid', // Static description
         'Tingkat keparahan: Sedang', // Static result
         file.path, // Actual image path
+      );
+    }
+
+    // Navigasi ke ScanDetailPage
+    if (context.mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ScanDetailPage(
+            acneType: acneType,
+            deskripsi: deskripsi,
+            result: result,
+            imagePath: file.path,
+            scanTime: scanTime,
+          ),
+        ),
       );
     }
   }
@@ -88,7 +115,7 @@ class _CameraPageState extends State<CameraPage> {
 
   @override
   void initState() {
-    startCamera(0);
+    startCamera(1);
     super.initState();
   }
 

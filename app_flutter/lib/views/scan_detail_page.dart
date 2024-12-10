@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/views/history_page.dart';
 
 class ScanDetailPage extends StatelessWidget {
   final String acneType;
@@ -34,6 +35,15 @@ class ScanDetailPage extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => ScanHistoryPage()),
+            ); // Gunakan ini jika ingin langsung ke halaman ScanHistory
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
