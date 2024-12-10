@@ -7,6 +7,7 @@ import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/views/manage_pass_page.dart';
 import 'package:plugin_camera/views/notification_page.dart';
+import 'package:plugin_camera/views/tips_page.dart';
 
 class NavigationProvider with ChangeNotifier {
   int _currentIndex = 0; // Index halaman aktif untuk bottom navigation
@@ -35,6 +36,14 @@ class NavigationProvider with ChangeNotifier {
           ),
         );
         break;
+      // case 'Tips':
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const TipsPage(),
+      //     ),
+      //   );
+        // break;
       case 'MyPost':
         // Navigator.push(
         //   context,

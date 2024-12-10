@@ -82,6 +82,7 @@ flutter:
     - assets/contoh_profile.jpg
     - assets/profile.jpg
     - assets/images/
+    - assets/acne.json
 
   #   - images/a_dot_ham.jpeg
 

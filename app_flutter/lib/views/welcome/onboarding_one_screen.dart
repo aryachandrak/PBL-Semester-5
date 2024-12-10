@@ -46,9 +46,10 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(
-                        left: 10.0,
+                        left: 8.0,
                         top: 50.0,
-                        right: 10.0,
+                        right: 8.0,
+                        bottom: 5.0,
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
