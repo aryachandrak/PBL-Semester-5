@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
-import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
 import 'package:provider/provider.dart';
 
@@ -12,15 +11,16 @@ class ScanDetailPage extends StatelessWidget {
   final String result;
   final String imagePath;
   final String scanTime;
+  final String tips;
 
-  const ScanDetailPage({
-    super.key,
-    required this.acneType,
-    required this.deskripsi,
-    required this.result,
-    required this.imagePath,
-    required this.scanTime,
-  });
+  const ScanDetailPage(
+      {super.key,
+      required this.acneType,
+      required this.deskripsi,
+      required this.result,
+      required this.imagePath,
+      required this.scanTime,
+      required this.tips});
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +190,7 @@ class ScanDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Gunakan produk perawatan yang sesuai dengan jenis kulit dan konsultasikan dengan dokter kulit jika diperlukan.',
+                        tips,
                         style: GoogleFonts.montserrat(
                           fontSize: 14,
                           color: Colors.grey[700],

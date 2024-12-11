@@ -209,6 +209,7 @@ class _ScanHistoryPageState extends State<ScanHistoryPage> {
                               acneType: scan.acneType,
                               deskripsi: scan.deskripsi,
                               result: scan.result,
+                              tips : scan.tips,
                               imagePath: scan.imagePath,
                               scanTime:
                                   formattedDate, // Pass the scan object to detail page

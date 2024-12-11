@@ -5,6 +5,7 @@ import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:media_scanner/media_scanner.dart';
+import 'package:plugin_camera/models/acne_type_model.dart';
 import 'package:plugin_camera/views/scan_detail_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPageState extends State<CameraPage> {
+  late ModelHelper modelHelper;
   late CameraController cameraController;
   late Future<void> cameraValue;
   List<File> imagesList = [];
@@ -70,13 +72,49 @@ class _CameraPageState extends State<CameraPage> {
     MediaScanner.loadMedia(path: file.path);
 
     // Simulasi proses model
-    await Future.delayed(
-        const Duration(seconds: 2)); // Gantikan dengan pemanggilan model
+    final acneType = await modelHelper.runModel(file);
+    final deskripsi;
+    final tips;
+    switch (acneType) {
+      case 'papula':
+        deskripsi =
+            '''Acne Papula adalah jerawat yang berbentuk benjolan merah tanpa nanah di dalamnya. Biasanya lebih besar dari komedo dan dapat terasa nyeri.''';
+        tips = '''
+    Produk dengan Salicylic Acid: Membantu membersihkan pori-pori dan mengurangi peradangan.
 
-    // Data hasil dari model (statik untuk contoh)
-    final acneType = 'Acne Papula';
-    final deskripsi =
-        'Gunakan produk dengan kandungan Benzoyl Peroxide atau Salicylic Acid';
+    Benzoyl Peroxide: Membunuh bakteri penyebab jerawat dan mengurangi peradangan.
+    
+    Topical Retinoids: Meningkatkan pergantian sel kulit dan mengurangi pembentukan komedo.
+    
+    Anti-inflamasi: Dapat digunakan dalam kasus peradangan yang lebih berat.
+
+    Peringatan: Hindari pemencetan jerawat karena dapat menyebabkan iritasi dan jaringan parut.''';
+        break;
+      case 'Pustula':
+        deskripsi =
+            'Jerawat pustula ditandai dengan benjolan berisi nanah yang biasanya berwarna putih atau kuning di bagian atas. Bisa terasa nyeri dan kemerahan.';
+        tips = 'a';
+        break;
+      case 'acne fulminans':
+        deskripsi =
+            'Jerawat fulminan adalah bentuk jerawat yang sangat berat dan terinflamasi dengan pembengkakan yang cepat, biasanya disertai demam dan gejala sistemik lainnya.';
+        tips = 'a';
+        break;
+      case 'acne nodules':
+        deskripsi =
+            'Jerawat nodul adalah jerawat besar, keras, dan menyakitkan yang terletak lebih dalam di kulit dan bisa menyebabkan bekas luka.';
+        tips = 'a';
+        break;
+      case 'fungal acne':
+        deskripsi =
+            'Fungal acne disebabkan oleh infeksi jamur (Malassezia) yang menyerang folikel rambut. Ini menghasilkan benjolan kecil yang mirip dengan jerawat, tetapi tidak berisi nanah dan sering gatal.';
+        tips = 'a';
+        break;
+      default:
+        deskripsi = 'Gagal Mendeteksi Jerawat.';
+        tips = '-';
+        break;
+    }
     final result = 'Tingkat keparahan: Sedang';
     final scanTime = DateTime.now().toString();
 
@@ -95,6 +133,7 @@ class _CameraPageState extends State<CameraPage> {
         'result': result,
         'imagePath': file.path,
         'scanTime': scanTime,
+        'tips': tips,
       });
     }
 
@@ -112,6 +151,7 @@ class _CameraPageState extends State<CameraPage> {
             deskripsi: deskripsi,
             result: result,
             imagePath: file.path,
+            tips: tips,
             scanTime: scanTime,
           ),
         ),
@@ -131,8 +171,10 @@ class _CameraPageState extends State<CameraPage> {
 
   @override
   void initState() {
-    startCamera(1);
     super.initState();
+    startCamera(1);
+    modelHelper = ModelHelper();
+    modelHelper.loadModel();
   }
 
   @override

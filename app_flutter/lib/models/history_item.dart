@@ -4,6 +4,7 @@ class HistoryItem {
   final DateTime scanTime;
   final String result;
   final String imagePath;
+  final String tips;
   final String documentId;
 
   HistoryItem(
@@ -12,5 +13,6 @@ class HistoryItem {
       required this.scanTime,
       required this.result,
       required this.imagePath,
+      required this.tips,
       required this.documentId});
 }

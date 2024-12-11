@@ -20,6 +20,7 @@ class HistoryProvider with ChangeNotifier {
             acneType: data['acneType'],
             deskripsi: data['deskripsi'],
             result: data['result'],
+            tips: data['tips'],
             imagePath: data['imagePath'],
             scanTime: DateTime.parse(data['scanTime'] as String),
             documentId: doc.id);
