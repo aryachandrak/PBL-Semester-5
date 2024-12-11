@@ -30,4 +30,9 @@ class HistoryProvider with ChangeNotifier {
       print('Error fetching history: $error');
     }
   }
+
+  void clearHistory() {
+    _historyItems.clear();
+    notifyListeners();
+  }
 }

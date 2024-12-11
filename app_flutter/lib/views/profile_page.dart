@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/widgets/profile_option_widget.dart';
 import 'package:provider/provider.dart';
@@ -168,6 +169,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   subtitle: 'Further secure your account for safety',
                   onTap: () async {
                     await signOut();
+                    Provider.of<HistoryProvider>(context, listen: false)
+                        .clearHistory();
                     context.read<NavigationProvider>().navigateToPage(
                           context,
                           'login',

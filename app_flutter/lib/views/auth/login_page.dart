@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/auth/sign_up_page.dart';
 import 'package:provider/provider.dart';
@@ -140,6 +141,8 @@ class _LoginPageState extends State<LoginPage> {
                 });
                 try {
                   await signIn();
+                  Provider.of<HistoryProvider>(context, listen: false)
+                      .clearHistory();
                   context.read<NavigationProvider>().navigateToPage(
                         context,
                         'Home',
