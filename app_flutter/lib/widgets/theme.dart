@@ -6,8 +6,8 @@ Color textSecondary = const Color(0XFF90909E);
 Color blue = const Color(0XFF8EC9F5);
 Color purple = const Color(0XFFADAEFF);
 Color red = const Color(0XFFFDEBEA);
-Color gray = const Color(0XFFF6F8FA);
-Color green = const Color(0XFFDAEAF6);
+Color gray = const Color(0XFFDAEAF6);
+Color green = const Color.fromARGB(255, 215, 251, 240);
 
 // Typography
 TextStyle regular10 = const TextStyle(fontSize: 10);

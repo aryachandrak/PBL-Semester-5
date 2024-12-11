@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Topic {
+  final String id;
+  final String title;
   final IconData icon;
   final Color color;
-  final String title;
   final int totalTip;
 
-  Topic(this.icon, this.color, this.title, this.totalTip);
+  Topic(this.id, this.title, this.icon, this.color, this.totalTip);
 }

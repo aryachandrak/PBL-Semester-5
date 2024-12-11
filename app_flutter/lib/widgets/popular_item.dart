@@ -12,26 +12,30 @@ class PopularItem extends StatelessWidget {
   const PopularItem({Key? key, required this.tip}) : super(key: key);
 
   Future<void> _navigateToDetail(BuildContext context) async {
-    // Load JSON file
-    final String response = await rootBundle.loadString('assets/acne.json');
-    final Map<String, dynamic> data = json.decode(response);
-    final List<dynamic> tipsList = data['TipsList'];
+  final String response = await rootBundle.loadString('assets/acne.json');
+  final Map<String, dynamic> data = json.decode(response);
+  final List<dynamic> popularList = data['Popular'];
 
-    // Cari tip berdasarkan judul
-    final matchedTip = tipsList.firstWhere((tipData) => tipData['title'] == tip.title);
+  final matchedTip = popularList.firstWhere(
+    (tipData) => tipData['id'] == tip.id,
+  );
 
-    // Navigasi ke halaman detail
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => TipDetailPage(
-          title: matchedTip['title'],
-          description: List<String>.from(matchedTip['description']),
-          image: matchedTip['image'],
-        ),
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => TipDetailPage(
+        topicTitle: tip.topic,
+        title: matchedTip['title'],
+        explanation: matchedTip['explanation'],
+        image: matchedTip['image'],
+        causes: List<String>.from(matchedTip['causes']),
+        treatment: List<String>.from(matchedTip['treatment']), 
+        dailyRoutine: List<String>.from(matchedTip['daily_routine']),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,7 @@ class PopularItem extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: const Color(0xFFF6F8FA),
+            color: gray,
           ),
           child: Row(
             children: [
@@ -82,7 +86,7 @@ class PopularItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(18),
                         color: Colors.white,
                       ),
-                      child: const Icon(FeatherIcons.heart, size: 16),
+                      child: const Icon(Icons.favorite, size: 16, color: Colors.red,),
                     ),
                   ],
                 ),

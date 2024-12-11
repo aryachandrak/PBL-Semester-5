@@ -103,7 +103,7 @@ class OnboardingThreeScreenState extends State<OnboardingThreeScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Connect with our app to detect acne and receive personalized skincare solutions",
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 24.0,

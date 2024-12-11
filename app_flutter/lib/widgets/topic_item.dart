@@ -1,27 +1,44 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:plugin_camera/models/tips_item.dart';
 import 'package:plugin_camera/models/topic.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 import 'package:plugin_camera/views/tips_list_page.dart';
-import 'package:plugin_camera/provider/populars.dart';
 
 class TopicItem extends StatelessWidget {
   final Topic topic;
 
   const TopicItem({Key? key, required this.topic}) : super(key: key);
 
+  Future<List<TipsItem>> _loadTopicTips() async {
+    final String response = await rootBundle.loadString('assets/acne.json');
+    final Map<String, dynamic> data = json.decode(response);
+    final Map<String, dynamic> tipsList = data['TipsList'];
+    final List<dynamic> topicTips = tipsList[topic.title] ?? [];
+    
+    return topicTips.map((tip) => TipsItem(
+      tip['id'] ?? '',
+      tip['title'] ?? '',
+      tip['image'] ?? '',
+      topic.title,
+    )).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Filter tips berdasarkan topic yang sesuai
-    final filteredTips = populars.where((tip) => tip.topic == topic.title).toList();
-
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
+        final tips = await _loadTopicTips();
+        if (!context.mounted) return;
+        
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => TipsListPage(
               topicTitle: topic.title,
-              tips: filteredTips,
+              tips: tips,
             ),
           ),
         );
