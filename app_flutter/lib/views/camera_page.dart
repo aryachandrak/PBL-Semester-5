@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:media_scanner/media_scanner.dart';
 import 'package:plugin_camera/views/scan_detail_page.dart';
-import 'package:provider/provider.dart';
-import 'package:plugin_camera/provider/history_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CameraPage extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -23,6 +23,7 @@ class _CameraPageState extends State<CameraPage> {
   List<File> imagesList = [];
   bool isFlashOn = false;
   bool isRearCamera = true;
+  bool isLoading = false;
 
   Future<File> saveImage(XFile image) async {
     final downlaodPath = await ExternalPath.getExternalStoragePublicDirectory(
@@ -44,6 +45,10 @@ class _CameraPageState extends State<CameraPage> {
         !cameraController.value.isInitialized) {
       return;
     }
+
+    setState(() {
+      isLoading = true;
+    });
 
     if (isFlashOn == false) {
       await cameraController.setFlashMode(FlashMode.off);
@@ -75,16 +80,27 @@ class _CameraPageState extends State<CameraPage> {
     final result = 'Tingkat keparahan: Sedang';
     final scanTime = DateTime.now().toString();
 
-    if (context.mounted) {
-      final historyProvider =
-          Provider.of<HistoryProvider>(context, listen: false);
-      historyProvider.addHistoryItem(
-        'Acne Papula', // Static acne type
-        'Gunakan produk dengan kandungan Benzoyl Peroxide atau Salicylic Acid', // Static description
-        'Tingkat keparahan: Sedang', // Static result
-        file.path, // Actual image path
-      );
+    // Simpan ke Firestore
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userId = user.uid;
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('history')
+          .add({
+        'acneType': acneType,
+        'deskripsi': deskripsi,
+        'result': result,
+        'imagePath': file.path,
+        'scanTime': scanTime,
+      });
     }
+
+    setState(() {
+      isLoading = false; // Selesai loading
+    });
 
     // Navigasi ke ScanDetailPage
     if (context.mounted) {
@@ -275,6 +291,15 @@ class _CameraPageState extends State<CameraPage> {
               ],
             ),
           ),
+          if (isLoading)
+            Container(
+              color: Colors.black.withOpacity(0.5),
+              child: const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ),
+            ),
         ],
       ),
     );

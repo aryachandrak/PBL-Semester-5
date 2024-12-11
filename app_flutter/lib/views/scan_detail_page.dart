@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/history_page.dart';
+import 'package:plugin_camera/views/main_page.dart';
+import 'package:provider/provider.dart';
 
 class ScanDetailPage extends StatelessWidget {
   final String acneType;
@@ -38,10 +41,13 @@ class ScanDetailPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
+            final navigationProvider =
+                Provider.of<NavigationProvider>(context, listen: false);
+            navigationProvider.setIndex(1);
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => ScanHistoryPage()),
-            ); // Gunakan ini jika ingin langsung ke halaman ScanHistory
+              MaterialPageRoute(builder: (context) => const MainPage()),
+            );
           },
         ),
       ),

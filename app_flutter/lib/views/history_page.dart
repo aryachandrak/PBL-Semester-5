@@ -7,9 +7,25 @@ import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/scan_detail_page.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class ScanHistoryPage extends StatelessWidget {
+class ScanHistoryPage extends StatefulWidget {
   const ScanHistoryPage({super.key});
+
+  @override
+  State<ScanHistoryPage> createState() => _ScanHistoryPageState();
+}
+
+class _ScanHistoryPageState extends State<ScanHistoryPage> {
+  @override
+  void initState() {
+    super.initState();
+    final historyProvider =
+        Provider.of<HistoryProvider>(context, listen: false);
+    historyProvider
+        .fetchHistoryFromFirestore(FirebaseAuth.instance.currentUser!.uid);
+  }
+
   @override
   Widget build(BuildContext context) {
     final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;
@@ -73,6 +89,8 @@ class ScanHistoryPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             itemCount: historyProvider.historyItems.length,
             itemBuilder: (context, index) {
+              historyProvider.historyItems
+                  .sort((a, b) => b.scanTime.compareTo(a.scanTime));
               final scan = historyProvider.historyItems[index];
               final file = File(scan.imagePath);
               final formattedDate =

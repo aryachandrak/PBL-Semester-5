@@ -28,7 +28,9 @@ Future<void> main() async {
           create: (_) => CameraProvider()..setCameras(cameras),
         ),
       ],
-      child: MainApp(cameras: [],),
+      child: MainApp(
+        cameras: [],
+      ),
     ),
   );
 }
@@ -40,8 +42,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: SplashScreen(),
-      home: MainPage(),
+      home: SplashScreen(),
+      // home: MainPage(),
     );
   }
 }

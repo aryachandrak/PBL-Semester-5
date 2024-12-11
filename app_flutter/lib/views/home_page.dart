@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
-import 'package:plugin_camera/views/history_page.dart';
-import 'package:plugin_camera/views/tips_page.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
