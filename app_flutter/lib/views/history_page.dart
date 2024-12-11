@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
@@ -17,6 +18,55 @@ class ScanHistoryPage extends StatefulWidget {
 }
 
 class _ScanHistoryPageState extends State<ScanHistoryPage> {
+  void deleteHistory(BuildContext context, String documentId, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Konfirmasi Penghapusan'),
+          content:
+              const Text('Apakah Anda yakin ingin menghapus riwayat scan?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Batal'),
+            ),
+            TextButton(
+              onPressed: () async {
+                try {
+                  await FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(FirebaseAuth.instance.currentUser!.uid)
+                      .collection('history')
+                      .doc(documentId)
+                      .delete();
+
+                  setState(() {
+                    Provider.of<HistoryProvider>(context, listen: false)
+                        .historyItems
+                        .removeAt(index);
+                  });
+
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('History berhasil dihapus')),
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Terjadi kesalahan: $e')),
+                  );
+                }
+              },
+              child: const Text('Hapus'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -227,6 +277,19 @@ class _ScanHistoryPageState extends State<ScanHistoryPage> {
                               style: GoogleFonts.montserrat(
                                 fontSize: 14,
                                 color: Colors.grey[700],
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                icon:
+                                    const Icon(Icons.delete, color: Colors.red),
+                                onPressed: () {
+                                  // Panggil fungsi konfirmasi untuk menghapus history
+                                  deleteHistory(
+                                      context, scan.documentId, index);
+                                },
                               ),
                             ),
                           ],

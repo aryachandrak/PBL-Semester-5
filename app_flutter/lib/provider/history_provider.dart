@@ -17,12 +17,12 @@ class HistoryProvider with ChangeNotifier {
       _historyItems = snapshot.docs.map((doc) {
         final data = doc.data();
         return HistoryItem(
-          acneType: data['acneType'],
-          deskripsi: data['deskripsi'],
-          result: data['result'],
-          imagePath: data['imagePath'],
-          scanTime: DateTime.parse(data['scanTime'] as String),
-        );
+            acneType: data['acneType'],
+            deskripsi: data['deskripsi'],
+            result: data['result'],
+            imagePath: data['imagePath'],
+            scanTime: DateTime.parse(data['scanTime'] as String),
+            documentId: doc.id);
       }).toList();
 
       notifyListeners();

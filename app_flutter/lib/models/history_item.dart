@@ -4,11 +4,13 @@ class HistoryItem {
   final DateTime scanTime;
   final String result;
   final String imagePath;
+  final String documentId;
 
   HistoryItem(
       {required this.acneType,
       required this.deskripsi,
       required this.scanTime,
       required this.result,
-      required this.imagePath});
+      required this.imagePath,
+      required this.documentId});
 }
