@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
 
 class EditAccountPage extends StatelessWidget {
+  const EditAccountPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size; // Mendapatkan ukuran layar
@@ -116,7 +118,7 @@ class EditAccountPage extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 6,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
         borderRadius: BorderRadius.circular(8),

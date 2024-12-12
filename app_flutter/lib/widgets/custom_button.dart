@@ -42,7 +42,7 @@ class CustomButton extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final shadow = boxShadow ?? BoxShadow(
       color: Colors.black.withOpacity(0.2), // Warna bayangan dengan opacity
-      offset: Offset(0, 4), // Posisi bayangan (horizontal, vertical)
+      offset: const Offset(0, 4), // Posisi bayangan (horizontal, vertical)
       blurRadius: 10, // Blur radius untuk kelembutan bayangan
       spreadRadius: 0, // Tidak ada penyebaran bayangan
     );

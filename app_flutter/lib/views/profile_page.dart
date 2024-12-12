@@ -91,7 +91,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Text(
                         userEmail,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white70,
                         ),
                       ),
@@ -215,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   onTap: () {
                     // Memanggil navigateToPage dari Navig  ationProvider
                     Provider.of<NavigationProvider>(context, listen: false)
-                        .navigateToPage(context, 'AboutApp');
+                        .navigateToPage(context, 'AboutUs');
                   },
                 ),
                 ProfileOption(

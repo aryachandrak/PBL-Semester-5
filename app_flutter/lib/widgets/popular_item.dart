@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/models/tips_item.dart';
 import 'package:plugin_camera/widgets/theme.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:plugin_camera/views/tip_detail_page.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -9,7 +8,7 @@ import 'package:flutter/services.dart';
 class PopularItem extends StatelessWidget {
   final TipsItem tip;
 
-  const PopularItem({Key? key, required this.tip}) : super(key: key);
+  const PopularItem({super.key, required this.tip});
 
   Future<void> _navigateToDetail(BuildContext context) async {
   final String response = await rootBundle.loadString('assets/acne.json');
@@ -48,7 +47,7 @@ class PopularItem extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: gray,
+            color: grey,
           ),
           child: Row(
             children: [

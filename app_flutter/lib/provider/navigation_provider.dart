@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:plugin_camera/views/about_us_page.dart';
 import 'package:plugin_camera/views/auth/login_page.dart';
 import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/edit_account_page.dart';
@@ -7,7 +8,7 @@ import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/views/manage_pass_page.dart';
 import 'package:plugin_camera/views/notification_page.dart';
-
+import 'package:plugin_camera/views/tips_page.dart';
 
 class NavigationProvider with ChangeNotifier {
   int _currentIndex = 0; // Index halaman aktif untuk bottom navigation
@@ -20,16 +21,17 @@ class NavigationProvider with ChangeNotifier {
   }
 
   // Fungsi untuk berpindah ke halaman tertentu
-  void navigateToPage(BuildContext context, String page, {dynamic arguments}) {
+  Future<void> navigateToPage(BuildContext context, String page,
+      {dynamic arguments}) async {
     switch (page) {
       case 'EditAccount':
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EditAccountPage()),
+          MaterialPageRoute(builder: (context) => const EditAccountPage()),
         );
         break;
       case 'ScanHistory':
-      setIndex(1);
+        setIndex(1);
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -37,14 +39,39 @@ class NavigationProvider with ChangeNotifier {
           ),
         );
         break;
-      // case 'Tips':
+      case 'Camera':
+        final cameras = await availableCameras();
+        if (cameras.isNotEmpty) {
+          setIndex(2);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CameraPage(cameras: cameras),
+            ),
+          );
+        }
+        break;
+      // if (arguments is List<CameraDescription>) {
+      //   setIndex(2);
       //   Navigator.push(
       //     context,
       //     MaterialPageRoute(
-      //       builder: (context) => const TipsPage(),
+      //       builder: (context) => CameraPage(cameras: arguments),
       //     ),
       //   );
-        // break;
+      // } else {
+      //   print("Error: Invalid arguments for CameraPage!");
+      // }
+      // break;
+      case 'Tips':
+        setIndex(3);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TipsPage(),
+          ),
+        );
+        break;
       case 'MyPost':
         // Navigator.push(
         //   context,
@@ -69,17 +96,11 @@ class NavigationProvider with ChangeNotifier {
           MaterialPageRoute(builder: (context) => const NotificationPage()),
         );
         break;
-      case 'Camera':
-        if (arguments is List<CameraDescription>) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CameraPage(cameras: arguments),
-            ),
-          );
-        } else {
-          print("Error: Invalid arguments for CameraPage!");
-        }
+      case 'AboutUs':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AboutUsPage()),
+        );
         break;
       case 'Home':
         setIndex(0);

@@ -4,7 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../auth/login_page.dart';
 
 class OnboardingThreeScreen extends StatefulWidget {
-  const OnboardingThreeScreen({Key? key}) : super(key: key);
+  const OnboardingThreeScreen({super.key});
 
   @override
   OnboardingThreeScreenState createState() => OnboardingThreeScreenState();
@@ -144,7 +144,7 @@ class OnboardingThreeScreenState extends State<OnboardingThreeScreen> {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF6DA06F), // Button color
+                          backgroundColor: const Color(0xFF6DA06F), // Button color
                           padding: const EdgeInsets.symmetric(
                               vertical: 14.0, horizontal: 30.0),
                           shape: RoundedRectangleBorder(

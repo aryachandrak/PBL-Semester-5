@@ -1,9 +1,6 @@
-import 'dart:developer' as developer;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
-import 'package:plugin_camera/views/home_page.dart';
-import 'package:plugin_camera/views/main_page.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {

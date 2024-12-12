@@ -10,10 +10,10 @@ class TipsListPage extends StatelessWidget {
   final List<TipsItem> tips;
 
   const TipsListPage({
-    Key? key,
+    super.key,
     required this.topicTitle,
     required this.tips,
-  }) : super(key: key);
+  });
 
   Future<void> _navigateToDetail(BuildContext context, TipsItem tip) async {
     final String response = await rootBundle.loadString('assets/acne.json');
@@ -50,7 +50,7 @@ class TipsListPage extends StatelessWidget {
         title: Text(topicTitle, 
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        // backgroundColor: gray,
+        // backgroundColor: grey,
       ),
       body: ListView.builder(
         itemCount: tips.length,
@@ -62,7 +62,7 @@ class TipsListPage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
               decoration: BoxDecoration(
-                color: gray,
+                color: grey,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Row(
