@@ -5,7 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'onboarding_three_screen.dart';
 
 class OnboardingOneScreen extends StatefulWidget {
-  const OnboardingOneScreen({Key? key}) : super(key: key);
+  const OnboardingOneScreen({super.key});
 
   @override
   OnboardingOneScreenState createState() => OnboardingOneScreenState();
@@ -122,7 +122,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                     count: 3,
                     effect: ScrollingDotsEffect(
                       spacing: 4.0,
-                      activeDotColor: Color(0xFF6DA06F),
+                      activeDotColor: const Color(0xFF6DA06F),
                       dotColor: Colors.grey[300]!,
                       dotHeight: 8.0,
                       dotWidth: 8.0,
@@ -162,7 +162,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF6DA06F),
+                        backgroundColor: const Color(0xFF6DA06F),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 30.0,
                           vertical: 14.0,

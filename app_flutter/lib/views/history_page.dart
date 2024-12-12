@@ -66,16 +66,16 @@ class _ScanHistoryPageState extends State<ScanHistoryPage> {
       },
     );
   }
-
-  @override
-  void initState() {
-    super.initState();
-    final historyProvider =
-        Provider.of<HistoryProvider>(context, listen: false);
-    historyProvider
-        .fetchHistoryFromFirestore(FirebaseAuth.instance.currentUser!.uid);
-  }
-
+    @override
+    void initState() {
+      super.initState();
+      final historyProvider = Provider.of<HistoryProvider>(context, listen: false);
+      final currentUser = FirebaseAuth.instance.currentUser;
+    
+      if (currentUser != null) {
+        historyProvider.fetchHistoryFromFirestore(currentUser.uid);
+      }
+    }
   @override
   Widget build(BuildContext context) {
     final cameras = Provider.of<CameraProvider>(context, listen: false).cameras;

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
-import 'package:plugin_camera/views/welcome/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
-import 'provider/tips_page_provider.dart';
 import 'firebase_options.dart';
 
 import 'views/main_page.dart';
+import 'views/welcome/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ Future<void> main() async {
           create: (_) => CameraProvider()..setCameras(cameras),
         ),
       ],
-      child: MainApp(
+      child: const MainApp(
         cameras: [],
       ),
     ),

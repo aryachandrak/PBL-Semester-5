@@ -10,7 +10,7 @@ import 'package:plugin_camera/views/tips_list_page.dart';
 class TopicItem extends StatelessWidget {
   final Topic topic;
 
-  const TopicItem({Key? key, required this.topic}) : super(key: key);
+  const TopicItem({super.key, required this.topic});
 
   Future<List<TipsItem>> _loadTopicTips() async {
     final String response = await rootBundle.loadString('assets/acne.json');

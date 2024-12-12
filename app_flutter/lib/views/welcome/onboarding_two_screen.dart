@@ -3,7 +3,7 @@ import 'package:plugin_camera/views/welcome/onboarding_three_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingTwoScreen extends StatefulWidget {
-  const OnboardingTwoScreen({Key? key}) : super(key: key);
+  const OnboardingTwoScreen({super.key});
 
   @override
   OnboardingOneScreenState createState() => OnboardingOneScreenState();
@@ -120,7 +120,7 @@ class OnboardingOneScreenState extends State<OnboardingTwoScreen> {
                     count: 3,
                     effect: ScrollingDotsEffect(
                       spacing: 4.0,
-                      activeDotColor: Color(0xFF6DA06F),
+                      activeDotColor: const Color(0xFF6DA06F),
                       dotColor: Colors.grey[300]!,
                       dotHeight: 8.0,
                       dotWidth: 8.0,
@@ -137,7 +137,7 @@ class OnboardingOneScreenState extends State<OnboardingTwoScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                OnboardingThreeScreen(), // Ganti dengan halaman tujuan
+                                const OnboardingThreeScreen(), // Ganti dengan halaman tujuan
                           ),
                         );
                       },
@@ -160,7 +160,7 @@ class OnboardingOneScreenState extends State<OnboardingTwoScreen> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF6DA06F),
+                        backgroundColor: const Color(0xFF6DA06F),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 30.0,
                           vertical: 14.0,

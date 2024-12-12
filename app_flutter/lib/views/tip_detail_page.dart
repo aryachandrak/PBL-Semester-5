@@ -11,7 +11,7 @@ class TipDetailPage extends StatelessWidget {
   final List<String> dailyRoutine;
 
   const TipDetailPage({
-    Key? key, 
+    super.key, 
     required this.topicTitle,
     required this.title,
     required this.explanation,
@@ -19,7 +19,7 @@ class TipDetailPage extends StatelessWidget {
     required this.causes,
     required this.treatment,
     required this.dailyRoutine,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class TipDetailPage extends StatelessWidget {
         title: Text(topicTitle, 
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: gray,
+        backgroundColor: grey,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -54,9 +54,9 @@ class TipDetailPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              Text(
+              const Text(
                 'Explanation',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),

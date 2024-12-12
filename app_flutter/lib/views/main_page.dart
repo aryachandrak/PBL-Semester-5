@@ -24,7 +24,7 @@ class MainPage extends StatelessWidget {
 
     return Scaffold(
       body: pages[navigationProvider.currentIndex],
-      bottomNavigationBar: BottomNavWidget(),
+      bottomNavigationBar: const BottomNavWidget(),
     );
   }
 }

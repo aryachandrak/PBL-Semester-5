@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../provider/navigation_provider.dart';
 
 class BottomNavWidget extends StatelessWidget {
+  const BottomNavWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     final navbarProvider = Provider.of<NavigationProvider>(context);
@@ -10,9 +12,11 @@ class BottomNavWidget extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: navbarProvider.currentIndex,
       onTap: (index) => navbarProvider.setIndex(index),
-      // backgroundColor: const Color(0xFF6DA06F),
-      selectedItemColor: const Color.fromARGB(255, 105, 205, 210),
-      unselectedItemColor: Colors.grey,
+      type: BottomNavigationBarType.fixed, // Add this line
+      backgroundColor: Colors.white,
+      elevation: 8,
+      selectedItemColor: const Color(0xFF6DA06F),
+      unselectedItemColor: Colors.grey[600],
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -20,10 +24,11 @@ class BottomNavWidget extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.history),
-          label: 'Laporan',
+          label: 'History',
         ),
+
         BottomNavigationBarItem(
-          icon: Icon(Icons.lightbulb_outline),
+          icon: Icon(Icons.lightbulb),
           label: 'Tips',
         ),
         // BottomNavigationBarItem(

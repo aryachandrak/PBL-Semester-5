@@ -74,10 +74,10 @@ class _CameraPageState extends State<CameraPage> {
         const Duration(seconds: 2)); // Gantikan dengan pemanggilan model
 
     // Data hasil dari model (statik untuk contoh)
-    final acneType = 'Acne Papula';
-    final deskripsi =
+    const acneType = 'Acne Papula';
+    const deskripsi =
         'Gunakan produk dengan kandungan Benzoyl Peroxide atau Salicylic Acid';
-    final result = 'Tingkat keparahan: Sedang';
+    const result = 'Tingkat keparahan: Sedang';
     final scanTime = DateTime.now().toString();
 
     // Simpan ke Firestore

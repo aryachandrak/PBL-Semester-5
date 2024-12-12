@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:plugin_camera/widgets/theme.dart';
 import 'onboarding_one_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   SplashScreenState createState() => SplashScreenState();
@@ -15,8 +13,8 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Tambahkan logika navigasi ke layar berikutnya setelah delay jika diperlukan
-    Future.delayed(const Duration(seconds: 30), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OnboardingOneScreen()));
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const OnboardingOneScreen()));
     });
   }
 
@@ -32,34 +30,15 @@ class SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildLogoSection(),
-              const SizedBox(height: 15),
-              Text(
-                "Glowbies",
-                style: GoogleFonts.caladea(
-                  fontSize: 35, 
-                  fontWeight: FontWeight.bold, 
-                  color: const Color.fromARGB(255, 30, 141, 112),
-                ),
-              ),
+              Image.asset(
+          'assets/logoTxt.png',
+          height: 150,
+          width: 150,
+        ),
             ],
           ),
         ),
       ),
     );
   }
-  /// Bagian tampilan logo
-  Widget _buildLogoSection() {
-    return Column(
-      children: [
-        Image.asset(
-          'assets/logoCoba.png',
-          height: 130,
-          width: 130,
-        ),
-        const SizedBox(height: 20),
-      ],
-    );
-  }
 }
-

@@ -11,7 +11,7 @@ class CustomCard extends StatelessWidget {
   final BoxShadow? boxShadow; // Bayangan pada kartu
 
   const CustomCard({
-    Key? key,
+    super.key,
     this.widthFactor,
     this.heightFactor,
     this.borderRadius = 12.0,
@@ -20,7 +20,7 @@ class CustomCard extends StatelessWidget {
     this.onTap,
     this.padding = const EdgeInsets.all(16.0),
     this.boxShadow,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class CustomCard extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   blurRadius: 8,
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                 ),
           ],
         ),

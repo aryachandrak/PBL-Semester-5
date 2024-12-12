@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                         context,
                         'Home',
                       );
-                } on FirebaseAuthException catch (e) {
+                } on FirebaseAuthException {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Email atau password salah')),
                   );
