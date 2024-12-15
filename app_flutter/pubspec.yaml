@@ -94,6 +94,7 @@ flutter:
     - assets/images/
     - assets/acne.json
     - assets/models/inception_v3_finetuned_model.tflite
+    - assets/models/best-fp16.tflite
 
   #   - images/a_dot_ham.jpeg
 

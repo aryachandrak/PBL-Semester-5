@@ -1,4 +1,3 @@
-// camera_page.dart
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:external_path/external_path.dart';
@@ -71,52 +70,123 @@ class _CameraPageState extends State<CameraPage> {
     });
     MediaScanner.loadMedia(path: file.path);
 
-    // Simulasi proses model
-    final acneType = await modelHelper.runModel(file);
-    final deskripsi;
-    final tips;
-    switch (acneType) {
-      case 'papula':
-        deskripsi =
-            '''Acne Papula adalah jerawat yang berbentuk benjolan merah tanpa nanah di dalamnya. Biasanya lebih besar dari komedo dan dapat terasa nyeri.''';
-        tips = '''
-    Produk dengan Salicylic Acid: Membantu membersihkan pori-pori dan mengurangi peradangan.
+    // Process acne detection
+    final modelHelper = ModelHelper();
+    await modelHelper.loadModel();
 
-    Benzoyl Peroxide: Membunuh bakteri penyebab jerawat dan mengurangi peradangan.
-    
-    Topical Retinoids: Meningkatkan pergantian sel kulit dan mengurangi pembentukan komedo.
-    
-    Anti-inflamasi: Dapat digunakan dalam kasus peradangan yang lebih berat.
+    final detections = await modelHelper.runModel(file);
+    print('Detections: $detections');
 
-    Peringatan: Hindari pemencetan jerawat karena dapat menyebabkan iritasi dan jaringan parut.''';
-        break;
-      case 'Pustula':
-        deskripsi =
-            'Jerawat pustula ditandai dengan benjolan berisi nanah yang biasanya berwarna putih atau kuning di bagian atas. Bisa terasa nyeri dan kemerahan.';
-        tips = 'a';
-        break;
-      case 'acne fulminans':
-        deskripsi =
-            'Jerawat fulminan adalah bentuk jerawat yang sangat berat dan terinflamasi dengan pembengkakan yang cepat, biasanya disertai demam dan gejala sistemik lainnya.';
-        tips = 'a';
-        break;
-      case 'acne nodules':
-        deskripsi =
-            'Jerawat nodul adalah jerawat besar, keras, dan menyakitkan yang terletak lebih dalam di kulit dan bisa menyebabkan bekas luka.';
-        tips = 'a';
-        break;
-      case 'fungal acne':
-        deskripsi =
-            'Fungal acne disebabkan oleh infeksi jamur (Malassezia) yang menyerang folikel rambut. Ini menghasilkan benjolan kecil yang mirip dengan jerawat, tetapi tidak berisi nanah dan sering gatal.';
-        tips = 'a';
-        break;
-      default:
-        deskripsi = 'Gagal Mendeteksi Jerawat.';
-        tips = '-';
-        break;
+    String acneType = 'unknown';
+    String deskripsi = 'Gagal Mendeteksi Jenis Jerawat.';
+    String tips = 'Disarankan untuk konsultasi dengan ahli kulit.';
+    String result = 'Tingkat keparahan: Tidak dapat ditentukan';
+
+    if (detections.isNotEmpty) {
+      // Use the first detection's label
+      acneType = detections.first['label']!.trim().toLowerCase();
+      print(acneType);
+
+      // Determine description, tips, and severity based on acne type
+      switch (acneType) {
+        case 'papules':
+          deskripsi =
+              '''Acne Papula adalah jerawat yang berbentuk benjolan merah tanpa nanah di dalamnya. Biasanya lebih besar dari komedo dan dapat terasa nyeri.''';
+          tips = '''
+Produk dengan Salicylic Acid: Membantu membersihkan pori-pori dan mengurangi peradangan.
+
+Benzoyl Peroxide: Membunuh bakteri penyebab jerawat dan mengurangi peradangan.
+
+Topical Retinoids: Meningkatkan pergantian sel kulit dan mengurangi pembentukan komedo.
+
+Anti-inflamasi: Dapat digunakan dalam kasus peradangan yang lebih berat.
+
+Peringatan: Hindari pemencetan jerawat karena dapat menyebabkan iritasi dan jaringan parut.''';
+          result = 'Tingkat keparahan: Ringan sampai Sedang';
+          break;
+        case 'pustule':
+          deskripsi =
+              'Jerawat pustula ditandai dengan benjolan berisi nanah yang biasanya berwarna putih atau kuning di bagian atas. Bisa terasa nyeri dan kemerahan.';
+          tips = '''
+Gunakan pembersih yang mengandung Benzoyl Peroxide.
+
+Hindari menyentuh atau memencet jerawat.
+
+Gunakan produk anti-inflamasi.
+
+Pertahankan kebersihan wajah dan gunakan pelembab non-comedogenic.''';
+          result = 'Tingkat keparahan: Sedang';
+          break;
+        case 'nodule':
+          deskripsi =
+              'Jerawat nodul adalah jerawat besar, keras, dan menyakitkan yang terletak lebih dalam di kulit dan bisa menyebabkan bekas luka.';
+          tips = '''
+Konsultasi dengan dermatologis sangat direkomendasikan.
+
+Mungkin memerlukan terapi oral antibiotik.
+
+Hindari pemencetan atau pengobatan mandiri.
+
+Pertimbangkan terapi isotretinoin di bawah pengawasan dokter.''';
+          result = 'Tingkat keparahan: Berat';
+          break;
+        case 'whitehead':
+          deskripsi =
+              'Jerawat whitehead adalah komedo tertutup yang tersumbat oleh minyak dan sel kulit mati.';
+          tips = '''
+Gunakan produk dengan Salicylic Acid.
+
+Lakukan eksfoliasi lembut secara teratur.
+
+Gunakan pelembab non-comedogenic.
+
+Hindari produk yang dapat menyumbat pori-pori.''';
+          result = 'Tingkat keparahan: Ringan';
+          break;
+        case 'blackhead':
+          deskripsi =
+              'Komedo hitam adalah jerawat terbuka yang teroksidasi saat pori-pori tersumbat terkena udara.';
+          tips = '''
+Gunakan pembersih dengan Salicylic Acid.
+
+Lakukan ekstraksi komedo secara profesional.
+
+Gunakan clay mask untuk membersihkan pori-pori.
+
+Hindari memencet komedo sendiri.''';
+          result = 'Tingkat keparahan: Ringan';
+          break;
+        case 'bekas jerawat':
+          deskripsi =
+              'Komedo hitam adalah jerawat terbuka yang teroksidasi saat pori-pori tersumbat terkena udara.';
+          tips = '''
+Gunakan pembersih dengan Salicylic Acid.
+
+Lakukan ekstraksi komedo secara profesional.
+
+Gunakan clay mask untuk membersihkan pori-pori.
+
+Hindari memencet komedo sendiri.''';
+          result = 'Tingkat keparahan: Ringan';
+          break;
+        case 'pori-pori':
+          deskripsi =
+              'Komedo hitam adalah jerawat terbuka yang teroksidasi saat pori-pori tersumbat terkena udara.';
+          tips = '''
+Gunakan pembersih dengan Salicylic Acid.
+
+Lakukan ekstraksi komedo secara profesional.
+
+Gunakan clay mask untuk membersihkan pori-pori.
+
+Hindari memencet komedo sendiri.''';
+          result = 'Tingkat keparahan: Ringan';
+          break;
+      }
     }
-    final result = 'Tingkat keparahan: Sedang';
+
     final scanTime = DateTime.now().toString();
+    // final annotatedFile = await modelHelper.processAndSaveDetection(file);
 
     // Simpan ke Firestore
     final user = FirebaseAuth.instance.currentUser;
@@ -159,7 +229,6 @@ class _CameraPageState extends State<CameraPage> {
     }
   }
 
-  // Rest of the code remains the same...
   void startCamera(int camera) {
     cameraController = CameraController(
       widget.cameras[camera],
