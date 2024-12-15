@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/profile_image_provider.dart';
 import 'package:plugin_camera/views/wawasan.dart';
+import 'package:plugin_camera/views/wawasan.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';

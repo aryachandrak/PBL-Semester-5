@@ -61,7 +61,10 @@ dependencies:
   googleapis: ^11.2.0
   googleapis_auth: ^1.4.1
   http: ^1.2.2
-  image_picker: ^1.1.2
+  shared_preferences: ^2.2.2
+  googleapis: ^11.2.0
+  googleapis_auth: ^1.4.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

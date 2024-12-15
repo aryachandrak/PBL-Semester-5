@@ -7,6 +7,7 @@ import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/provider/profile_image_provider.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
+import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:plugin_camera/widgets/profile_option_widget.dart';
 import 'package:provider/provider.dart';
 

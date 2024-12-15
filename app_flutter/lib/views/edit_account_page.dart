@@ -11,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:io';
 
 import 'package:provider/provider.dart';
+import 'package:plugin_camera/widgets/theme.dart';
 
 class EditAccountPage extends StatefulWidget {
   const EditAccountPage({super.key});
