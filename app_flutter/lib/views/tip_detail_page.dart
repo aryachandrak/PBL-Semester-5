@@ -11,7 +11,7 @@ class TipDetailPage extends StatelessWidget {
   final List<String> dailyRoutine;
 
   const TipDetailPage({
-    super.key, 
+    super.key,
     required this.topicTitle,
     required this.title,
     required this.explanation,
@@ -25,8 +25,9 @@ class TipDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(topicTitle, 
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        title: Text(
+          topicTitle,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: grey,
       ),
@@ -64,6 +65,7 @@ class TipDetailPage extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 explanation,
+                textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
                   height: 1.5,

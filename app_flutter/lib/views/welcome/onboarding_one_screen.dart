@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/welcome/onboarding_two_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'onboarding_three_screen.dart';
 
 class OnboardingOneScreen extends StatefulWidget {
@@ -44,25 +43,32 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 8.0,
-                        top: 50.0,
-                        right: 8.0,
-                        bottom: 5.0,
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Image.asset(
-                              'assets/images/3.png',
-                              height: MediaQuery.of(context).size.height * 0.8,
-                              width: MediaQuery.of(context).size.width * 0.8,
-                            ),
-                          )
-                        ],
-                      ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(
+                            left: 8.0,
+                            top: 50.0,
+                            right: 8.0,
+                            bottom: 5.0,
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Image.asset(
+                                  'assets/images/3.png',
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.8,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -105,6 +111,7 @@ class OnboardingOneScreenState extends State<OnboardingOneScreen> {
                   child: Text(
                     "Recognize the Cause of Your Acne with Glowbies",
                     maxLines: 2,
+                    textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 24.0,

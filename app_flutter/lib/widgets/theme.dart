@@ -8,6 +8,8 @@ Color purple = const Color(0XFFADAEFF);
 Color red = const Color(0XFFFDEBEA);
 Color grey = const Color.fromARGB(255, 221, 240, 255);
 Color green = const Color.fromARGB(255, 209, 249, 237);
+Color primary = const Color(0xFF6DA06F);
+Color white = const Color(0XFFFFFFFF);
 
 // Typography
 TextStyle regular10 = const TextStyle(fontSize: 10);

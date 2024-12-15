@@ -103,6 +103,7 @@ class OnboardingOneScreenState extends State<OnboardingTwoScreen> {
                   child: Text(
                     "Create the perfect skincare routine for healthy, glowing skin",
                     maxLines: 2,
+                    textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 24.0,

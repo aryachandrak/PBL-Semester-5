@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plugin_camera/views/wawasan.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
@@ -30,20 +31,20 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Stack(
                     children: [
-                      // Container(
-                      //   height: screenSize.height / 2.5,
-                      //   width: double.infinity,
-                      //   decoration: const BoxDecoration(
-                      //     gradient: LinearGradient(
-                      //       begin: Alignment.topCenter,
-                      //       end: Alignment.bottomCenter,
-                      //       colors: [
-                      //         Color.fromARGB(200, 113, 251, 241),
-                      //         Colors.white
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
+                      Container(
+                        height: screenSize.height / 3.5,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              primary,
+                              white,
+                            ],
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(0),
                         child: Column(
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                                       Text(
                                         "Hello ${FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna'}, Welcome Back!",
                                         style: GoogleFonts.montserrat(
-                                            color: Colors.black,
+                                            color: white,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ],
@@ -95,29 +96,20 @@ class _HomePageState extends State<HomePage> {
                                           .navigateToPage(
                                               context, 'Notification');
                                     },
-                                    child: const Icon(
+                                    child: Icon(
                                       Icons.notifications_active_outlined,
-                                      color: Colors.black,
+                                      color: white,
                                       size: 30,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(left: 18.0),
-                            //   child: Image.asset(
-                            //     "assets/logoTxt.png",
-                            //     height: 70,
-                            //     width: 70,
-                            //   ),
-                            // ),
+
                             Center(
                               child: Container(
-                                height: screenSize.width * 0.5,
-                                // width: screenSize.width * 0.1,
-                                // margin: const EdgeInsets.only(left: 5.0),
-                                color: grey,
+                                height: screenSize.width * 0.6,
+                                width: double.infinity,
                                 child: Row(
                                   children: [
                                     Column(
@@ -139,12 +131,9 @@ class _HomePageState extends State<HomePage> {
                                           padding:
                                               const EdgeInsets.only(left: 12),
                                           child: Text(
-                                            "Your Beauty is so Precious",
-                                            style: GoogleFonts.workSans(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xFF423838),
-                                            ),
+                                            "Healthy Skin, Confidence Back!\nBecause Your Beauty is so Precious",
+                                            style: medium14.copyWith(
+                                                color: Colors.grey[700]),
                                           ),
                                         ),
                                         Padding(
@@ -162,12 +151,10 @@ class _HomePageState extends State<HomePage> {
                                             heightFactor: 0.04,
                                             fontSizeFactor: 0.015,
                                             borderRadius: 12.0,
-                                            textColor: Color(0xFF6DA06F),
-                                            gradientColors: const [
-                                              Color.fromARGB(
-                                                  255, 255, 255, 255),
-                                              Color.fromARGB(
-                                                  255, 255, 255, 255),
+                                            textColor: white,
+                                            gradientColors: [
+                                              primary,
+                                              primary,
                                             ],
                                           ),
                                         )
@@ -177,12 +164,12 @@ class _HomePageState extends State<HomePage> {
                                     Expanded(
                                       child: Padding(
                                         padding: const EdgeInsets.only(
-                                            right: 5, top: 10),
+                                            right: 0, top: 10),
                                         child: SizedBox(
                                           height:
                                               200, // Set a fixed height or adjust as needed
                                           child: Image.asset(
-                                            "assets/woman.png",
+                                            "assets/images/woman.png",
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -202,85 +189,32 @@ class _HomePageState extends State<HomePage> {
                             //     ),
                             //   ),
                             // ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 12),
+                            const Wawasan(),
+                            const SizedBox(height: 12),
                             Container(
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color.fromARGB(255, 255, 255, 255),
-                                    Color.fromARGB(255, 193, 250, 255),
-                                  ],
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Text(
-                                      'Checklist Perawatan Kulit Harian Anda ',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  const Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Fitur(
-                                          imagePath: "assets/images/1.png",
-                                          title: "Rutinitas",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/2.png",
-                                          title: "Tips",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/3.png",
-                                          title: "Konsultasi",
-                                          targetPage: TipsPage(),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Container(
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topRight,
                                   end: Alignment.bottomLeft,
                                   colors: [
-                                    Color.fromARGB(255, 253, 235, 234),
-                                    Color.fromARGB(255, 226, 233, 214),
-                                    Color.fromARGB(255, 220, 218, 246),
+                                    white,
+                                    const Color(0XFFFDEBEA),
+                                    // Color.fromARGB(255, 253, 235, 234),
+                                    const Color.fromARGB(255, 226, 233, 214),
+                                    const Color.fromARGB(255, 220, 218, 246),
                                   ],
                                 ),
                               ),
+                              // color: green,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(16.0),
                                     child: Text(
-                                      'Checklist Perawatan Kulit Harian Anda',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                      ),
+                                      'Your daily skin care checklist ❗',
+                                      style: medium16,
                                     ),
                                   ),
                                   const SizedBox(height: 10),
@@ -290,8 +224,8 @@ class _HomePageState extends State<HomePage> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Fitur(
-                                          imagePath: "assets/scan1.jpg",
-                                          title: "Rutinitas",
+                                          imagePath: "assets/images/1.png",
+                                          title: "Recent Scan",
                                           targetPage: TipsPage(),
                                         ),
                                         Fitur(

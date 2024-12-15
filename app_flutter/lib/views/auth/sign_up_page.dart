@@ -120,6 +120,8 @@ class _LoginPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.person_2_outlined),
                 labelText: 'Nama',
+                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -147,6 +149,8 @@ class _LoginPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.email_outlined),
                 labelText: 'Email',
+                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -168,13 +172,15 @@ class _LoginPageState extends State<SignUpPage> {
             ),
 
             const SizedBox(height: 16),
-// Password Field
+            // Password Field
             TextField(
               controller: password,
               obscureText: true,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock_outline),
                 labelText: 'Password',
+                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),

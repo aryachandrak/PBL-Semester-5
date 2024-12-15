@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/about_us_page.dart';
+import 'package:plugin_camera/views/app_language_page.dart';
 import 'package:plugin_camera/views/auth/login_page.dart';
 import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/edit_account_page.dart';
@@ -100,6 +101,12 @@ class NavigationProvider with ChangeNotifier {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const AboutUsPage()),
+        );
+        break;
+      case 'AppLanguage':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AppLanguagePage()),
         );
         break;
       case 'Home':

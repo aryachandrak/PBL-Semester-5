@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 class ScanHistoryPage extends StatefulWidget {
   const ScanHistoryPage({super.key});
 
@@ -90,8 +91,8 @@ class _ScanHistoryPageState extends State<ScanHistoryPage> {
             color: Colors.black87,
           ),
         ),
-        backgroundColor: Colors.white, // Background AppBar putih
-        foregroundColor: Colors.black, // Teks dan ikon berwarna hitam
+        // backgroundColor: Colors.white,
+        // foregroundColor: Colors.black,
         elevation: 0,
         centerTitle: true,
         actions: [

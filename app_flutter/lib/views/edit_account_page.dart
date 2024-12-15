@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
+import 'package:plugin_camera/widgets/theme.dart';
 
 class EditAccountPage extends StatelessWidget {
   const EditAccountPage({super.key});
@@ -10,7 +11,8 @@ class EditAccountPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Account'), centerTitle: true,
+        title: const Text('My Account'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -52,31 +54,30 @@ class EditAccountPage extends StatelessWidget {
                 labelText: 'Full Name',
                 size: size,
               ),
-              SizedBox(height: size.height * 0.02),
+              const SizedBox(height: 5),
               _buildInputField(
                 labelText: 'Email',
                 size: size,
               ),
-              SizedBox(height: size.height * 0.02),
+              const SizedBox(height: 5),
               _buildInputField(
                 labelText: 'Phone number',
                 size: size,
                 prefixIcon: const Icon(Icons.phone),
               ),
-              SizedBox(height: size.height * 0.02),
+              const SizedBox(height: 5),
               _buildDropdownField(
                 labelText: 'Select your gender',
                 items: ['Male', 'Female', 'Other'],
                 size: size,
               ),
-              SizedBox(height: size.height * 0.02),
+              const SizedBox(height: 5),
               _buildInputField(
                 labelText: 'What is your date of birth?',
                 size: size,
                 suffixIcon: const Icon(Icons.calendar_today),
               ),
-              SizedBox(height: size.height * 0.04),
-              // ElevatedButton(
+              const SizedBox(height: 100), // ElevatedButton(
               //   onPressed: () {
               //     // Action to update profile
               //   },
@@ -97,7 +98,16 @@ class EditAccountPage extends StatelessWidget {
                 onPressed: () {
                   print('Updated Profile');
                 },
-              )
+                widthFactor: 1.0,
+                heightFactor: 0.06,
+                fontSizeFactor: 0.02,
+                borderRadius: 12.0,
+                textColor: Colors.white,
+                gradientColors: const [
+                  Color(0xFF6DA06F),
+                  Color(0xFF6DA06F),
+                ],
+              ),
             ],
           ),
         ),
@@ -126,6 +136,8 @@ class EditAccountPage extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           labelText: labelText,
+          floatingLabelStyle: TextStyle(color: primary),
+          labelStyle: const TextStyle(color: Colors.grey),
           border: InputBorder.none,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
@@ -158,6 +170,8 @@ class EditAccountPage extends StatelessWidget {
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
           labelText: labelText,
+          floatingLabelStyle: TextStyle(color: primary),
+          labelStyle: const TextStyle(color: Colors.grey),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(
             horizontal: size.width * 0.04,
