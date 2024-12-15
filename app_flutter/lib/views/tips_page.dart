@@ -11,8 +11,9 @@ class TipsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tips',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        title: const Text(
+          'Tips',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -28,7 +29,8 @@ class TipsPage extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                itemBuilder: (context, index) => TopicItem(topic: topics[index]),
+                itemBuilder: (context, index) =>
+                    TopicItem(topic: topics[index]),
                 separatorBuilder: (context, index) => const SizedBox(width: 16),
                 itemCount: topics.length,
               ),

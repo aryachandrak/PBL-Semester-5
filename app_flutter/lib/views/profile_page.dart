@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
+import 'package:plugin_camera/provider/profile_image_provider.dart';
+import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:plugin_camera/widgets/profile_option_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -14,15 +18,24 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final userName = FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna';
   final userEmail =
       FirebaseAuth.instance.currentUser?.email ?? 'Email tidak tersedia';
+  String userName = 'Pengguna';
   signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 
   @override
+  void initState() {
+    userName = FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna';
+    super.initState();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final profileImagePath =
+        Provider.of<ProfileImageProvider>(context).profileImagePath;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -50,12 +63,14 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: ListView(
         children: [
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: 16.0), // Jarak kanan dan kiri
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.cyan.shade700,
+                // color: Colors.cyan.shade700,
+                color: const Color(0xFF6DA06F),
                 borderRadius: BorderRadius.circular(16.0), // Sudut melengkung
                 boxShadow: [
                   BoxShadow(
@@ -68,13 +83,15 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 35,
                     child: CircleAvatar(
                       radius: 32,
-                      backgroundImage: AssetImage(
-                          'assets/profile.jpg'), // Ganti dengan URL avatar Anda
+                      backgroundImage: profileImagePath != null
+                          ? FileImage(File(profileImagePath!))
+                          : const AssetImage('assets/default-profile.jpg')
+                              as ImageProvider,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -101,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           Container(
             margin: const EdgeInsets.all(16.0),
             // padding: const EdgeInsets.all(16.0),
@@ -164,17 +181,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                 ),
                 ProfileOption(
-                  icon: Icons.logout,
-                  title: 'Log out',
-                  subtitle: 'Further secure your account for safety',
-                  onTap: () async {
-                    await signOut();
-                    Provider.of<HistoryProvider>(context, listen: false)
-                        .clearHistory();
-                    context.read<NavigationProvider>().navigateToPage(
-                          context,
-                          'login',
-                        );
+                  icon: Icons.language,
+                  title: 'App Language',
+                  subtitle: 'Change your preferred language',
+                  onTap: () {
+                    Provider.of<NavigationProvider>(context, listen: false)
+                        .navigateToPage(context, 'AppLanguage');
                   },
                 ),
               ],
@@ -182,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const Padding(
             padding:
-                EdgeInsets.all(16.0), // Menambahkan padding di sekitar teks
+                EdgeInsets.all(10.0), // Menambahkan padding di sekitar teks
             child: Text(
               'More',
               style: TextStyle(
@@ -193,7 +205,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(16.00), // Jarak vertikal
+            margin: const EdgeInsets.all(5.0), // Jarak vertikal
             // padding: const EdgeInsets.all(8.0), // Jarak dalam
             decoration: BoxDecoration(
               color: Colors.white,
@@ -230,7 +242,33 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 60),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: CustomButton(
+              text: "Log Out",
+              onPressed: () async {
+                await signOut();
+                Provider.of<HistoryProvider>(context, listen: false)
+                    .clearHistory();
+                context.read<NavigationProvider>().navigateToPage(
+                      context,
+                      'login',
+                    );
+              },
+              widthFactor: 1.0,
+              heightFactor: 0.06,
+              fontSizeFactor: 0.02,
+              borderRadius: 12.0,
+              textColor: Colors.white,
+              gradientColors: const [
+                Color(0xFF6DA06F),
+                Color(0xFF6DA06F),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );

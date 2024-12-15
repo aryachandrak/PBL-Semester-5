@@ -22,8 +22,8 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 202, 243, 215),
-        // backgroundColor: Color(0xFF00AA13),
+        // backgroundColor: const Color.fromARGB(255, 202, 243, 215),
+        backgroundColor: const Color(0xFF6DA06F),
         body: Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16.0),
@@ -31,9 +31,9 @@ class SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-          'assets/logoTxt.png',
-          height: 150,
-          width: 150,
+          'assets/images/logoPutih.png',
+          height: 200,
+          width: 200,
         ),
             ],
           ),

@@ -36,8 +36,10 @@ class TipsListPage extends StatelessWidget {
           explanation: matchedTip['description']['explanation'],
           image: matchedTip['image'],
           causes: List<String>.from(matchedTip['description']['causes']),
-          treatment: List<String>.from(matchedTip['description']['how_to_overcome']),
-          dailyRoutine: List<String>.from(matchedTip['description']['daily_routines']),
+          treatment:
+              List<String>.from(matchedTip['description']['how_to_overcome']),
+          dailyRoutine:
+              List<String>.from(matchedTip['description']['daily_routines']),
         ),
       ),
     );
@@ -47,8 +49,9 @@ class TipsListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(topicTitle, 
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        title: Text(
+          topicTitle,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         // backgroundColor: grey,
       ),
@@ -62,7 +65,7 @@ class TipsListPage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
               decoration: BoxDecoration(
-                color: grey,
+                color: green,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Row(
@@ -103,6 +106,5 @@ class TipsListPage extends StatelessWidget {
         },
       ),
     );
-
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:plugin_camera/provider/language_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
+import 'package:plugin_camera/provider/profile_image_provider.dart';
+import 'package:plugin_camera/widgets/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,13 +18,24 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // Set global status bar style
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: primary,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+
   final cameras = await availableCameras();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => HistoryProvider()),
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
-        // ChangeNotifierProvider(create: (_) => TipsPageProvider()),
+        ChangeNotifierProvider(
+          create: (context) => ProfileImageProvider(),
+        ),
+        ChangeNotifierProvider(create: (_) => LanguageProvider()),
         ChangeNotifierProvider(
           create: (_) => CameraProvider()..setCameras(cameras),
         ),
@@ -38,7 +53,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       // home: MainPage(),
     );

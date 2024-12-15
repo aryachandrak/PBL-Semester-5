@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
@@ -35,7 +36,7 @@ class _LoginPageState extends State<SignUpPage> {
         password: password.text.trim(),
       );
 
-      // Tambahkan nama pengguna ke profil Firebase
+      // Perbarui nama di Firebase Authentication
       await userCredential.user?.updateDisplayName(name.text);
 
       // Navigasi ke halaman berikutnya setelah berhasil registrasi
@@ -54,6 +55,18 @@ class _LoginPageState extends State<SignUpPage> {
         SnackBar(content: Text(errorMessage)),
       );
     } finally {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+          'name': name.text,
+          'email': email.text,
+          'profil_page': null,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      } else {
+        print('User not logged in');
+      }
+
       setState(() {
         isLoading = false;
       });
@@ -120,6 +133,8 @@ class _LoginPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.person_2_outlined),
                 labelText: 'Nama',
+                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -147,6 +162,8 @@ class _LoginPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.email_outlined),
                 labelText: 'Email',
+                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -168,13 +185,15 @@ class _LoginPageState extends State<SignUpPage> {
             ),
 
             const SizedBox(height: 16),
-// Password Field
+            // Password Field
             TextField(
               controller: password,
               obscureText: true,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock_outline),
                 labelText: 'Password',
+                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),

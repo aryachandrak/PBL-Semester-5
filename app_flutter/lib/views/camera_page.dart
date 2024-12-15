@@ -77,21 +77,20 @@ class _CameraPageState extends State<CameraPage> {
     final detections = await modelHelper.runModel(file);
     print('Detections: $detections');
 
-    String acneType = 'unknown';
-    String deskripsi = 'Gagal Mendeteksi Jenis Jerawat.';
-    String tips = 'Disarankan untuk konsultasi dengan ahli kulit.';
-    String result = 'Tingkat keparahan: Tidak dapat ditentukan';
+    String acneType = 'Tidak terdeteksi jerawat';
+    String deskripsi = '-';
+    String tips = '-';
+    String result = '-';
 
     if (detections.isNotEmpty) {
       // Use the first detection's label
       acneType = detections.first['label']!.trim().toLowerCase();
-      print(acneType);
 
       // Determine description, tips, and severity based on acne type
       switch (acneType) {
         case 'papules':
           deskripsi =
-              '''Acne Papula adalah jerawat yang berbentuk benjolan merah tanpa nanah di dalamnya. Biasanya lebih besar dari komedo dan dapat terasa nyeri.''';
+              'Jerawat papula adalah benjolan merah kecil yang menonjol di permukaan kulit, biasanya terasa keras dan nyeri saat disentuh. Berbeda dengan komedo, papula tidak memiliki kepala putih atau hitam dan menandakan adanya peradangan pada folikel rambut.';
           tips = '''
 Produk dengan Salicylic Acid: Membantu membersihkan pori-pori dan mengurangi peradangan.
 
@@ -106,7 +105,7 @@ Peringatan: Hindari pemencetan jerawat karena dapat menyebabkan iritasi dan jari
           break;
         case 'pustule':
           deskripsi =
-              'Jerawat pustula ditandai dengan benjolan berisi nanah yang biasanya berwarna putih atau kuning di bagian atas. Bisa terasa nyeri dan kemerahan.';
+              'Jerawat pustula adalah bentuk jerawat yang lebih lanjut dari papula, dengan titik putih atau kuning di tengahnya yang menandakan adanya nanah. Biasanya merah, membengkak, dan terasa nyeri, pustula terbentuk ketika folikel rambut mengalami infeksi bakteri.';
           tips = '''
 Gunakan pembersih yang mengandung Benzoyl Peroxide.
 
@@ -119,7 +118,7 @@ Pertahankan kebersihan wajah dan gunakan pelembab non-comedogenic.''';
           break;
         case 'nodule':
           deskripsi =
-              'Jerawat nodul adalah jerawat besar, keras, dan menyakitkan yang terletak lebih dalam di kulit dan bisa menyebabkan bekas luka.';
+              'Jerawat nodul adalah jenis jerawat paling parah yang terbentuk jauh di bawah permukaan kulit. Besar, keras, dan sangat menyakitkan, nodul dapat terasa seperti benjolan padat di bawah kulit yang sulit hilang dan berpotensi meninggalkan bekas luka permanen.';
           tips = '''
 Konsultasi dengan dermatologis sangat direkomendasikan.
 
@@ -132,7 +131,7 @@ Pertimbangkan terapi isotretinoin di bawah pengawasan dokter.''';
           break;
         case 'whitehead':
           deskripsi =
-              'Jerawat whitehead adalah komedo tertutup yang tersumbat oleh minyak dan sel kulit mati.';
+              'Whitehead atau komedo tertutup adalah jerawat mikro yang terbentuk ketika pori-pori tersumbat oleh campuran minyak (sebum), sel kulit mati, dan bakteri. Berbentuk benjolan kecil berwarna putih atau daging dan tidak menonjol ke permukaan kulit.';
           tips = '''
 Gunakan produk dengan Salicylic Acid.
 
@@ -145,7 +144,7 @@ Hindari produk yang dapat menyumbat pori-pori.''';
           break;
         case 'blackhead':
           deskripsi =
-              'Komedo hitam adalah jerawat terbuka yang teroksidasi saat pori-pori tersumbat terkena udara.';
+              'Komedo hitam atau blackhead adalah jerawat terbuka yang terjadi ketika pori-pori tersumbat dan permukaan terbuka, memungkinkan materi di dalamnya teroksidasi dan berubah warna menjadi hitam akibat kontak dengan udara.';
           tips = '''
 Gunakan pembersih dengan Salicylic Acid.
 
@@ -158,28 +157,28 @@ Hindari memencet komedo sendiri.''';
           break;
         case 'bekas jerawat':
           deskripsi =
-              'Komedo hitam adalah jerawat terbuka yang teroksidasi saat pori-pori tersumbat terkena udara.';
+              'Bekas jerawat adalah tanda yang tersisa setelah proses penyembuhan jerawat, dapat berupa hiperpigmentasi cokelat atau merah (post-inflammatory hyperpigmentation), atau cekungan/tonjolan pada permukaan kulit yang disebabkan oleh kerusakan jaringan.';
           tips = '''
-Gunakan pembersih dengan Salicylic Acid.
+Gunakan produk dengan Vitamin C untuk mencerahkan.
 
-Lakukan ekstraksi komedo secara profesional.
+Pertimbangkan chemical peeling ringan.
 
-Gunakan clay mask untuk membersihkan pori-pori.
+Gunakan tabir surya untuk mencegah hiperpigmentasi lebih lanjut.
 
-Hindari memencet komedo sendiri.''';
+Gunakan produk dengan retinol untuk meningkatkan pergantian sel kulit.''';
           result = 'Tingkat keparahan: Ringan';
           break;
         case 'pori-pori':
           deskripsi =
-              'Komedo hitam adalah jerawat terbuka yang teroksidasi saat pori-pori tersumbat terkena udara.';
+              'Pori-pori yang membesar atau terlihat jelas biasanya disebabkan oleh produksi minyak berlebih, kurangnya perawatan kulit, atau faktor genetik. Pori-pori besar cenderung lebih mudah tersumbat dan rentan terhadap pembentukan jerawat.';
           tips = '''
 Gunakan pembersih dengan Salicylic Acid.
 
-Lakukan ekstraksi komedo secara profesional.
+Lakukan eksfoliasi secara teratur.
 
-Gunakan clay mask untuk membersihkan pori-pori.
+Gunakan clay mask untuk menyerap kelebihan minyak.
 
-Hindari memencet komedo sendiri.''';
+Pilih produk yang bersifat non-comedogenic.''';
           result = 'Tingkat keparahan: Ringan';
           break;
       }

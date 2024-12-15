@@ -1,16 +1,142 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:plugin_camera/provider/navigation_provider.dart';
+import 'package:plugin_camera/provider/profile_image_provider.dart';
+import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
+import 'package:plugin_camera/widgets/theme.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
 
-class EditAccountPage extends StatelessWidget {
+import 'package:provider/provider.dart';
+
+class EditAccountPage extends StatefulWidget {
   const EditAccountPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size; // Mendapatkan ukuran layar
+  State<EditAccountPage> createState() => _EditAccountPageState();
+}
 
+class _EditAccountPageState extends State<EditAccountPage> {
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+  final _nameController = TextEditingController();
+  String _userName =
+      FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna';
+  String? _selectedGender;
+  String? _profileImageUrl;
+
+  Future<void> _updateProfile() async {
+    final user = _auth.currentUser;
+    final name = _nameController.text;
+
+    if (name.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Name cannot be empty!')),
+      );
+      return;
+    }
+    print('Full Name: ${_nameController.text}');
+    if (user != null) {
+      final userDoc = _firestore.collection('users').doc(user.uid);
+      await userDoc.set({
+        'name': _nameController.text,
+        'gender': _selectedGender,
+      }, SetOptions(merge: true));
+
+      await user.updateDisplayName(name);
+
+      setState(() {
+        _userName =
+            FirebaseAuth.instance.currentUser?.displayName ?? 'Pengguna';
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Profile updated successfully!')),
+      );
+    }
+  }
+
+  Future<String> _getLocalFilePath() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return '${directory.path}/profile_image.png';
+  }
+
+  Future<void> _loadProfileImage() async {
+    try {
+      final filePath = await _getLocalFilePath();
+      final file = File(filePath);
+
+      if (await file.exists()) {
+        setState(() {
+          _profileImageUrl = file.path;
+        });
+      } else {
+        setState(() {
+          _profileImageUrl = null;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _profileImageUrl = null;
+      });
+      print('Error loading profile image: $e');
+    }
+  }
+
+  Future<void> _uploadProfileImage() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      try {
+        final filePath = await _getLocalFilePath();
+        final file = File(pickedImage.path);
+
+        // Salin file ke lokasi penyimpanan lokal.
+        await file.copy(filePath);
+
+        Provider.of<ProfileImageProvider>(context, listen: false)
+            .setProfileImagePath(filePath);
+        setState(() {
+          _profileImageUrl = filePath;
+        });
+        imageCache.clear();
+        imageCache.clearLiveImages();
+        print('Image uploaded to local path: $filePath');
+      } catch (e) {
+        print('Error uploading image: $e');
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileImage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Account'), centerTitle: true,
+        title: const Text('My Account'),
+        centerTitle: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            final navigationProvider =
+                Provider.of<NavigationProvider>(context, listen: false);
+            navigationProvider.setIndex(3);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const MainPage()),
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -22,82 +148,65 @@ class EditAccountPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: CircleAvatar(
-                  radius: size.width * 0.15, // Ukuran lingkaran sesuai layar
-                  backgroundColor: Colors.pink,
-                  backgroundImage: const AssetImage('assets/profile.jpg'),
+                child: GestureDetector(
+                  onTap: _uploadProfileImage,
+                  child: CircleAvatar(
+                    key: UniqueKey(),
+                    radius: size.width * 0.15,
+                    backgroundColor: Colors.white,
+                    backgroundImage: _profileImageUrl != null &&
+                            File(_profileImageUrl!).existsSync()
+                        ? FileImage(File(_profileImageUrl!))
+                        : const AssetImage('assets/default-profile.jpg')
+                            as ImageProvider,
+                  ),
                 ),
               ),
               SizedBox(height: size.height * 0.02),
               Center(
                 child: Text(
-                  'Your Full Name',
+                  _userName,
                   style: TextStyle(
                     fontSize: size.width * 0.06,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Center(
-                child: Text(
-                  'yourEmail@email.com',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: size.width * 0.04,
-                  ),
-                ),
-              ),
               SizedBox(height: size.height * 0.04),
               _buildInputField(
                 labelText: 'Full Name',
+                controller: _nameController,
                 size: size,
-              ),
-              SizedBox(height: size.height * 0.02),
-              _buildInputField(
-                labelText: 'Email',
-                size: size,
-              ),
-              SizedBox(height: size.height * 0.02),
-              _buildInputField(
-                labelText: 'Phone number',
-                size: size,
-                prefixIcon: const Icon(Icons.phone),
               ),
               SizedBox(height: size.height * 0.02),
               _buildDropdownField(
                 labelText: 'Select your gender',
-                items: ['Male', 'Female', 'Other'],
+                items: ['Pilih gender', 'Male', 'Female', 'Other'],
                 size: size,
-              ),
-              SizedBox(height: size.height * 0.02),
-              _buildInputField(
-                labelText: 'What is your date of birth?',
-                size: size,
-                suffixIcon: const Icon(Icons.calendar_today),
+                value: _selectedGender ?? 'Pilih gender',
+                onChanged: (value) {
+                  setState(() {
+                    _selectedGender = value;
+                  });
+                },
               ),
               SizedBox(height: size.height * 0.04),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     // Action to update profile
-              //   },
-              //   child: Text(
-              //     'Update Profile',
-              //     style: TextStyle(
-              //       fontSize: size.width * 0.045,
-              //       color: Colors.white,
-              //     ),
-              //   ),
-              //   style: ElevatedButton.styleFrom(
-              //     minimumSize: Size(double.infinity, size.height * 0.07),
-              //     backgroundColor: Colors.blue,
-              //   ),
-              // ),
               CustomButton(
                 text: 'Update Profile',
                 onPressed: () {
+                  _updateProfile();
                   print('Updated Profile');
                 },
-              )
+                widthFactor: 1.0,
+                heightFactor: 0.06,
+                fontSizeFactor: 0.02,
+                borderRadius: 12.0,
+                textColor: Colors.white,
+                gradientColors: const [
+                  Color(0xFF6DA06F),
+                  Color(0xFF6DA06F),
+                ],
+              ),
             ],
           ),
         ),
@@ -108,6 +217,7 @@ class EditAccountPage extends StatelessWidget {
   Widget _buildInputField({
     required String labelText,
     required Size size,
+    required TextEditingController controller,
     Widget? prefixIcon,
     Widget? suffixIcon,
   }) {
@@ -124,8 +234,11 @@ class EditAccountPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
+          floatingLabelStyle: TextStyle(color: primary),
+          labelStyle: const TextStyle(color: Colors.grey),
           border: InputBorder.none,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
@@ -142,6 +255,8 @@ class EditAccountPage extends StatelessWidget {
     required String labelText,
     required List<String> items,
     required Size size,
+    required String? value,
+    required void Function(String?) onChanged,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -156,8 +271,11 @@ class EditAccountPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: DropdownButtonFormField<String>(
+        value: value, // Menampilkan nilai awal
         decoration: InputDecoration(
           labelText: labelText,
+          floatingLabelStyle: TextStyle(color: primary),
+          labelStyle: const TextStyle(color: Colors.grey),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(
             horizontal: size.width * 0.04,
@@ -173,7 +291,8 @@ class EditAccountPage extends StatelessWidget {
                   ),
                 ))
             .toList(),
-        onChanged: (value) {},
+        onChanged: onChanged, // Memperbarui nilai saat diubah
+        dropdownColor: Colors.white,
       ),
     );
   }

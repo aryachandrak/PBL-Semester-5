@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 
 class AboutUsPage extends StatelessWidget {
@@ -54,22 +53,22 @@ class AboutUsPage extends StatelessWidget {
                     TeamMemberCard(
                       name: 'Arya Chandra Kusuma',
                       role: 'Backend Developer',
-                      imageUrl: 'assets/woman.png',
+                      imageUrl: 'assets/images/woman.png',
                     ),
                     TeamMemberCard(
                       name: 'Elis Nurhidayati',
                       role: 'Frontend Developer',
-                      imageUrl: 'assets/elis.jpg',
+                      imageUrl: 'assets/images/elis.jpg',
                     ),
                     TeamMemberCard(
                       name: 'Jantra Lang Lang Buana',
                       role: 'Machine Learning Engineer',
-                      imageUrl: 'assets/woman.png',
+                      imageUrl: 'assets/images/woman.png',
                     ),
                     TeamMemberCard(
                       name: 'Putri Ayu Aliciawati',
                       role: 'UI/UX Designer',
-                      imageUrl: 'assets/woman.png',
+                      imageUrl: 'assets/images/woman.png',
                     ),
                   ],
                 ),

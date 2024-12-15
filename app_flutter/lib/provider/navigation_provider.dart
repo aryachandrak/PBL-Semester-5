@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/about_us_page.dart';
+import 'package:plugin_camera/views/app_language_page.dart';
 import 'package:plugin_camera/views/auth/login_page.dart';
 import 'package:plugin_camera/views/camera_page.dart';
 import 'package:plugin_camera/views/edit_account_page.dart';
@@ -8,6 +9,7 @@ import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
 import 'package:plugin_camera/views/manage_pass_page.dart';
 import 'package:plugin_camera/views/notification_page.dart';
+import 'package:plugin_camera/views/profile_page.dart';
 import 'package:plugin_camera/views/tips_page.dart';
 
 class NavigationProvider with ChangeNotifier {
@@ -72,11 +74,12 @@ class NavigationProvider with ChangeNotifier {
           ),
         );
         break;
-      case 'MyPost':
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => ScanHistoryPage()),
-        // );
+      case 'ProfilePage':
+        setIndex(4);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfilePage()),
+        );
         break;
       case 'ManagePassword':
         Navigator.push(
@@ -100,6 +103,12 @@ class NavigationProvider with ChangeNotifier {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const AboutUsPage()),
+        );
+        break;
+      case 'AppLanguage':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AppLanguagePage()),
         );
         break;
       case 'Home':

@@ -11,30 +11,29 @@ class PopularItem extends StatelessWidget {
   const PopularItem({super.key, required this.tip});
 
   Future<void> _navigateToDetail(BuildContext context) async {
-  final String response = await rootBundle.loadString('assets/acne.json');
-  final Map<String, dynamic> data = json.decode(response);
-  final List<dynamic> popularList = data['Popular'];
+    final String response = await rootBundle.loadString('assets/acne.json');
+    final Map<String, dynamic> data = json.decode(response);
+    final List<dynamic> popularList = data['Popular'];
 
-  final matchedTip = popularList.firstWhere(
-    (tipData) => tipData['id'] == tip.id,
-  );
+    final matchedTip = popularList.firstWhere(
+      (tipData) => tipData['id'] == tip.id,
+    );
 
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => TipDetailPage(
-        topicTitle: tip.topic,
-        title: matchedTip['title'],
-        explanation: matchedTip['explanation'],
-        image: matchedTip['image'],
-        causes: List<String>.from(matchedTip['causes']),
-        treatment: List<String>.from(matchedTip['treatment']), 
-        dailyRoutine: List<String>.from(matchedTip['daily_routine']),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TipDetailPage(
+          topicTitle: tip.topic,
+          title: matchedTip['title'],
+          explanation: matchedTip['explanation'],
+          image: matchedTip['image'],
+          causes: List<String>.from(matchedTip['causes']),
+          treatment: List<String>.from(matchedTip['treatment']),
+          dailyRoutine: List<String>.from(matchedTip['daily_routine']),
+        ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +41,19 @@ class PopularItem extends StatelessWidget {
       onTap: () => _navigateToDetail(context),
       child: Container(
         padding: const EdgeInsets.only(left: 24, bottom: 12, right: 24),
-        height: 178,
+        height: 150,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: grey,
+            color: green,
           ),
           child: Row(
             children: [
               Container(
                 clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(13)),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(13)),
                 child: Image.asset(tip.image),
               ),
               const SizedBox(width: 16),
@@ -85,7 +85,11 @@ class PopularItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(18),
                         color: Colors.white,
                       ),
-                      child: const Icon(Icons.favorite, size: 16, color: Colors.red,),
+                      child: const Icon(
+                        Icons.favorite,
+                        size: 16,
+                        color: Colors.red,
+                      ),
                     ),
                   ],
                 ),
