@@ -57,6 +57,7 @@ dependencies:
   cloud_firestore: ^5.5.1
   tflite_flutter: ^0.11.0
   image: ^4.3.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +91,7 @@ flutter:
     - assets/images/
     - assets/acne.json
     - assets/models/inception_v3_finetuned_model.tflite
+    - assets/models/best-fp16.tflite
 
   #   - images/a_dot_ham.jpeg
 

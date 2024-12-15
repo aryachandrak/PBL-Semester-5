@@ -6,8 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'firebase_options.dart';
-
-import 'views/main_page.dart';
 import 'views/welcome/splash_screen.dart';
 
 Future<void> main() async {
@@ -41,8 +39,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: SplashScreen(),
-      home: MainPage(),
+      home: SplashScreen(),
+      // home: MainPage(),
     );
   }
 }
