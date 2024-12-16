@@ -25,6 +25,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Email reset password telah dikirim!')),
       );
+
+      email.clear();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'network-request-failed') {
         ScaffoldMessenger.of(context).showSnackBar(

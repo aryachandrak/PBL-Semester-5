@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:plugin_camera/widgets/theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ManagePassPage extends StatefulWidget {
   const ManagePassPage({super.key});
@@ -13,24 +14,92 @@ class _ManagePassPageState extends State<ManagePassPage> {
   final _currentPasswordController = TextEditingController();
   final _newPasswordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
 
   bool _isObscuredCurrent = true;
   bool _isObscuredNew = true;
   bool _isObscuredConfirm = true;
 
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
-      // Implementasi logika perubahan password
-      print("Current Password: ${_currentPasswordController.text}");
-      print("New Password: ${_newPasswordController.text}");
+      try {
+        User? user = FirebaseAuth.instance.currentUser;
+        _showLoadingDialog(context);
 
-      // Reset form setelah berhasil
-      _currentPasswordController.clear();
-      _newPasswordController.clear();
-      _confirmPasswordController.clear();
+        if (user != null) {
+          AuthCredential credential = EmailAuthProvider.credential(
+            email: user.email!,
+            password: _currentPasswordController.text,
+          );
+          // Reauthenticate untuk memverifikasi user dan password saat ini
+          await user.reauthenticateWithCredential(credential);
+
+          // Setelah verifikasi benar, update password
+          await user.updatePassword(_newPasswordController.text);
+
+          Navigator.of(context).pop();
+          _showDialog(context, "Password updated successfully",
+              Icons.check_circle, Colors.green);
+
+          // Reset form setelah berhasil
+          _currentPasswordController.clear();
+          _newPasswordController.clear();
+          _confirmPasswordController.clear();
+        }
+      } on FirebaseAuthException catch (e) {
+        print(e.code);
+        if (e.code == 'invalid-credential') {
+          Navigator.of(context).pop();
+          _showDialog(context, "The current password is incorrect",
+              Icons.cancel, Colors.red);
+        } else {
+          Navigator.of(context).pop();
+          print("Firebase authentication error: ${e.message}");
+        }
+      }
     }
+  }
+
+  void _showDialog(
+      BuildContext context, String message, IconData icon, Color iconColor) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Icon(icon, size: 50, color: iconColor),
+          content: Text(message, textAlign: TextAlign.center),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible:
+          false, // Menonaktifkan dismiss dengan klik di luar dialog
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(), // Menampilkan indikator loading
+              SizedBox(width: 20),
+              Text(
+                  "Processing..."), // Teks untuk memberi tahu bahwa proses sedang berlangsung
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -178,21 +247,6 @@ class _ManagePassPageState extends State<ManagePassPage> {
                     },
                   ),
                   const SizedBox(height: 24.0),
-
-                  // Submit Button
-                  // SizedBox(
-                  //   width: double.infinity,
-                  //   child: ElevatedButton(
-                  //     onPressed: _submit,
-                  //     child: const Text("Change Password"),
-                  //     style: ElevatedButton.styleFrom(
-                  //       padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  //       shape: RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.circular(8.0),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: CustomButton(
