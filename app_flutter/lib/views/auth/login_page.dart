@@ -211,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.network(
-                    'https://bmw.astra.co.id/wp-content/uploads/2023/07/BMW.svg_-300x300.png', // Path logo Google
+                    'https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA', // Path logo Google
                     width: 24,
                     height: 24,
                   ),
