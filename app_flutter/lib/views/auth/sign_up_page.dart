@@ -76,175 +76,185 @@ class _LoginPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Logo
-            Center(
-              child: Column(
-                children: [
-                  Container(
-                    height: 120,
-                    width: 120,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape
-                          .circle, // Opsional: Membuat gambar berbentuk lingkaran
+        padding: const EdgeInsets.only(top: 32, left: 32, right: 32),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Logo
+              Center(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 120,
+                      width: 120,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape
+                            .circle, // Opsional: Membuat gambar berbentuk lingkaran
+                      ),
+                      child: Image.asset(
+                        'assets/logoCoba.png', // Path gambar lokal
+                        fit: BoxFit.cover, // Atur sesuai kebutuhan
+                        errorBuilder: (BuildContext context, Object error,
+                            StackTrace? stackTrace) {
+                          return const Icon(
+                            Icons.error, // Ikon fallback jika gambar gagal dimuat
+                            size: 40,
+                            color: Colors.red,
+                          );
+                        },
+                      ),
                     ),
-                    child: Image.asset(
-                      'assets/logoCoba.png', // Path gambar lokal
-                      fit: BoxFit.cover, // Atur sesuai kebutuhan
-                      errorBuilder: (BuildContext context, Object error,
-                          StackTrace? stackTrace) {
-                        return const Icon(
-                          Icons.error, // Ikon fallback jika gambar gagal dimuat
-                          size: 40,
-                          color: Colors.red,
-                        );
-                      },
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Hello There!',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Hello There!',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                    const SizedBox(height: 8),
+                    Text(
+                      "Let's glow together with us",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[600],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Let's glow together with us",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 32),
-// User Field
-            TextField(
-              controller: name,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.person_2_outlined),
-                labelText: 'Nama',
-                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
-                labelStyle: const TextStyle(color: Colors.grey),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat tidak fokus
-                    width: 2.0, // Ketebalan border
-                  ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat fokus
-                    width: 3.0, // Ketebalan border lebih tebal saat fokus
-                  ),
-                  borderRadius: BorderRadius.circular(16),
+                  ],
                 ),
               ),
-            ),
-
-            const SizedBox(height: 16),
-// Email Field
-            TextField(
-              controller: email,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.email_outlined),
-                labelText: 'Email',
-                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
-                labelStyle: const TextStyle(color: Colors.grey),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat tidak fokus
-                    width: 2.0, // Ketebalan border
+              const SizedBox(height: 32),
+              // User Field
+              TextField(
+                controller: name,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person_2_outlined),
+                  labelText: 'Nama',
+                  floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat fokus
-                    width: 3.0, // Ketebalan border lebih tebal saat fokus
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey, // Warna border abu-abu saat tidak fokus
+                      width: 2.0, // Ketebalan border
+                    ),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  borderRadius: BorderRadius.circular(16),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey, // Warna border abu-abu saat fokus
+                      width: 3.0, // Ketebalan border lebih tebal saat fokus
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
               ),
-            ),
-
-            const SizedBox(height: 16),
-            // Password Field
-            TextField(
-              controller: password,
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.lock_outline),
-                labelText: 'Password',
-                floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
-                labelStyle: const TextStyle(color: Colors.grey),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat tidak fokus
-                    width: 2.0, // Ketebalan border
+          
+              const SizedBox(height: 16),
+          // Email Field
+              TextField(
+                controller: email,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  labelText: 'Email',
+                  floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey, // Warna border abu-abu saat fokus
-                    width: 3.0, // Ketebalan border lebih tebal saat fokus
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey, // Warna border abu-abu saat tidak fokus
+                      width: 2.0, // Ketebalan border
+                    ),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  borderRadius: BorderRadius.circular(16),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey, // Warna border abu-abu saat fokus
+                      width: 3.0, // Ketebalan border lebih tebal saat fokus
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
               ),
-            ),
-
-            const SizedBox(height: 24),
-            // Tombol Sign Up
-            GestureDetector(
-              onTap: () async {
-                await signUp();
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: isLoading
-                      ? Colors.grey
-                      : const Color(0xFF6DA06F), // Warna tombol
-                  borderRadius: BorderRadius.circular(16),
+          
+              const SizedBox(height: 16),
+              // Password Field
+              TextField(
+                controller: password,
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  labelText: 'Password',
+                  floatingLabelStyle: const TextStyle(color: Color(0xFF6DA06F)),
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey, // Warna border abu-abu saat tidak fokus
+                      width: 2.0, // Ketebalan border
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey, // Warna border abu-abu saat fokus
+                      width: 3.0, // Ketebalan border lebih tebal saat fokus
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                child: Center(
-                  child: isLoading
-                      ? const CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                      : const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+              ),
+          
+              const SizedBox(height: 24),
+              // Tombol Sign Up
+              GestureDetector(
+                onTap: () async {
+                  await signUp();
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: isLoading
+                        ? Colors.grey
+                        : const Color(0xFF6DA06F), // Warna tombol
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  child: Center(
+                    child: isLoading
+                        ? const CircularProgressIndicator(
                             color: Colors.white,
+                          )
+                        : const Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

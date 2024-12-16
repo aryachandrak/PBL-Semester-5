@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/auth/sign_up_page.dart';
+import 'package:plugin_camera/views/auth/forgot_password.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -19,8 +20,38 @@ class _LoginPageState extends State<LoginPage> {
   bool isLoading = false;
 
   signIn() async {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email.text, password: password.text);
+    if (email.text.isEmpty || password.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Email dan password tidak boleh kosong')),
+      );
+      return;
+    }
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email.text, password: password.text);
+      Provider.of<HistoryProvider>(context, listen: false).clearHistory();
+      context.read<NavigationProvider>().navigateToPage(
+            context,
+            'Home',
+          );
+    } on FirebaseAuthException catch (e) {
+      print('Error code: ${e.code}');
+      if (e.code == 'invalid-email') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Alamat email tidak valid.')),
+        );
+      } else if (e.code == 'network-request-failed') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text(
+                  'Tidak dapat terhubung ke server. Periksa koneksi internet Anda.')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Email atau password salah.')),
+        );
+      }
+    }
   }
 
   @override
@@ -135,27 +166,36 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-
-            const SizedBox(height: 24),
+            //Lupa password
+            Align(
+              alignment: Alignment.centerRight,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPassword()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent),
+                  child: const Text(
+                    'Lupa Password?',
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: Color.fromARGB(255, 46, 93, 64),
+                    ),
+                  )),
+            ),
+            const SizedBox(height: 18),
             // Tombol Lanjutkan
             GestureDetector(
               onTap: () async {
                 setState(() {
                   isLoading = true;
                 });
-                try {
-                  await signIn();
-                  Provider.of<HistoryProvider>(context, listen: false)
-                      .clearHistory();
-                  context.read<NavigationProvider>().navigateToPage(
-                        context,
-                        'Home',
-                      );
-                } on FirebaseAuthException {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Email atau password salah')),
-                  );
-                }
+                await signIn();
               },
               child: Container(
                 decoration: BoxDecoration(
