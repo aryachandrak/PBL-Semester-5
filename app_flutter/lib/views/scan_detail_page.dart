@@ -103,8 +103,7 @@ class ScanDetailPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                DateFormat('dd MMM yyyy, HH:mm')
-                                    .format(scanTime as DateTime),
+                                scanTime,
                                 style: GoogleFonts.montserrat(
                                   fontSize: 12,
                                   color: Colors.grey[600],
