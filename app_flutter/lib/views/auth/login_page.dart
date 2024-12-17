@@ -6,6 +6,7 @@ import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/views/auth/sign_up_page.dart';
 import 'package:plugin_camera/views/auth/forgot_password.dart';
 import 'package:provider/provider.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -52,6 +53,46 @@ class _LoginPageState extends State<LoginPage> {
         );
       }
     }
+  }
+
+  googleLogin() async {
+    try {
+      _showLoading(context);
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      Navigator.of(context).pop();
+      Provider.of<HistoryProvider>(context, listen: false).clearHistory();
+      context.read<NavigationProvider>().navigateToPage(
+            context,
+            'Home',
+          );
+    } catch (e) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Terjadi kesalahan: $e")),
+      );
+      Navigator.of(context).pop();
+    }
+  }
+
+  void _showLoading(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 
   @override
@@ -245,7 +286,7 @@ class _LoginPageState extends State<LoginPage> {
             // Tombol Google Login
             GestureDetector(
               onTap: () {
-                developer.log("Google login pressed", name: "GestureDetector");
+                googleLogin();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -9,9 +9,7 @@ import 'package:plugin_camera/widgets/theme.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:io';
-
 import 'package:provider/provider.dart';
-import 'package:plugin_camera/widgets/theme.dart';
 
 class EditAccountPage extends StatefulWidget {
   const EditAccountPage({super.key});
@@ -39,7 +37,6 @@ class _EditAccountPageState extends State<EditAccountPage> {
       );
       return;
     }
-    print('Full Name: ${_nameController.text}');
     if (user != null) {
       final userDoc = _firestore.collection('users').doc(user.uid);
       await userDoc.set({
@@ -82,7 +79,6 @@ class _EditAccountPageState extends State<EditAccountPage> {
       setState(() {
         _profileImageUrl = null;
       });
-      print('Error loading profile image: $e');
     }
   }
 
@@ -105,9 +101,8 @@ class _EditAccountPageState extends State<EditAccountPage> {
         });
         imageCache.clear();
         imageCache.clearLiveImages();
-        print('Image uploaded to local path: $filePath');
       } catch (e) {
-        print('Error uploading image: $e');
+        const SnackBar(content: Text('Error Uploading Image.'));
       }
     }
   }

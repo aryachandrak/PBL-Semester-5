@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/provider/profile_image_provider.dart';
-import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:plugin_camera/widgets/custom_button.dart';
 import 'package:plugin_camera/widgets/profile_option_widget.dart';
 import 'package:provider/provider.dart';
@@ -22,8 +22,15 @@ class _ProfilePageState extends State<ProfilePage> {
   final userEmail =
       FirebaseAuth.instance.currentUser?.email ?? 'Email tidak tersedia';
   String userName = 'Pengguna';
+
   signOut() async {
     await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+    Provider.of<HistoryProvider>(context, listen: false).clearHistory();
+    context.read<NavigationProvider>().navigateToPage(
+          context,
+          'login',
+        );
   }
 
   @override
@@ -251,12 +258,6 @@ class _ProfilePageState extends State<ProfilePage> {
               text: "Log Out",
               onPressed: () async {
                 await signOut();
-                Provider.of<HistoryProvider>(context, listen: false)
-                    .clearHistory();
-                context.read<NavigationProvider>().navigateToPage(
-                      context,
-                      'login',
-                    );
               },
               widthFactor: 1.0,
               heightFactor: 0.06,
