@@ -14,7 +14,7 @@ class _CreateRoutineState extends State<CreateRoutine> {
   List<RoutineStep> _steps = [
     RoutineStep(stepName: "Facewash"),
     RoutineStep(stepName: "Toner"),
-    RoutineStep(stepName: "Treatmment"),
+    RoutineStep(stepName: "Treatment"),
     RoutineStep(stepName: "Moisturizer"),
     RoutineStep(stepName: "Sunscreen"),
   ];
