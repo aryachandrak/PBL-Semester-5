@@ -41,7 +41,7 @@ class PopularItem extends StatelessWidget {
       onTap: () => _navigateToDetail(context),
       child: Container(
         padding: const EdgeInsets.only(left: 24, bottom: 12, right: 24),
-        height: 120,
+        height: 150,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -74,6 +74,8 @@ class PopularItem extends StatelessWidget {
                     Text(
                       tip.topic,
                       style: regular14.copyWith(color: textSecondary),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                   ],
                 ),

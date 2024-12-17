@@ -23,6 +23,36 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
+  bool _imagesLoaded = false;
+
+  final List<String> imagePaths = [
+    "assets/images/routine.jpg",
+    "assets/images/recent.jpg",
+    "assets/images/know_skin.jpg",
+  ];
+
+  Future<void> _preloadImages() async {
+    for (String path in imagePaths) {
+      await precacheImage(AssetImage(path), context);
+    }
+    setState(() {
+      _imagesLoaded = true;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_imagesLoaded) {
+      _preloadImages();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final profileImagePath =
@@ -230,78 +260,39 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   const SizedBox(height: 10),
                                   Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Fitur(
-                                          imagePath:
-                                              "assets/images/routine.jpg",
-                                          title: "Create Routine",
-                                          targetPage: CreateRoutine(),
-                                        ),
-                                        const Fitur(
-                                          imagePath: "assets/images/recent.jpg",
-                                          title: "Recent Scan",
-                                          targetPage: ScanHistoryPage(),
-                                        ),
-                                        const Fitur(
-                                          imagePath:
-                                              "assets/images/know_skin.jpg",
-                                          title: "Analyze Your Skin",
-                                          targetPage: TipsPage(),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  const Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Fitur(
-                                          imagePath: "assets/images/1.png",
-                                          title: "Rutinitas",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/2.png",
-                                          title: "Tips",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/3.png",
-                                          title: "Konsultasi",
-                                          targetPage: TipsPage(),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  const Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Fitur(
-                                          imagePath: "assets/images/1.png",
-                                          title: "Konsultasi",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/3.png",
-                                          title: "Konsultasi",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/2.png",
-                                          title: "Konsultasi",
-                                          targetPage: TipsPage(),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                      child: _imagesLoaded
+                                          ? Center(
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Fitur(
+                                                    imagePath:
+                                                        "assets/images/routine.jpg",
+                                                    title: "Create Routine",
+                                                    targetPage: CreateRoutine(),
+                                                  ),
+                                                  const Fitur(
+                                                    imagePath:
+                                                        "assets/images/recent.jpg",
+                                                    title: "Recent Scan",
+                                                    targetPage:
+                                                        ScanHistoryPage(),
+                                                  ),
+                                                  const Fitur(
+                                                    imagePath:
+                                                        "assets/images/know_skin.jpg",
+                                                    title: "Analyze Your Skin",
+                                                    targetPage: TipsPage(),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          : Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            )),
                                   const SizedBox(height: 40),
                                 ],
                               ),

@@ -53,7 +53,7 @@ class AboutUsPage extends StatelessWidget {
                     TeamMemberCard(
                       name: 'Arya Chandra Kusuma',
                       role: 'Backend Developer',
-                      imageUrl: 'assets/images/woman.png',
+                      imageUrl: 'assets/images/Arya.jpg',
                     ),
                     TeamMemberCard(
                       name: 'Elis Nurhidayati',
@@ -63,7 +63,7 @@ class AboutUsPage extends StatelessWidget {
                     TeamMemberCard(
                       name: 'Jantra Lang Lang Buana',
                       role: 'Machine Learning Engineer',
-                      imageUrl: 'assets/images/woman.png',
+                      imageUrl: 'assets/images/Jantra.jpg',
                     ),
                     TeamMemberCard(
                       name: 'Putri Ayu Aliciawati',
