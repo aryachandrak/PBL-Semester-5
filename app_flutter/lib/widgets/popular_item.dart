@@ -41,12 +41,16 @@ class PopularItem extends StatelessWidget {
       onTap: () => _navigateToDetail(context),
       child: Container(
         padding: const EdgeInsets.only(left: 24, bottom: 12, right: 24),
-        height: 150,
+        height: 120,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: green,
+            color: Colors.transparent,
+            border: Border.all(
+              color: primary,
+              width: 1.5,
+            ),
           ),
           child: Row(
             children: [
@@ -81,13 +85,9 @@ class PopularItem extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        color: Colors.white,
-                      ),
                       child: const Icon(
                         Icons.favorite,
-                        size: 16,
+                        size: 24,
                         color: Colors.red,
                       ),
                     ),

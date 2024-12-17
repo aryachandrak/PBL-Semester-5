@@ -17,13 +17,15 @@ class TopicItem extends StatelessWidget {
     final Map<String, dynamic> data = json.decode(response);
     final Map<String, dynamic> tipsList = data['TipsList'];
     final List<dynamic> topicTips = tipsList[topic.title] ?? [];
-    
-    return topicTips.map((tip) => TipsItem(
-      tip['id'] ?? '',
-      tip['title'] ?? '',
-      tip['image'] ?? '',
-      topic.title,
-    )).toList();
+
+    return topicTips
+        .map((tip) => TipsItem(
+              tip['id'] ?? '',
+              tip['title'] ?? '',
+              tip['image'] ?? '',
+              topic.title,
+            ))
+        .toList();
   }
 
   @override
@@ -32,7 +34,7 @@ class TopicItem extends StatelessWidget {
       onTap: () async {
         final tips = await _loadTopicTips();
         if (!context.mounted) return;
-        
+
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -63,13 +65,14 @@ class TopicItem extends StatelessWidget {
               child: Icon(
                 topic.icon,
                 color: text,
-                size: 24,
+                size: 30,
               ),
             ),
             const Spacer(),
             Text(
               topic.title,
-              style: medium14.copyWith(color: text),
+              style:
+                  medium14.copyWith(color: text, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 6),
             Text(

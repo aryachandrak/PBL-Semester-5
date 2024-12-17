@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plugin_camera/provider/profile_image_provider.dart';
-import 'package:plugin_camera/views/wawasan.dart';
+import 'package:plugin_camera/views/create_routine.dart';
+import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/wawasan.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
@@ -228,24 +229,26 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   const SizedBox(height: 10),
-                                  const Center(
+                                  Center(
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Fitur(
-                                          imagePath: "assets/images/1.png",
+                                          imagePath:
+                                              "assets/images/routine.jpg",
+                                          title: "Create Routine",
+                                          targetPage: CreateRoutine(),
+                                        ),
+                                        const Fitur(
+                                          imagePath: "assets/images/recent.jpg",
                                           title: "Recent Scan",
-                                          targetPage: TipsPage(),
+                                          targetPage: ScanHistoryPage(),
                                         ),
-                                        Fitur(
-                                          imagePath: "assets/images/2.png",
-                                          title: "Tips",
-                                          targetPage: TipsPage(),
-                                        ),
-                                        Fitur(
-                                          imagePath: "assets/images/3.png",
-                                          title: "Konsultasi",
+                                        const Fitur(
+                                          imagePath:
+                                              "assets/images/know_skin.jpg",
+                                          title: "Analyze Your Skin",
                                           targetPage: TipsPage(),
                                         ),
                                       ],

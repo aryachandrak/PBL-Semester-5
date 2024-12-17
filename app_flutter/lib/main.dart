@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:plugin_camera/provider/language_provider.dart';
 import 'package:plugin_camera/provider/navigation_provider.dart';
 import 'package:plugin_camera/provider/profile_image_provider.dart';
+import 'package:plugin_camera/provider/routine_provider.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:camera/camera.dart';
@@ -11,6 +12,7 @@ import 'package:plugin_camera/provider/history_provider.dart';
 import 'package:plugin_camera/provider/camera_provider.dart';
 import 'firebase_options.dart';
 import 'views/welcome/splash_screen.dart';
+import 'views/main_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,7 @@ Future<void> main() async {
         ChangeNotifierProvider(
           create: (context) => ProfileImageProvider(),
         ),
+        ChangeNotifierProvider(create: (_) => RoutineProvider()),
         ChangeNotifierProvider(create: (_) => LanguageProvider()),
         ChangeNotifierProvider(
           create: (_) => CameraProvider()..setCameras(cameras),
@@ -53,7 +56,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       // home: MainPage(),

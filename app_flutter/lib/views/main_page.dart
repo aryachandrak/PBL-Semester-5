@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/home_page.dart';
 import 'package:plugin_camera/views/profile_page.dart';
+import 'package:plugin_camera/views/create_routine.dart';
 import 'package:plugin_camera/views/tips_page.dart';
 import 'package:plugin_camera/widgets/theme.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: primary, // Match your app's theme color
-      statusBarIconBrightness: Brightness.dark, // Dark icons for light background
+      statusBarIconBrightness:
+          Brightness.dark, // Dark icons for light background
     ));
 
     final navigationProvider = Provider.of<NavigationProvider>(context);
@@ -25,6 +27,7 @@ class MainPage extends StatelessWidget {
       const HomePage(),
       // CameraPage(cameras: cameras),
       const ScanHistoryPage(),
+      CreateRoutine(),
       const TipsPage(),
       const ProfilePage(),
     ];

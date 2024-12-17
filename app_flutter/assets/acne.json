@@ -3,453 +3,494 @@
     {
       "id": "p1",
       "title": "Reducing Hormonal Acne Effectively",
-      "image": "assets/images/1.png",
-      "explanation": "Hormonal acne is a type of acne that occurs due to hormonal fluctuations, particularly affecting women during menstruation, pregnancy, or hormonal imbalances. It typically appears on the lower part of the face, including chin and jawline.",
-      "causes": [
-        "Hormonal imbalances",
-        "Increased androgen levels",
-        "Stress and cortisol production",
-        "Genetics and family history"
-      ],
-      "treatment": [
-        "Use gentle cleansers with salicylic acid",
-        "Apply benzoyl peroxide spot treatments",
-        "Consider hormonal birth control (consult doctor)",
-        "Use non-comedogenic products"
-      ],
-      "daily_routine": [
-        "Morning: Gentle cleanser → Toner → Moisturizer → Sunscreen",
-        "Evening: Double cleanse → Treatment products → Night moisturizer",
-        "Weekly: Gentle exfoliation and face masks",
-        "Change pillowcases twice weekly"
-      ]
+      "image": "assets/images/adult_acne.jpg",
+        "explanation": "Hormonal acne is a type of acne that occurs due to hormonal fluctuations, particularly affecting women during menstruation, pregnancy, or hormonal imbalances. It typically appears on the lower part of the face, including chin and jawline.",
+        "causes": [
+          "Hormonal imbalances",
+          "Increased androgen levels",
+          "Stress and cortisol production",
+          "Genetics and family history"
+        ],
+        "treatment": [
+          "Use gentle cleansers with salicylic acid",
+          "Apply benzoyl peroxide spot treatments",
+          "Consider hormonal birth control (consult doctor)",
+          "Use non-comedogenic products"
+        ],
+        "daily_routine": [
+          "Morning: Gentle cleanser → Toner → Moisturizer → Sunscreen",
+          "Evening: Double cleanse → Treatment products → Night moisturizer",
+          "Weekly: Gentle exfoliation and face masks",
+          "Change pillowcases twice weekly"
+        ]
+      
     },
     {
       "id": "p2",
       "title": "How to Treat Cystic Acne Naturally",
-      "image": "assets/images/2.png",
-      "explanation": "Cystic acne is the most severe form of acne, characterized by deep, painful cysts under the skin. It can lead to scarring if not treated properly and requires consistent care and often medical intervention.",
-      "causes": [
-        "Excess oil production",
-        "Bacterial infection",
-        "Inflammation",
-        "Hormonal changes"
-      ],
-      "treatment": [
-        "Use prescription-strength treatments",
-        "Apply ice to reduce inflammation",
-        "Take zinc supplements (consult doctor)",
-        "Use tea tree oil as spot treatment"
-      ],
-      "daily_routine": [
-        "Morning: Medicated cleanser → Treatment serum → Oil-free moisturizer",
-        "Evening: Gentle cleanser → Prescribed topicals → Moisturizer",
-        "Weekly: Clay mask treatment",
-        "Diet: Avoid dairy and high-glycemic foods"
-      ]
+      "image": "assets/images/kistik.jpg",
+        "explanation": "Cystic acne is the most severe form of acne, characterized by deep, painful cysts under the skin. It can lead to scarring if not treated properly and requires consistent care and often medical intervention.",
+        "causes": [
+          "Excess oil production",
+          "Bacterial infection",
+          "Inflammation",
+          "Hormonal changes"
+        ],
+        "treatment": [
+          "Use prescription-strength treatments",
+          "Apply ice to reduce inflammation",
+          "Take zinc supplements (consult doctor)",
+          "Use tea tree oil as spot treatment"
+        ],
+        "daily_routine": [
+          "Morning: Medicated cleanser → Treatment serum → Oil-free moisturizer",
+          "Evening: Gentle cleanser → Prescribed topicals → Moisturizer",
+          "Weekly: Clay mask treatment",
+          "Diet: Avoid dairy and high-glycemic foods"
+        ]
+      
     },
     {
       "id": "p3",
       "title": "The Importance of Exfoliation for Acne Skin",
-      "image": "assets/images/3.png",
-      "explanation": "Proper exfoliation is crucial for acne-prone skin as it helps remove dead skin cells, unclogs pores, and prevents new breakouts. However, it's important to use the right type of exfoliation to avoid irritation.",
-      "causes": [
-        "Dead skin cell buildup",
-        "Clogged pores",
-        "Improper exfoliation technique",
-        "Over-exfoliation"
-      ],
-      "treatment": [
-        "Choose between chemical or physical exfoliants",
-        "Use BHA (salicylic acid) for deep pore cleansing",
-        "Gentle physical scrubs if needed",
-        "Regular but moderate exfoliation schedule"
-      ],
-      "daily_routine": [
-        "Morning: Gentle cleanser → Toner → Moisturizer → Sunscreen",
-        "Evening: Exfoliate (2-3 times weekly) → Treatment products → Moisturizer",
-        "Weekly: Deep cleansing mask",
-        "Monitor skin sensitivity and adjust frequency"
-      ]
-    }
+      "image": "assets/images/exfo.jpg",
+        "explanation": "Proper exfoliation is crucial for acne-prone skin as it helps remove dead skin cells, unclogs pores, and prevents new breakouts. However, it's important to use the right type of exfoliation to avoid irritation.",
+        "causes": [
+          "Dead skin cell buildup",
+          "Clogged pores",
+          "Improper exfoliation technique",
+          "Over-exfoliation"
+        ],
+        "treatment": [
+          "Choose between chemical or physical exfoliants",
+          "Use BHA (salicylic acid) for deep pore cleansing",
+          "Gentle physical scrubs if needed",
+          "Regular but moderate exfoliation schedule"
+        ],
+        "daily_routine": [
+          "Morning: Gentle cleanser → Toner → Moisturizer → Sunscreen",
+          "Evening: Exfoliate (2-3 times weekly) → Treatment products → Moisturizer",
+          "Weekly: Deep cleansing mask",
+          "Monitor skin sensitivity and adjust frequency"
+        ]
+      
+    },
+    {
+      "id": "p4",
+      "title": "Managing Dark Spots (PIH vs PIE)",
+      "image": "assets/images/hyperpig.jpg",
+        "explanation": "Post-inflammatory hyperpigmentation (PIH) is a common aftermath of acne that results in dark spots or patches. Understanding how to treat and prevent PIH is crucial for complete acne care.",
+        "causes": [
+          "Inflammation from acne",
+          "Sun exposure",
+          "Picking at acne",
+          "Delayed acne treatment"
+        ],
+        "treatment": [
+          "Use vitamin C serums",
+          "Apply niacinamide products",
+          "Regular sunscreen application",
+          "Alpha arbutin treatments"
+        ],
+        "daily_routine": [
+          "Morning: Gentle cleanser → Vitamin C → Moisturizer → SPF 50",
+          "Evening: Double cleanse → PIH treatment → Night cream",
+          "Weekly: Gentle chemical exfoliation",
+          "Monthly: Professional treatments if needed"
+        ]
+      
+    },
+    {
+      "id": "p5",
+      "title": "Diet and Acne Connection",
+      "image": "assets/images/diet_acne.jpeg",
+        "explanation": "The relationship between diet and acne is increasingly recognized by dermatologists. Certain foods can trigger or worsen acne breakouts, while others may help improve skin health.",
+        "causes": [
+          "High glycemic foods",
+          "Dairy products",
+          "Processed foods",
+          "Nutritional deficiencies"
+        ],
+        "treatment": [
+          "Incorporate anti-inflammatory foods",
+          "Increase omega-3 intake",
+          "Stay hydrated",
+          "Add zinc-rich foods"
+        ],
+        "daily_routine": [
+          "Morning: Green smoothie with antioxidants",
+          "Meals: Balance of proteins, healthy fats, and vegetables",
+          "Evening: Herbal tea for skin health",
+          "Weekly: Food diary tracking"
+        ]
+      }
+    
   ],
-
   "TipsList": {
-      "My Self Improvement": [
-        {
-          "id": "si1",
-          "title": "Building Skincare Confidence",
-          "image": "assets/images/1.png",
-          "description": {
-            "explanation": "Building confidence in your skincare journey starts with understanding your skin's unique needs and accepting that improvement takes time. This foundation helps create a positive mindset for long-term skin health.",
-            "causes": [
-              "Lack of skincare knowledge",
-              "Unrealistic expectations",
-              "Social media pressure",
-              "Past negative experiences"
-            ],
-            "how_to_overcome": [
-              "Educate yourself about skincare",
-              "Set realistic goals",
-              "Track your progress",
-              "Celebrate small improvements"
-            ],
-            "daily_routines": [
-              "Morning skincare ritual",
-              "Evening skincare ritual",
-              "Weekly progress photos",
-              "Positive self-affirmations"
-            ]
-          }
-        },
-        {
-          "id": "si2",
-          "title": "Understanding Your Skin Type",
-          "image": "assets/images/2.png",
-          "description": {
-            "explanation": "Knowing your skin type is fundamental to choosing the right products and building an effective skincare routine. This knowledge helps prevent adverse reactions and maximizes the benefits of your skincare products.",
-            "causes": [
-              "Genetic factors",
-              "Environmental influences",
-              "Hormonal changes",
-              "Lifestyle habits"
-            ],
-            "how_to_overcome": [
-              "Perform skin type tests",
-              "Observe daily skin behavior",
-              "Consult with professionals",
-              "Keep a skin diary"
-            ],
-            "daily_routines": [
-              "Morning skin analysis",
-              "Product compatibility testing",
-              "Environmental protection",
-              "Regular skin assessments"
-            ]
-          }
-        },
-        {
-          "id": "si3",
-          "title": "Creating Sustainable Habits",
-          "image": "assets/images/3.png",
-          "description": {
-            "explanation": "Developing sustainable skincare habits ensures long-term success in maintaining healthy skin. It's about creating routines that you can consistently follow while adapting to your skin's changing needs.",
-            "causes": [
-              "Inconsistent routines",
-              "Over-complicated regimens",
-              "Product overload",
-              "Time management issues"
-            ],
-            "how_to_overcome": [
-              "Start with basics",
-              "Build gradually",
-              "Set routine reminders",
-              "Make it enjoyable"
-            ],
-            "daily_routines": [
-              "Simple morning routine",
-              "Basic evening routine",
-              "Weekly treatment schedule",
-              "Monthly routine review"
-            ]
-          }
-        },
-        {
-          "id": "si4",
-          "title": "Mindful Skincare Approach",
-          "image": "assets/images/1.png",
-          "description": {
-            "explanation": "A mindful approach to skincare involves being present and intentional with your skin health practices. This includes paying attention to how your skin responds to different treatments and environmental factors.",
-            "causes": [
-              "Stress-induced skin issues",
-              "Rushed skincare routine",
-              "Neglecting self-care",
-              "Environmental stressors"
-            ],
-            "how_to_overcome": [
-              "Practice stress management",
-              "Create a calming routine",
-              "Listen to skin needs",
-              "Regular self-care time"
-            ],
-            "daily_routines": [
-              "Mindful cleansing ritual",
-              "Gentle massage techniques",
-              "Stress-relief practices",
-              "Skincare meditation"
-            ]
-          }
+    "My Self Improvement": [
+      {
+        "id": "si1",
+        "title": "Building Skincare Confidence",
+        "image": "assets/images/build_SC.jpeg",
+        "description": {
+          "explanation": "Building confidence in your skincare journey starts with understanding your skin's unique needs and accepting that improvement takes time. This foundation helps create a positive mindset for long-term skin health.",
+          "causes": [
+            "Lack of skincare knowledge",
+            "Unrealistic expectations",
+            "Social media pressure",
+            "Past negative experiences"
+          ],
+          "how_to_overcome": [
+            "Educate yourself about skincare",
+            "Set realistic goals",
+            "Track your progress",
+            "Celebrate small improvements"
+          ],
+          "daily_routines": [
+            "Morning skincare ritual",
+            "Evening skincare ritual",
+            "Weekly progress photos",
+            "Positive self-affirmations"
+          ]
         }
-      ],
-      
-      "My Acne Journey": [
-        {
-          "id": "aj1",
-          "title": "Starting Your Documentation",
-          "image": "assets/images/1.png",
-          "description": {
-            "explanation": "Documenting your acne journey is crucial for understanding patterns and treatment effectiveness. Taking regular photos and notes helps track progress and identify triggers.",
-            "causes": [
-              "Lack of progress tracking",
-              "Inconsistent documentation",
-              "Poor observation skills",
-              "Missing important patterns"
-            ],
-            "how_to_overcome": [
-              "Take weekly photos",
-              "Keep a detailed skin diary",
-              "Note environmental factors",
-              "Track product usage"
-            ],
-            "daily_routines": [
-              "Morning condition check",
-              "Evening progress notes",
-              "Weekly photo documentation",
-              "Monthly progress review"
-            ]
-          }
-        },
-        {
-          "id": "aj2",
-          "title": "Understanding Acne Types",
-          "image": "assets/images/2.png",
-          "description": {
-            "explanation": "Different types of acne require different treatment approaches. Understanding your specific type helps in choosing the most effective treatments and products.",
-            "causes": [
-              "Hormonal imbalances",
-              "Bacterial growth",
-              "Clogged pores",
-              "Inflammation"
-            ],
-            "how_to_overcome": [
-              "Identify acne types",
-              "Research targeted treatments",
-              "Consult professionals",
-              "Monitor triggers"
-            ],
-            "daily_routines": [
-              "Regular skin analysis",
-              "Specific treatment application",
-              "Trigger avoidance",
-              "Progress tracking"
-            ]
-          }
+      },
+      {
+        "id": "si2",
+        "title": "Understanding Your Skin Type",
+        "image": "assets/images/skin_type.jpg",
+        "description": {
+          "explanation": "Knowing your skin type is fundamental to choosing the right products and building an effective skincare routine. This knowledge helps prevent adverse reactions and maximizes the benefits of your skincare products.",
+          "causes": [
+            "Genetic factors",
+            "Environmental influences",
+            "Hormonal changes",
+            "Lifestyle habits"
+          ],
+          "how_to_overcome": [
+            "Perform skin type tests",
+            "Observe daily skin behavior",
+            "Consult with professionals",
+            "Keep a skin diary"
+          ],
+          "daily_routines": [
+            "Morning skin analysis",
+            "Product compatibility testing",
+            "Environmental protection",
+            "Regular skin assessments"
+          ]
         }
-      ],
-      
-      "Oily Skin Care": [
-        {
-          "id": "os1",
-          "title": "Understanding Oily Skin",
-          "image": "assets/images/1.png",
-          "description": {
-            "explanation": "Oily skin occurs when sebaceous glands produce excess sebum, resulting in a shiny complexion and potential acne breakouts. Understanding the causes and proper management techniques is essential for maintaining balanced skin.",
-            "causes": [
-              "Overactive sebaceous glands",
-              "Hormonal changes",
-              "Genetics",
-              "Environmental factors"
-            ],
-            "how_to_overcome": [
-              "Use oil-control products",
-              "Regular gentle cleansing",
-              "Non-comedogenic moisturizers",
-              "Clay masks"
-            ],
-            "daily_routines": [
-              "Morning oil control",
-              "Midday blotting",
-              "Evening deep cleanse",
-              "Weekly masks"
-            ]
-          }
-        },
-        {
-          "id": "os2",
-          "title": "Product Selection",
-          "image": "assets/images/2.png",
-          "description": {
-            "explanation": "Choosing the right products for oily skin is crucial. Focus on lightweight, non-comedogenic formulations that help control oil without over-drying the skin.",
-            "causes": [
-              "Wrong product choices",
-              "Heavy formulations",
-              "Pore-clogging ingredients",
-              "Harsh products"
-            ],
-            "how_to_overcome": [
-              "Read ingredients lists",
-              "Choose gel formulations",
-              "Look for oil-free labels",
-              "Avoid heavy creams"
-            ],
-            "daily_routines": [
-              "Lightweight morning products",
-              "Oil-control toners",
-              "Gel moisturizers",
-              "Weekly exfoliation"
-            ]
-          }
-        },
-        {
-          "id": "os3",
-          "title": "Balancing Oil Production",
-          "image": "assets/images/3.png",
-          "description": {
-            "explanation": "Maintaining balanced oil production is key for oily skin types. The goal is to control excess sebum without compromising the skin's natural barrier.",
-            "causes": [
-              "Over-washing",
-              "Dehydration",
-              "Harsh treatments",
-              "Climate factors"
-            ],
-            "how_to_overcome": [
-              "Gentle cleansing",
-              "Hydrating ingredients",
-              "Oil-balancing products",
-              "Climate adaptation"
-            ],
-            "daily_routines": [
-              "Balanced cleansing",
-              "Hydration steps",
-              "Oil monitoring",
-              "Environmental protection"
-            ]
-          }
-        },
-        {
-          "id": "os4",
-          "title": "Makeup for Oily Skin",
-          "image": "assets/images/1.png",
-          "description": {
-            "explanation": "Choosing and applying makeup for oily skin requires specific techniques and products to ensure longevity and prevent excess shine throughout the day.",
-            "causes": [
-              "Wrong makeup formulas",
-              "Poor application techniques",
-              "Missing primer steps",
-              "Inadequate setting"
-            ],
-            "how_to_overcome": [
-              "Use oil-free foundations",
-              "Apply primer properly",
-              "Set with powder",
-              "Regular touch-ups"
-            ],
-            "daily_routines": [
-              "Prep skin properly",
-              "Oil-control primer",
-              "Long-wear products",
-              "Touch-up routine"
-            ]
-          }
-        },
-        {
-          "id": "os5",
-          "title": "Treatment Options",
-          "image": "assets/images/2.png",
-          "description": {
-            "explanation": "Various treatment options exist for managing oily skin, from over-the-counter products to professional treatments and lifestyle adjustments.",
-            "causes": [
-              "Insufficient treatment",
-              "Wrong treatment timing",
-              "Inconsistent approach",
-              "Treatment combinations"
-            ],
-            "how_to_overcome": [
-              "Professional consultation",
-              "Regular treatments",
-              "Consistent routine",
-              "Progress monitoring"
-            ],
-            "daily_routines": [
-              "Morning treatments",
-              "Evening treatments",
-              "Weekly specials",
-              "Monthly assessment"
-            ]
-          }
+      },
+      {
+        "id": "si3",
+        "title": "Creating Sustainable Habits",
+        "image": "assets/images/sustainable.jpg",
+        "description": {
+          "explanation": "Developing sustainable skincare habits ensures long-term success in maintaining healthy skin. It's about creating routines that you can consistently follow while adapting to your skin's changing needs.",
+          "causes": [
+            "Inconsistent routines",
+            "Over-complicated regimens",
+            "Product overload",
+            "Time management issues"
+          ],
+          "how_to_overcome": [
+            "Start with basics",
+            "Build gradually",
+            "Set routine reminders",
+            "Make it enjoyable"
+          ],
+          "daily_routines": [
+            "Simple morning routine",
+            "Basic evening routine",
+            "Weekly treatment schedule",
+            "Monthly routine review"
+          ]
         }
-      ],
-      
-      "Sensitive Skin Care": [
-        {
-          "id": "ss1",
-          "title": "Identifying Sensitivity",
-          "image": "assets/images/1.png",
-          "description": {
-            "explanation": "Sensitive skin requires careful attention to identify triggers and symptoms. Understanding your skin's specific sensitivities helps in creating an appropriate care routine.",
-            "causes": [
-              "Environmental factors",
-              "Product reactions",
-              "Genetic predisposition",
-              "Skin barrier damage"
-            ],
-            "how_to_overcome": [
-              "Patch testing",
-              "Gentle products",
-              "Barrier repair",
-              "Trigger avoidance"
-            ],
-            "daily_routines": [
-              "Gentle morning cleanse",
-              "Minimal product use",
-              "Barrier protection",
-              "Evening repair"
-            ]
-          }
-        },
-        {
-          "id": "ss2",
-          "title": "Gentle Care Routine",
-          "image": "assets/images/2.png",
-          "description": {
-            "explanation": "A gentle skincare routine is essential for sensitive skin to maintain comfort and prevent reactions while supporting the skin barrier.",
-            "causes": [
-              "Harsh products",
-              "Over-exfoliation",
-              "Temperature extremes",
-              "Chemical irritants"
-            ],
-            "how_to_overcome": [
-              "Use mild cleansers",
-              "Minimal ingredients",
-              "Temperature control",
-              "Barrier support"
-            ],
-            "daily_routines": [
-              "Lukewarm cleansing",
-              "Gentle pat dry",
-              "Barrier moisturizer",
-              "Sun protection"
-            ]
-          }
-        },
-        {
-          "id": "ss3",
-          "title": "Treatment Approach",
-          "image": "assets/images/3.png",
-          "description": {
-            "explanation": "Treating sensitive skin requires a careful, measured approach to introduce new products and treatments while maintaining skin comfort and health.",
-            "causes": [
-              "Aggressive treatments",
-              "Quick routine changes",
-              "Environmental stress",
-              "Product overload"
-            ],
-            "how_to_overcome": [
-              "Gradual introduction",
-              "Patch testing",
-              "Environmental protection",
-              "Minimal routine"
-            ],
-            "daily_routines": [
-              "Simple morning routine",
-              "Protective measures",
-              "Gentle evening care",
-              "Weekly assessment"
-            ]
-          }
+      },
+      {
+        "id": "si4",
+        "title": "Mindful Skincare Approach",
+        "image": "assets/images/sc_approach.jpg",
+        "description": {
+          "explanation": "A mindful approach to skincare involves being present and intentional with your skin health practices. This includes paying attention to how your skin responds to different treatments and environmental factors.",
+          "causes": [
+            "Stress-induced skin issues",
+            "Rushed skincare routine",
+            "Neglecting self-care",
+            "Environmental stressors"
+          ],
+          "how_to_overcome": [
+            "Practice stress management",
+            "Create a calming routine",
+            "Listen to skin needs",
+            "Regular self-care time"
+          ],
+          "daily_routines": [
+            "Mindful cleansing ritual",
+            "Gentle massage techniques",
+            "Stress-relief practices",
+            "Skincare meditation"
+          ]
         }
-      ]
-    }
+      }
+    ],
+
+    "My Acne Journey": [
+      {
+        "id": "aj1",
+        "title": "Starting Your Documentation",
+        "image": "assets/images/acne_doc.jpg",
+        "description": {
+          "explanation": "Documenting your acne journey is crucial for understanding patterns and treatment effectiveness. Taking regular photos and notes helps track progress and identify triggers.",
+          "causes": [
+            "Lack of progress tracking",
+            "Inconsistent documentation",
+            "Poor observation skills",
+            "Missing important patterns"
+          ],
+          "how_to_overcome": [
+            "Take weekly photos",
+            "Keep a detailed skin diary",
+            "Note environmental factors",
+            "Track product usage"
+          ],
+          "daily_routines": [
+            "Morning condition check",
+            "Evening progress notes",
+            "Weekly photo documentation",
+            "Monthly progress review"
+          ]
+        }
+      },
+      {
+        "id": "aj2",
+        "title": "Understanding Acne Types",
+        "image": "assets/images/acne_type.jpg",
+        "description": {
+          "explanation": "Different types of acne require different treatment approaches. Understanding your specific type helps in choosing the most effective treatments and products.",
+          "causes": ["Hormonal imbalances", "Bacterial growth", "Clogged pores", "Inflammation"],
+          "how_to_overcome": [
+            "Identify acne types",
+            "Research targeted treatments",
+            "Consult professionals",
+            "Monitor triggers"
+          ],
+          "daily_routines": [
+            "Regular skin analysis",
+            "Specific treatment application",
+            "Trigger avoidance",
+            "Progress tracking"
+          ]
+        }
+      }
+    ],
+
+    "Oily Skin Care": [
+      {
+        "id": "os1",
+        "title": "Understanding Oily Skin",
+        "image": "assets/images/oily_skin.png",
+        "description": {
+          "explanation": "Oily skin occurs when sebaceous glands produce excess sebum, resulting in a shiny complexion and potential acne breakouts. Understanding the causes and proper management techniques is essential for maintaining balanced skin.",
+          "causes": [
+            "Overactive sebaceous glands",
+            "Hormonal changes",
+            "Genetics",
+            "Environmental factors"
+          ],
+          "how_to_overcome": [
+            "Use oil-control products",
+            "Regular gentle cleansing",
+            "Non-comedogenic moisturizers",
+            "Clay masks"
+          ],
+          "daily_routines": [
+            "Morning oil control",
+            "Midday blotting",
+            "Evening deep cleanse",
+            "Weekly masks"
+          ]
+        }
+      },
+      {
+        "id": "os2",
+        "title": "Product Selection",
+        "image": "assets/images/product.jpg",
+        "description": {
+          "explanation": "Choosing the right products for oily skin is crucial. Focus on lightweight, non-comedogenic formulations that help control oil without over-drying the skin.",
+          "causes": [
+            "Wrong product choices",
+            "Heavy formulations",
+            "Pore-clogging ingredients",
+            "Harsh products"
+          ],
+          "how_to_overcome": [
+            "Read ingredients lists",
+            "Choose gel formulations",
+            "Look for oil-free labels",
+            "Avoid heavy creams"
+          ],
+          "daily_routines": [
+            "Lightweight morning products",
+            "Oil-control toners",
+            "Gel moisturizers",
+            "Weekly exfoliation"
+          ]
+        }
+      },
+      {
+        "id": "os3",
+        "title": "Balancing Oil Production",
+        "image": "assets/images/balancing_oil.jpeg",
+        "description": {
+          "explanation": "Maintaining balanced oil production is key for oily skin types. The goal is to control excess sebum without compromising the skin's natural barrier.",
+          "causes": ["Over-washing", "Dehydration", "Harsh treatments", "Climate factors"],
+          "how_to_overcome": [
+            "Gentle cleansing",
+            "Hydrating ingredients",
+            "Oil-balancing products",
+            "Climate adaptation"
+          ],
+          "daily_routines": [
+            "Balanced cleansing",
+            "Hydration steps",
+            "Oil monitoring",
+            "Environmental protection"
+          ]
+        }
+      },
+      {
+        "id": "os4",
+        "title": "Makeup for Oily Skin",
+        "image": "assets/images/MU_oily.jpg",
+        "description": {
+          "explanation": "Choosing and applying makeup for oily skin requires specific techniques and products to ensure longevity and prevent excess shine throughout the day.",
+          "causes": [
+            "Wrong makeup formulas",
+            "Poor application techniques",
+            "Missing primer steps",
+            "Inadequate setting"
+          ],
+          "how_to_overcome": [
+            "Use oil-free foundations",
+            "Apply primer properly",
+            "Set with powder",
+            "Regular touch-ups"
+          ],
+          "daily_routines": [
+            "Prep skin properly",
+            "Oil-control primer",
+            "Long-wear products",
+            "Touch-up routine"
+          ]
+        }
+      },
+      {
+        "id": "os5",
+        "title": "Treatment Options",
+        "image": "assets/images/treatment_ops.jpg",
+        "description": {
+          "explanation": "Various treatment options exist for managing oily skin, from over-the-counter products to professional treatments and lifestyle adjustments.",
+          "causes": [
+            "Insufficient treatment",
+            "Wrong treatment timing",
+            "Inconsistent approach",
+            "Treatment combinations"
+          ],
+          "how_to_overcome": [
+            "Professional consultation",
+            "Regular treatments",
+            "Consistent routine",
+            "Progress monitoring"
+          ],
+          "daily_routines": [
+            "Morning treatments",
+            "Evening treatments",
+            "Weekly specials",
+            "Monthly assessment"
+          ]
+        }
+      }
+    ],
+
+    "Sensitive Skin Care": [
+      {
+        "id": "ss1",
+        "title": "Identifying Sensitivity",
+        "image": "assets/images/sensitivity.jpg",
+        "description": {
+          "explanation": "Sensitive skin requires careful attention to identify triggers and symptoms. Understanding your skin's specific sensitivities helps in creating an appropriate care routine.",
+          "causes": [
+            "Environmental factors",
+            "Product reactions",
+            "Genetic predisposition",
+            "Skin barrier damage"
+          ],
+          "how_to_overcome": [
+            "Patch testing",
+            "Gentle products",
+            "Barrier repair",
+            "Trigger avoidance"
+          ],
+          "daily_routines": [
+            "Gentle morning cleanse",
+            "Minimal product use",
+            "Barrier protection",
+            "Evening repair"
+          ]
+        }
+      },
+      {
+        "id": "ss2",
+        "title": "Gentle Care Routine",
+        "image": "assets/images/gentle_care.jpg",
+        "description": {
+          "explanation": "A gentle skincare routine is essential for sensitive skin to maintain comfort and prevent reactions while supporting the skin barrier.",
+          "causes": [
+            "Harsh products",
+            "Over-exfoliation",
+            "Temperature extremes",
+            "Chemical irritants"
+          ],
+          "how_to_overcome": [
+            "Use mild cleansers",
+            "Minimal ingredients",
+            "Temperature control",
+            "Barrier support"
+          ],
+          "daily_routines": [
+            "Lukewarm cleansing",
+            "Gentle pat dry",
+            "Barrier moisturizer",
+            "Sun protection"
+          ]
+        }
+      },
+      {
+        "id": "ss3",
+        "title": "Treatment Approach",
+        "image": "assets/images/sensitif_treat.jpg",
+        "description": {
+          "explanation": "Treating sensitive skin requires a careful, measured approach to introduce new products and treatments while maintaining skin comfort and health.",
+          "causes": [
+            "Aggressive treatments",
+            "Quick routine changes",
+            "Environmental stress",
+            "Product overload"
+          ],
+          "how_to_overcome": [
+            "Gradual introduction",
+            "Patch testing",
+            "Environmental protection",
+            "Minimal routine"
+          ],
+          "daily_routines": [
+            "Simple morning routine",
+            "Protective measures",
+            "Gentle evening care",
+            "Weekly assessment"
+          ]
+        }
+      }
+    ]
   }
-  
+}

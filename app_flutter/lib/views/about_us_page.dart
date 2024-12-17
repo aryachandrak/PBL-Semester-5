@@ -68,7 +68,7 @@ class AboutUsPage extends StatelessWidget {
                     TeamMemberCard(
                       name: 'Putri Ayu Aliciawati',
                       role: 'UI/UX Designer',
-                      imageUrl: 'assets/images/woman.png',
+                      imageUrl: 'assets/images/putri.jpg',
                     ),
                   ],
                 ),

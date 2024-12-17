@@ -12,7 +12,7 @@ class BottomNavWidget extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: navbarProvider.currentIndex,
       onTap: (index) => navbarProvider.setIndex(index),
-      type: BottomNavigationBarType.fixed, // Add this line
+      type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
       elevation: 8,
       selectedItemColor: const Color(0xFF6DA06F),
@@ -26,16 +26,14 @@ class BottomNavWidget extends StatelessWidget {
           icon: Icon(Icons.history),
           label: 'History',
         ),
-
+        BottomNavigationBarItem(
+          icon: Icon(Icons.inventory_2),
+          label: 'Routine',
+        ),
         BottomNavigationBarItem(
           icon: Icon(Icons.lightbulb),
           label: 'Tips',
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(Icons.timer_outlined),
-        //   label: 'Rutinitas',
-        // ),
-
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',

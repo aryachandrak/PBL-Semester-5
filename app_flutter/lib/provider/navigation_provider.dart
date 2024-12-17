@@ -4,6 +4,7 @@ import 'package:plugin_camera/views/about_us_page.dart';
 import 'package:plugin_camera/views/app_language_page.dart';
 import 'package:plugin_camera/views/auth/login_page.dart';
 import 'package:plugin_camera/views/camera_page.dart';
+import 'package:plugin_camera/views/create_routine.dart';
 import 'package:plugin_camera/views/edit_account_page.dart';
 import 'package:plugin_camera/views/history_page.dart';
 import 'package:plugin_camera/views/main_page.dart';
@@ -44,7 +45,6 @@ class NavigationProvider with ChangeNotifier {
       case 'Camera':
         final cameras = await availableCameras();
         if (cameras.isNotEmpty) {
-          setIndex(2);
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -65,6 +65,16 @@ class NavigationProvider with ChangeNotifier {
       //   print("Error: Invalid arguments for CameraPage!");
       // }
       // break;
+      // Add this case inside the switch statement in the navigateToPage method:
+
+      case 'Routine':
+        setIndex(2);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CreateRoutine()),
+        );
+        break;
+
       case 'Tips':
         setIndex(3);
         Navigator.push(
