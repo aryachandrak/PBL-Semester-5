@@ -38,6 +38,7 @@ class _EditAccountPageState extends State<EditAccountPage> {
       return;
     }
     if (user != null) {
+      _showLoading(context);
       final userDoc = _firestore.collection('users').doc(user.uid);
       await userDoc.set({
         'name': _nameController.text,
@@ -45,6 +46,8 @@ class _EditAccountPageState extends State<EditAccountPage> {
       }, SetOptions(merge: true));
 
       await user.updateDisplayName(name);
+      
+      Navigator.of(context).pop();
 
       setState(() {
         _userName =
@@ -105,6 +108,18 @@ class _EditAccountPageState extends State<EditAccountPage> {
         const SnackBar(content: Text('Error Uploading Image.'));
       }
     }
+  }
+
+  void _showLoading(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 
   @override
